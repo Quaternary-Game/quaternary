@@ -4,12 +4,12 @@
     - [Godot Engine](#godot-engine)
     - [Image Creation](#image-creation)
 - [Style Guide](#style-guide)
+    - [Directory Layout](#directory-layout)
     - [Code Style](#code-style)
 
 ## Development Software
 
-There are a couple of software tools that are commonly used for this project. The tool, and its purpose, are listed
-below.
+A couple of software tools are commonly used for this project. The tool and its purpose are listed below.
 
 ### Godot Engine
 
@@ -46,9 +46,66 @@ Currently, three different tools are being investigated for image creation.
 This style guide will be expanded further when more development-oriented work begins on the project. The current
 standards are listed below.
 
+The project organization will follow
+(Godot's recommended structure)[https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html].
+
+### Directory Layout
+
+The below diagram indicates how files and directories should be laid out.
+
+```
+project root
+│   README.md
+│   CONTRIBUTING.md
+│   ...other root files
+│
+└───docs
+│   ...offline project-specific documentation
+│
+└───src
+    │   project.godot
+    │
+    └───addons
+    │   ...any addons for Godot
+    │
+    └───features
+    │   │
+    │   └───[feature 1's name]
+    │   │   │
+    │   │   └───assets
+    │   │   │   │   ...images/audio/other digital assets
+    │   │   │
+    │   │   └───nodes
+    │   │   │   │   ...all feature-specific nodes
+    │   │   │
+    │   │   └───scripts
+    │   │       │   ...any unattached .gd script
+    │   │
+    │   └───[feature 2's name]
+    │       │
+    │       └───assets
+    │       │   │   ...images/audio/other digital assets
+    │       │
+    │       └───nodes
+    │       │   │   ...all feature-specific nodes
+    │       │
+    │       └───scripts
+    │           │   ...any unattached .gd script
+    │
+    └───scenes
+        │   ...any non-categorized scenes
+        │
+        └───levels
+        │   │   ...all main-game levels
+        │
+        └───guis
+            │   ...all gui-only scenes (i.e., main menu, etc.)
+
+```
+
 ### Code Style
 
-1. Within GDScript, the optional static typing should be used at all times.
+1. Within GDScript, the optional static typing should always be used.
 2. Variable names should be descriptive.
 3. ... More to come soon.
 
