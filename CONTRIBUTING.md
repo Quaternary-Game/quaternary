@@ -3,6 +3,10 @@
 - [Development Software](#development-software)
     - [Godot Engine](#godot-engine)
     - [Image Creation](#image-creation)
+- [Git Process](#git-process)
+    - [Merge Versus Rebase](#merge-versus-rebase)
+    - [Branching Strategy](#branching-strategy)
+    - [Pull Request Strategy](#pull-request-strategy)
 - [Style Guide](#style-guide)
     - [Directory Layout](#directory-layout)
     - [Code Style](#code-style)
@@ -40,6 +44,39 @@ Currently, three different tools are being investigated for image creation.
 
     - Fully free and open source.
     - Good for SVGs, but the most difficult to use.
+
+## Git Process
+
+The following sections define the recommended procedures for using Git (and GitHub).
+
+### Merge Versus Rebase
+
+For all regular Git usage, merge should be used over rebase. Any pull requests should use the "merge" strategy. If you are working with a local branch,
+rebase can be used if it does not cause diverging branches on the remote repository.
+
+### Branching Strategy
+
+Gitflow is the recommended branching strategy for this repository. An in-depth guide can be found [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+
+These rules can be summed up in the following:
+
+1. The `main` branch is the "production" branch. No direct commits are allowed to `main`.
+2. The `develop` branch is based on the `main` branch. No direct commits are allowed to `develop`.
+3. A `release/<version>` branch is created from the `develop` branch and is merged into the `main` branch. Then, the `main` branch is pulled into `develop`.
+4. A `feature/<feature name>` branch is created from the `develop` branch. Upon completion, it is merged into the `develop` branch.
+5. If a crucial bug is found in `main`, then a `hotfix/<fix name>` branch is created. The `hotfix` branch is merged into `main`. Then, the `main` branch is pulled into `develop`.
+
+### Pull Request Strategy
+
+All changes to `main` and `develop` should first go through a Pull Request (i.e., no direct commits).
+
+Restrictions for `main`:
+- Must have at least two approvers
+- All CI/CD checks must pass
+
+Restrictions for `develop`:
+- Must have at least one approver
+- All CI/CD checks must pass
 
 ## Style Guide
 
