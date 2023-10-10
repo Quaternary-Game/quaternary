@@ -1,4 +1,4 @@
-extends Button
+class_name DragButton extends Button
 
 
 var drop_data: Variant = self

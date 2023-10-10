@@ -2,6 +2,11 @@ extends "res://features/dynamicmenu/DragButton.gd"
 
 
 @export_enum("Insertion", "Deletion", "Substitution") var type: String = "Insertion"
+@export_enum("A", "T", "G", "C") var base: String = "A":
+	set(value): 
+		text = value
+	get: 
+		return text
 
 var mutation: Dictionary = {
 	"Insertion":{
@@ -23,6 +28,6 @@ func _ready():
 	tooltip_text = mutation[type]["Tooltip_Text"]
 	icon = load("res://features/mutation_minigame/nodes/mutation/%s" % mutation[type]["Icon"])
 	if type == "Deletion":
-		text = " "
+		base = " "
 		vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
-	self.drop_data = {"Type": type, "Base":text, "node":self}
+	self.drop_data = {"Type": type, "Base":base, "node":self}

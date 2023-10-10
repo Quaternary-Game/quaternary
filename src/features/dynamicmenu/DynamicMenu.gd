@@ -1,4 +1,4 @@
-extends Control
+class_name DynamicMenu extends Control
 
 func reveal_slide_child(node: Control) -> void:
 	var spacer = Control.new()

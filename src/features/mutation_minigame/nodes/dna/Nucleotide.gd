@@ -4,7 +4,7 @@ extends PanelContainer
 signal mutation(node, mutation)
 @export var bg_visible: bool = true:
 	set = set_bg_visible
-		
+var is_deleted = false
 func set_bg_visible(value):
 	if value:
 		self.remove_theme_stylebox_override("Panel")
@@ -37,6 +37,7 @@ var nitro_bases :Dictionary = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	var label = $Label
 	if base == "BLANK":
 		label.text = " "
@@ -52,7 +53,7 @@ func _process(delta):
 	pass
 	
 func _can_drop_data(position, data):
-	if data is Dictionary:
+	if data is Dictionary and get_parent().droppable:
 		if (data["Type"] == "Insertion" and base == "BLANK"):
 			return true
 		if (data["Type"] == "Deletion" or data["Type"] == "Substitution") and base != "BLANK":
