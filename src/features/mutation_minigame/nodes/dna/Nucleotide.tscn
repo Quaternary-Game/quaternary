@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://s4eoeanf713j"]
+
+[ext_resource type="Script" path="res://features/mutation_minigame/nodes/dna/Nucleotide.gd" id="1_dvfxq"]
+[ext_resource type="FontFile" uid="uid://c44jo1vqdhoyr" path="res://features/mutation_minigame/nodes/dna/FiraCode-Bold.ttf" id="2_spdic"]
+
+[node name="nucleotide" type="PanelContainer"]
+offset_right = 77.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dvfxq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_spdic")
+theme_override_font_sizes/font_size = 30
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1

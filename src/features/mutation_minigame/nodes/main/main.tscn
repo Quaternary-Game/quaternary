@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://db8eq2q3wcbhv"]
+
+[ext_resource type="PackedScene" uid="uid://ctvnoc1hklgns" path="res://features/mutation_minigame/nodes/ui/UI.tscn" id="2_c4tib"]
+
+[node name="main_gd" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("2_c4tib")]
+anchors_preset = -1
+anchor_right = 0.459
