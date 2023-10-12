@@ -7,8 +7,8 @@
 Panel/styles/panel = ExtResource("1_148d6")
 PanelContainer/styles/panel = ExtResource("1_148d6")
 script = ExtResource("2_ip3k4")
-bg = null
-border = null
+bg = Color(0.156863, 0.211765, 0.0941176, 1)
+border = Color(0.866667, 0.631373, 0.368627, 1)
 A = Color(0, 1, 0, 1)
 G = Color(0, 0, 1, 1)
 T = Color(1, 0, 0, 1)
