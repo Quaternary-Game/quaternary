@@ -21,3 +21,8 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="res://features/theme/theme.tres"
+theme/custom_font="res://features/theme/fonts/FiraCode-SemiBold.ttf"
