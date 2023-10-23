@@ -84,7 +84,7 @@ This style guide will be expanded further when more development-oriented work be
 standards are listed below.
 
 The project organization will follow
-(Godot's recommended structure)[https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html].
+[Godot's recommended structure](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html).
 
 ### Directory Layout
 
@@ -144,5 +144,5 @@ project root
 
 1. Within GDScript, the optional static typing should always be used.
 2. Variable names should be descriptive.
-3. ... More to come soon.
+3. Follow [Godot's Recommendations](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html#style-guide).
 
