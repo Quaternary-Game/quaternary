@@ -1,9 +1,13 @@
 extends PanelContainer
 
-@export_enum("A", "G", "T", "C", "BLANK") var base: String = "BLANK"
-signal mutation(node, mutation)
+@export var base: Globals.NitrogenousBase = Globals.NitrogenousBase.BLANK:
+	set(value):
+		$Label.text = Globals.NitrogenousBaseDetails[value].name
+		tooltip_text = Globals.NitrogenousBaseDetails[value].longname
+		
 @export var bg_visible: bool = true:
 	set = set_bg_visible
+signal mutation(node, mutation)
 var is_deleted = false
 func set_bg_visible(value):
 	if value:
@@ -12,22 +16,22 @@ func set_bg_visible(value):
 		self.add_theme_stylebox_override("Panel",StyleBoxEmpty.new())
 
 var nitro_bases :Dictionary = {
-	"A": {
+	Globals.NitrogenousBase.A: {
 		"Tooltip": "Adenine",
 		"Color": Color.GREEN,
 		"Text": "A"
 	},
-	"G": {
+	Globals.NitrogenousBase.G: {
 		"Tooltip": "Adenine",
 		"Color": Color.BLUE,
 		"Text": "G"
 	},
-	"T": {
+	Globals.NitrogenousBase.T: {
 		"Tooltip": "Adenine",
 		"Color": Color.RED,
 		"Text": "T"
 	},
-	"C": {
+	Globals.NitrogenousBase.C: {
 		"Tooltip": "Adenine",
 		"Color": Color.ORANGE,
 		"Text": "C"
@@ -39,7 +43,7 @@ var nitro_bases :Dictionary = {
 func _ready():
 	
 	var label = $Label
-	if base == "BLANK":
+	if base == Globals.NitrogenousBase.BLANK:
 		label.text = " "
 		return
 	var base_info: Dictionary = nitro_bases[base]
@@ -54,9 +58,9 @@ func _process(delta):
 	
 func _can_drop_data(position, data):
 	if data is Dictionary and get_parent().droppable:
-		if (data["Type"] == "Insertion" and base == "BLANK"):
+		if (data["Type"] == Globals.Mutation.INSERTION and base == Globals.NitrogenousBase.BLANK):
 			return true
-		if (data["Type"] == "Deletion" or data["Type"] == "Substitution") and base != "BLANK":
+		if (data["Type"] == Globals.Mutation.DELETION or data["Type"] == Globals.Mutation.SUBSTITUTION) and base != Globals.NitrogenousBase.BLANK:
 			return true
 	return false
 	

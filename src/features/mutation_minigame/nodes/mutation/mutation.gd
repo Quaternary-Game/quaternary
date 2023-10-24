@@ -1,33 +1,30 @@
-extends "res://features/dynamicmenu/DragButton.gd"
+extends DragButton
 
 
-@export_enum("Insertion", "Deletion", "Substitution") var type: String = "Insertion"
-@export_enum("A", "T", "G", "C") var base: String = "A":
+@export var type: Globals.Mutation = Globals.Mutation.INSERTION
+@export var base: Globals.NitrogenousBase =  Globals.NitrogenousBase.A:
 	set(value): 
-		text = value
-	get: 
-		return text
+		text = Globals.NitrogenousBaseDetails[value].name
 
 var mutation: Dictionary = {
-	"Insertion":{
-		"Icon": "insertion_icon.png",
+	Globals.Mutation.INSERTION:{
+		"Icon": preload("res://features/mutation_minigame/nodes/mutation/insertion_icon.png"),
 		"Tooltip_Text": "An insertion mutation adds a nucleotide, causing a frameshift."
 	},
-	"Deletion":{
-		"Icon": "deletion_icon.png",
+	Globals.Mutation.DELETION:{
+		"Icon": preload("res://features/mutation_minigame/nodes/mutation/deletion_icon.png"),
 		"Tooltip_Text": "A deletion mutation deletes a nucleotide, causing a frameshift."
 	},
-	"Substitution":{
-		"Icon": "substitution_icon.png",
-		"Tooltip_Text": "blah blah blah"
+	Globals.Mutation.SUBSTITUTION:{
+		"Icon": preload("res://features/mutation_minigame/nodes/mutation/substitution_icon.svg"),
+		"Tooltip_Text": "A substitution mutation changes one nucleotide into another."
 	},
 }
 
 func _ready():
-	
 	tooltip_text = mutation[type]["Tooltip_Text"]
-	icon = load("res://features/mutation_minigame/nodes/mutation/%s" % mutation[type]["Icon"])
-	if type == "Deletion":
-		base = " "
+	icon = mutation[type]["Icon"]
+	if type == Globals.Mutation.DELETION:
+		base = Globals.NitrogenousBase.BLANK
 		vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
 	self.drop_data = {"Type": type, "Base":base, "node":self}

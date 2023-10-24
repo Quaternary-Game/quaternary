@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bgi48vfjw46mp"]
+
+[node name="TranslationTest" type="FlowContainer"]
+
+[node name="CYTOSINE" type="Label" parent="."]
+layout_mode = 2
+text = "CYTOSINE"
+
+[node name="GUANINE" type="Label" parent="."]
+layout_mode = 2
+text = "GUANINE"
+
+[node name="THYMINE" type="Label" parent="."]
+layout_mode = 2
+text = "THYMINE"
+
+[node name="ADENINE" type="Label" parent="."]
+layout_mode = 2
+text = "ADENINE"
