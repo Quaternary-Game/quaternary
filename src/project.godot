@@ -11,9 +11,6 @@ config_version=5
 [application]
 
 config/name="Educational Genetics Game"
-run/main_scene="res://features/mutation_minigame/nodes/ui/UI.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
 
 [editor]
 
@@ -22,3 +19,18 @@ version_control/autoload_on_startup=true
 [internationalization]
 
 locale/translations=PackedStringArray("res://features/translation/translation.en.translation", "res://features/translation/translation.es.translation")
+run/main_scene="res://scenes/guis/MainMenu.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="res://features/theme/theme.tres"
+theme/custom_font="res://features/theme/fonts/FiraCode-SemiBold.ttf"
