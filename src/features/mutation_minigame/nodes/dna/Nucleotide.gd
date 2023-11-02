@@ -2,8 +2,13 @@ extends PanelContainer
 
 @export var base: Globals.NitrogenousBase = Globals.NitrogenousBase.BLANK:
 	set(value):
-		$Label.text = Globals.NitrogenousBaseDetails[value].name
-		tooltip_text = Globals.NitrogenousBaseDetails[value].longname
+		var details = Globals.NitrogenousBaseDetails[value]
+		$Label.text = details.name
+		if value != Globals.NitrogenousBase.BLANK:
+			tooltip_text = tr(details.long_name)
+			print(get_theme_color("Nucleotide", details.name))
+			$Label.add_theme_color_override("font_color", get_theme_color(details.name, "Nucleotide"))
+		base = value
 		
 @export var bg_visible: bool = true:
 	set = set_bg_visible
@@ -41,22 +46,12 @@ var nitro_bases :Dictionary = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	var label = $Label
-	if base == Globals.NitrogenousBase.BLANK:
-		label.text = " "
-		return
-	var base_info: Dictionary = nitro_bases[base]
-	label.text = base_info["Text"]
-	label.add_theme_color_override("font_color", base_info["Color"])
-	self.tooltip_text = base_info["Tooltip"]
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	pass
+
+
+
 	
-func _can_drop_data(position, data):
+func _can_drop_data(_position, data):
 	if data is Dictionary and get_parent().droppable:
 		if (data["Type"] == Globals.Mutation.INSERTION and base == Globals.NitrogenousBase.BLANK):
 			return true
@@ -64,7 +59,6 @@ func _can_drop_data(position, data):
 			return true
 	return false
 	
-func _drop_data(at_position, data):
-	print(data)
+func _drop_data(_at_position, data):
 	mutation.emit(self, data)
 	

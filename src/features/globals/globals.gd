@@ -5,25 +5,40 @@ enum NitrogenousBase {
 	G,
 	T,
 	C,
-	BLANK
+	BLANK,
+	U
 }
 
 const NitrogenousBaseDetails: Dictionary =  {
 	NitrogenousBase.A:{
 		"name": "A",
-		"long_name": "ADENINE"
+		"long_name": "ADENINE",
+		"bond": NitrogenousBase.T,
+		"bondRNA": NitrogenousBase.U
 	},
 	NitrogenousBase.G:{
 		"name": "G",
-		"long_name": "GUANINE"
+		"long_name": "GUANINE",
+		"bond": NitrogenousBase.C,
+		"bondRNA": NitrogenousBase.C
 	},
 	NitrogenousBase.C:{
 		"name": "C",
-		"long_name": "CYTOSINE"
+		"long_name": "CYTOSINE",
+		"bond": NitrogenousBase.G,
+		"bondRNA": NitrogenousBase.G
 	},
 	NitrogenousBase.T:{
 		"name": "T",
-		"long_name": "THYMINE"
+		"long_name": "THYMINE",
+		"bond": NitrogenousBase.A,
+		"bondRNA": NitrogenousBase.A
+	},
+	NitrogenousBase.U:{
+		"name": "U",
+		"long_name": "URACIL",
+		"bond": NitrogenousBase.A,
+		"bondRNA": NitrogenousBase.A
 	},
 	NitrogenousBase.BLANK:{
 		"name": " ",

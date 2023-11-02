@@ -21,10 +21,10 @@ var bases = [Globals.NitrogenousBase.A,
 func random_dna(length: int):
 	var rng = RandomNumberGenerator.new()
 	
-	var start = add_base()
+	var _start = add_base()
 	for i in range(length):
-		var base = add_base(bases[rng.randi_range(0, bases.size()-1)])
-		var spacer = add_base()
+		var _base = add_base(bases[rng.randi_range(0, bases.size()-1)])
+		var _spacer = add_base()
 		
 func mutate_random(number_of_mutations: int = 4):
 	var rng = RandomNumberGenerator.new()
@@ -38,61 +38,74 @@ func mutate_random(number_of_mutations: int = 4):
 	for i in range(number_of_mutations):
 		var rand_base = bases[rng.randi_range(0, bases.size()-1)]
 		var rand_mutation = possible_mutations[rng.randi_range(0, possible_mutations.size()-1)]
-		var type: String
 		var random_child: Node
-		while true:
-			random_child = get_children()[rng.randi_range(0, get_children().size()-1)]
-			if  random_child.get("base") == Globals.NitrogenousBase.BLANK and rand_mutation == Globals.Mutation.INSERTION and random_child.visible:
-				break
-			elif random_child.get("base") != Globals.NitrogenousBase.BLANK and rand_mutation != Globals.Mutation.INSERTION and random_child.visible and random_child.get("base") != null:
-				break
-		var mutation = {
+		var check_mutation = func():
+			while true:
+				random_child = get_children()[rng.randi_range(0, get_children().size()-1)]
+				if random_child.get("base") == Globals.NitrogenousBase.BLANK:
+					if rand_mutation == Globals.Mutation.INSERTION and random_child.visible:
+						return random_child
+				elif random_child.get("base") != null:
+					if rand_mutation != Globals.Mutation.INSERTION and random_child.visible:
+						return random_child
+		random_child = check_mutation.call()
+		var current_mutation = {
 			"Type": rand_mutation,
 			"Base": rand_base,
 			"node": random_child
 		}
-		mutations.append(mutation)
-		mutation_handler(random_child, mutation)
+		mutations.append(current_mutation)
+		mutation_handler(random_child, current_mutation)
 	return mutations
-		
-		
-		
-	
 
-		
 	
 func mutation_handler(node: Control, data: Dictionary):
-	print(data)
 	if data["Type"] == Globals.Mutation.DELETION:
-		await self.hide_slide_child(node)
-		await self.hide_slide_child(self.get_child(node.get_index() + 1))
+		self.hide_slide_child(node)
+		self.hide_slide_child(self.get_child(node.get_index() + 1))
 		node.is_deleted = true
 	elif data["Type"] == Globals.Mutation.INSERTION:
 		var blank = add_base()
 		var base = add_base(data["Base"])
 		base.visible = false
 		blank.visible = false
-		self.add_child(base)
-		self.add_child(blank)
 		self.move_child(blank, node.get_index()+1)
 		self.move_child(base, node.get_index()+1)
-		await self.reveal_slide_child(base)
-		await self.reveal_slide_child(blank)
+		self.reveal_slide_child(base)
+		self.reveal_slide_child(blank)
 	elif data["Type"] == Globals.Mutation.SUBSTITUTION:
 		node.base = data["Base"]
-	
+		
+		print(node.base)
+		print(data)
 	
 	mutation.emit(sequence())
+
+func make_reciprocal_strand():
+	for n in sequence_nodes():
+		n.base = Globals.NitrogenousBaseDetails[n.base].bond
 	
-func sequence():
+func sequence_nodes():
 	var children = get_children()
 	
-	var sequence = []
+	var sequence_array = []
 	for c in children:
 		if c.get("base") != Globals.NitrogenousBase.BLANK  and c.get("base") != null and c.is_deleted == false:
-			sequence.append(c.base)
-	return sequence
-# Called when the node enters the scene tree for the first time.
+			sequence_array.append(c)
+	return sequence_array
+
+func reciprocal_sequence():
+	var sequence_array = []
+	for n in sequence_nodes():
+		sequence_array.append(Globals.NitrogenousBaseDetails[n.base].bond)
+	return sequence_array
+
+func sequence():
+	var sequence_array = []
+	for n in sequence_nodes():
+		sequence_array.append(n.base)
+	return sequence_array
+
 func _ready():
 	pass
 	

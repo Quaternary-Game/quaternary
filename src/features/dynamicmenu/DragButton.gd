@@ -1,11 +1,17 @@
 class_name DragButton extends Button
+## Button that can be dragged.
+##
+## Meant to be used in combination with Dynamic Menu, or any class that implements
+## [method DynamicMenu.hide_slide_child] and [method DyanamicMenu.reveal_slide_child] 
 
+## set this in child classes to control the drop data of the button, can be anything
+var drop_data: Variant
 
-var drop_data: Variant = self
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+	
 var dragging: bool = false
+
 func _get_drag_data(at_position):
 	var preview = Control.new()
 	var me = self.duplicate()
@@ -16,7 +22,9 @@ func _get_drag_data(at_position):
 	set_drag_preview(preview)
 	dragging = true
 	return drop_data
+	
 var done: bool = false
+
 func _notification(what):
 	match what:
 		NOTIFICATION_DRAG_END:

@@ -5,6 +5,7 @@ extends DragButton
 @export var base: Globals.NitrogenousBase =  Globals.NitrogenousBase.A:
 	set(value): 
 		text = Globals.NitrogenousBaseDetails[value].name
+		base = value
 
 var mutation: Dictionary = {
 	Globals.Mutation.INSERTION:{

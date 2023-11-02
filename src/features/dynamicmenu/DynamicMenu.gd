@@ -1,5 +1,9 @@
 class_name DynamicMenu extends Control
+## A menu that can animate the appearance and dissapearance of control nodes
+##
+## extend this class on top of a box or grid container for automatic spacing
 
+## Animate the reveal of a child of the dynamic menu
 func reveal_slide_child(node: Control) -> void:
 	var spacer = Control.new()
 	# set this if you want a min size for the spacer
@@ -17,8 +21,8 @@ func reveal_slide_child(node: Control) -> void:
 		node.visible = true
 	tween.connect("finished", spacer_finished)
 
-
-func hide_slide_child(node: Control, new_parent: Node = null) -> void:
+## Animate the dissapearance of a child of the dynamic menu
+func hide_slide_child(node: Control) -> void:
 	var spacer = Control.new()
 	spacer.custom_minimum_size = node.size
 	self.add_child(spacer)
@@ -39,5 +43,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

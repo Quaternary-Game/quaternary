@@ -26,9 +26,9 @@ func modify_stylebox(name: StringName,theme_type: StringName, property: StringNa
 	
 
 func styleboxes():
-	modify_stylebox("panel", "Panel", "bg_color", bg)
-	modify_stylebox("panel", "Panel", "border_color", border)
-
+	#modify_stylebox("panel", "Panel", "bg_color", bg)
+	#modify_stylebox("panel", "Panel", "border_color", border)
+	pass
 func _init():
 	colors()
 	styleboxes()
