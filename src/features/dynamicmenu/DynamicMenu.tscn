@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqh02rjae8qi6"]
+
+[ext_resource type="Script" path="res://features/dynamicmenu/DynamicMenu.gd" id="1_3nblp"]
+
+[node name="DynamicMenu" type="FlowContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3nblp")
