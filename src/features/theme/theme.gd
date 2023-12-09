@@ -12,24 +12,25 @@ extends Theme
 @export var C: Color = Color.ORANGE
 
 ## Sets up the global colors, get from any node with get_theme_color(colorname, typename)
-func colors():
+func colors() -> void:
 	set_color("A", "Nucleotide", A)
 	set_color("G", "Nucleotide", G)
 	set_color("T", "Nucleotide", T)
 	set_color("C", "Nucleotide", C)
 
-func modify_stylebox(name: StringName,theme_type: StringName, property: StringName, value: Variant ):
+func modify_stylebox(name: StringName,theme_type: StringName, property: StringName, value: Variant ) -> void:
 	# needed to avoid lengthy syntax for modification of stylebox properties
-	var stylebox = get_stylebox(name, theme_type)
+	var stylebox: StyleBox = get_stylebox(name, theme_type)
 	stylebox.set(property, value)
 	set_stylebox(name, theme_type, stylebox)
 	
 
-func styleboxes():
+func styleboxes() -> void:
 	#modify_stylebox("panel", "Panel", "bg_color", bg)
 	#modify_stylebox("panel", "Panel", "border_color", border)
 	pass
-func _init():
+
+func _init() -> void:
 	colors()
 	styleboxes()
 	
