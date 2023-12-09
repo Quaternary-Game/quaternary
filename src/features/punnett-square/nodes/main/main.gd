@@ -1,26 +1,27 @@
 extends Control
+## Main script running Punnett square game
 
-@export var time:int = 6
+@export var time:int = 6 ## total time for the level
+## genotypes of the parents
 @export var parent1_genotype:String
 @export var parent2_genotype:String
 
-var countdown:int
+var countdown:int ## current time left
+## scenes
 var game_over_sound:AudioStream = preload("res://features/sound-effects/assets/game_over.wav")
 var punnett_square_scene:PackedScene = preload('res://features/punnett-square/nodes/punnet_square/punnett_square.tscn')
 var select_scene:PackedScene = preload("res://features/punnett-square/nodes/select_screen/select_screen.tscn")
 
-var flashes:int
+var flashes:int ## number of times to flash timer
 
-# Called when the node enters the scene tree for the first time.
+## set up start screen
 func _ready():
 	countdown = time
 	$StartScreen/Label.text = "You have %s second to fill\nthe Punnett Square" % str(self.time)
 	$Countdown.text = str(countdown)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+## runs each second
+## restarts timer and updates HUD timer
 func _on_timer_timeout():
 	# update countdown and label
 	countdown -= 1
@@ -47,12 +48,14 @@ func _on_timer_timeout():
 		$Countdown.visible = true	
 		await get_tree().create_timer(0.1).timeout
 
+## Show game over screen
 func game_over():
 	get_node("PunnettSquare").queue_free()
 	$EndGame.text = "Time's Up!"
 	$AudioStreamPlayer2D.stream = game_over_sound
 	$AudioStreamPlayer2D.play()
 
+## set up main game screen and punnett square and start game
 func start_game():
 	# initiate and build punnett square
 	var punnett_square:GridContainer = punnett_square_scene.instantiate()
@@ -62,6 +65,7 @@ func start_game():
 	$Timer.start(1)
 	$StartScreen.queue_free()
 
+## Set up post game screen for selecting offspring
 func show_select_screen(offspring_set:Dictionary):
 	$EndGame.visible = false
 	$Countdown.visible = false
@@ -70,6 +74,7 @@ func show_select_screen(offspring_set:Dictionary):
 	select_screen.set_choices(offspring_set)
 	self.add_child(select_screen)
 
+## Show win screen and transition to select screen
 func _on_punnett_square_game_won():
 	var offspring_set:Dictionary = get_node("PunnettSquare").get_offspring_set()
 	$PunnettSquare.queue_free()
@@ -81,6 +86,7 @@ func _on_punnett_square_game_won():
 	await get_tree().create_timer(3).timeout
 	show_select_screen(offspring_set)
 
+## start game when ready button is clicked
 func _on_button_pressed():
 	start_game()
 	

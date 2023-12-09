@@ -11,9 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n5my5")
-time = 60
-parent1_genotype = "AaBb"
-parent2_genotype = "aabb"
+time = 10
+parent1_genotype = "Aa"
+parent2_genotype = "aa"
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,9 +1,5 @@
 extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+## Sets offspring choices for the screen after winning
 
 func set_choices(offspring_set:Dictionary):
 	for offspring in offspring_set.keys():

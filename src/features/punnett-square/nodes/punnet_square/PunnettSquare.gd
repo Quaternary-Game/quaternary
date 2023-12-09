@@ -1,21 +1,24 @@
 extends GridContainer
+## Builds punnett square
+##
+## Orchestrates generation of all cells in the punnett square 
 
+## genotypes of the two parents
 var parent1_genotype:String
 var parent2_genotype:String
 
+## Scene for the header cells
 var header_scene:PackedScene = preload("res://features/punnett-square/nodes/header/header.tscn")
+## Scene for the offspring cells
 var offspring_scene:PackedScene = preload("res://features/punnett-square/nodes/offspring/offspring.tscn")
 
-var n_correct:int
-var n_needed:int
-var offspring_set:Dictionary
+var n_correct:int ## Current number of correct offspring cells
+var n_needed:int ## Number of offspring cells 
+var offspring_set:Dictionary ## set of all possible offspring
 
-signal game_won
+signal game_won ## triggered when all cells are correct
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-			
+## function for building the square in instantialing all cells
 func build_square(parent1:String, parent2:String):
 	parent1_genotype = parent1
 	parent2_genotype = parent2
@@ -67,6 +70,7 @@ func build_square(parent1:String, parent2:String):
 			offspring_set[new_offspring.set_correct_genotype(parent1_allele_combos[j], parent2_allele_combos[i])] = null
 			add_child(new_offspring)
 
+## generates allele combinations for the header cells
 func get_allele_combos(genotype:String):
 	# seperate the genotype into a list of traits
 	var traits:Array[String] = []
@@ -75,7 +79,7 @@ func get_allele_combos(genotype:String):
 	
 	return generate_combos(traits)
 	
-
+## helper recursive funciton for generating the allele combination
 func generate_combos(traits:Array[String]):
 	var combos:Array[String] = []
 	if len(traits) == 1:
@@ -94,16 +98,19 @@ func generate_combos(traits:Array[String]):
 				combos.append(traits[0][i] + posterior_combos[j])
 		return combos
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+## check if full square is correct
 func _process(delta):
 	if n_correct == n_needed:
 		game_won.emit()
 
+## add to number correct
 func add_correct():
 	n_correct += 1
 	
+## subtract from number correct
 func sub_correct():
 	n_correct -= 1
 
+## getter for the set of possible offspring
 func get_offspring_set():
 	return self.offspring_set
