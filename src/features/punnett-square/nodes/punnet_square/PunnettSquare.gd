@@ -19,7 +19,7 @@ var offspring_set:Dictionary ## set of all possible offspring
 signal game_won ## triggered when all cells are correct
 
 ## function for building the square in instantialing all cells
-func build_square(parent1:String, parent2:String):
+func build_square(parent1:String, parent2:String) -> void:
 	parent1_genotype = parent1
 	parent2_genotype = parent2
 	
@@ -71,7 +71,7 @@ func build_square(parent1:String, parent2:String):
 			add_child(new_offspring)
 
 ## generates allele combinations for the header cells
-func get_allele_combos(genotype:String):
+func get_allele_combos(genotype:String) -> Array[String]:
 	# seperate the genotype into a list of traits
 	var traits:Array[String] = []
 	for i in range(0,len(genotype),2):
@@ -80,7 +80,7 @@ func get_allele_combos(genotype:String):
 	return generate_combos(traits)
 	
 ## helper recursive funciton for generating the allele combination
-func generate_combos(traits:Array[String]):
+func generate_combos(traits:Array[String]) -> Array[String]:
 	var combos:Array[String] = []
 	if len(traits) == 1:
 		combos.append(traits[0][0])
@@ -99,18 +99,18 @@ func generate_combos(traits:Array[String]):
 		return combos
 		
 ## check if full square is correct
-func _process(delta):
+func _process(delta: float) -> void:
 	if n_correct == n_needed:
 		game_won.emit()
 
 ## add to number correct
-func add_correct():
+func add_correct() -> void:
 	n_correct += 1
 	
 ## subtract from number correct
-func sub_correct():
+func sub_correct() -> void:
 	n_correct -= 1
 
 ## getter for the set of possible offspring
-func get_offspring_set():
+func get_offspring_set() -> Dictionary:
 	return self.offspring_set

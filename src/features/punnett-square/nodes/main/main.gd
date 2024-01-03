@@ -15,14 +15,14 @@ var select_scene:PackedScene = preload("res://features/punnett-square/nodes/sele
 var flashes:int ## number of times to flash timer
 
 ## set up start screen
-func _ready():
+func _ready() -> void:
 	countdown = time
 	$StartScreen/Label.text = "You have %s second to fill\nthe Punnett Square" % str(self.time)
 	$Countdown.text = str(countdown)
 
 ## runs each second
 ## restarts timer and updates HUD timer
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	# update countdown and label
 	countdown -= 1
 	$Countdown.text = str(countdown)
@@ -49,14 +49,14 @@ func _on_timer_timeout():
 		await get_tree().create_timer(0.1).timeout
 
 ## Show game over screen
-func game_over():
+func game_over() -> void:
 	get_node("PunnettSquare").queue_free()
 	$EndGame.text = "Time's Up!"
 	$AudioStreamPlayer2D.stream = game_over_sound
 	$AudioStreamPlayer2D.play()
 
 ## set up main game screen and punnett square and start game
-func start_game():
+func start_game() -> void:
 	# initiate and build punnett square
 	var punnett_square:GridContainer = punnett_square_scene.instantiate()
 	punnett_square.build_square(self.parent1_genotype, self.parent2_genotype)
@@ -66,7 +66,7 @@ func start_game():
 	$StartScreen.queue_free()
 
 ## Set up post game screen for selecting offspring
-func show_select_screen(offspring_set:Dictionary):
+func show_select_screen(offspring_set:Dictionary) -> void:
 	$EndGame.visible = false
 	$Countdown.visible = false
 	
@@ -75,7 +75,7 @@ func show_select_screen(offspring_set:Dictionary):
 	self.add_child(select_screen)
 
 ## Show win screen and transition to select screen
-func _on_punnett_square_game_won():
+func _on_punnett_square_game_won() -> void:
 	var offspring_set:Dictionary = get_node("PunnettSquare").get_offspring_set()
 	$PunnettSquare.queue_free()
 	$Timer.stop()
@@ -87,6 +87,6 @@ func _on_punnett_square_game_won():
 	show_select_screen(offspring_set)
 
 ## start game when ready button is clicked
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	start_game()
 	

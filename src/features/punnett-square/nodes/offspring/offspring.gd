@@ -11,14 +11,14 @@ var incorrect_color:Color = Color("ff0000") ## color when input is incorrect
 var correct:bool ## boolean flag for input
 
 ## set color and flag to incorrect initially
-func _ready():
+func _ready() -> void:
 	correct_color = self.modulate
 	self.modulate = Color("ff0000")
 	correct = false
 
 ## To be called by main scene when building punnett square
 ## defines the correct genotype for the cell
-func set_correct_genotype(p1:String, p2:String):
+func set_correct_genotype(p1:String, p2:String) -> String:
 	var genotype:String = ""
 	var s:Array[String]
 	for i in len(p1):
@@ -30,13 +30,13 @@ func set_correct_genotype(p1:String, p2:String):
 	return genotype
 
 ## Checks input to see if correct
-func check_genotype():
+func check_genotype() -> bool:
 	var genotype:String = get_child(0).text
 	return genotype == self.correct_genotype
 
 ## Called when input changes
 ## updates color based on input
-func _on_genotype_text_changed(new_text):
+func _on_genotype_text_changed(new_text: String) -> void:
 	if check_genotype():
 		self.modulate = correct_color
 		if !correct:
