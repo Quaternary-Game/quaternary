@@ -12,14 +12,12 @@ config_version=5
 
 config/name="Educational Genetics Game"
 run/main_scene="res://scenes/guis/MainMenu.tscn"
-
 config/features=PackedStringArray("4.2")
 
 [debug]
 
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=1
-
 
 [display]
 

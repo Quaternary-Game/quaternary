@@ -1,31 +1,26 @@
 extends Node
 
 @export var mob_scene: PackedScene
-var score = 0
-var highScore = 0
-var acids = {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG"], "Serine": ["UCU", "UCC", "UCA", "UCG"], "Tyrosine": ["UAU", "UAC"], "Cysteine": ["UGU", "UGC"], "Tryptophan": ["UGG"] }
-var goalAcid
-var codons = ""
+var score : int = 0
+var highScore : int = 0
+# consider an enum here to enforce better typing
+var acids := {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG"], "Serine": ["UCU", "UCC", "UCA", "UCG"], "Tyrosine": ["UAU", "UAC"], "Cysteine": ["UGU", "UGC"], "Tryptophan": ["UGG"] }
+var goalAcid: String
+var codons := ""
 
-var arrow = preload("res://features/codon_minigame/art/arrow.png")
+var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	Input.set_custom_mouse_cursor(arrow, 0, Vector2(12, 12))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func win():
+func win() -> void:
 	$MobTimer.stop()
 	$Player/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().call_group("mobs", "queue_free")
 	score += 1
 	$HUD.show_next_level(score)
 
-func lose():
+func lose() -> void:
 	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -38,12 +33,12 @@ func lose():
 	$Music.stop()
 
 
-func new_game():
+func new_game() -> void:
 	$Music.play()
 	$Player.start($StartPosition.position)
 	next_level()
 
-func next_level():
+func next_level() -> void:
 	goalAcid = acids.keys()[(randi() % acids.size())]
 	codons = ""
 	$Player/Codons.set_deferred("text", "")
@@ -55,10 +50,10 @@ func next_level():
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 
 
-func to_anti_codon(codons):
-	var antiCodons = []
+func to_anti_codon(codons: String) -> Array[String]:
+	var antiCodons: Array[String] = []
 	for codon in codons:
-		var antiCodon = ""
+		var antiCodon := ""
 		for c in codon:
 			if (c == 'U'):
 				antiCodon += 'A'
@@ -71,16 +66,16 @@ func to_anti_codon(codons):
 		antiCodons.append(antiCodon)
 	return antiCodons
 		
-func _on_mob_timer_timeout():
+func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
+	var mob := mob_scene.instantiate()
 
 	# Choose a random location on Path2D.
-	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+	var mob_spawn_location := get_node("MobPath/MobSpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
 
 	# Set the mob's direction perpendicular to the path direction.
-	var direction = mob_spawn_location.rotation + PI / 2
+	var direction : float = mob_spawn_location.rotation + PI / 2
 
 	# Set the mob's position to a random location.
 	mob.position = mob_spawn_location.position
@@ -90,23 +85,23 @@ func _on_mob_timer_timeout():
 	mob.rotation = 0
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0 + score * score * 20, 250.0 + score * 40), 0.0)
+	var velocity: Vector2 = Vector2(randf_range(150.0 + score * score * 20, 250.0 + score * 40), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
 
-func _on_score_timer_timeout():
+func _on_score_timer_timeout() -> void:
 	$HUD.update_score(score)
 
 
-func _on_start_timer_timeout():
+func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
 
 
-func node_hit(body):
-	var temp = body.get_node("AnimatedSprite2D")
+func node_hit(body: Node2D) -> void:
+	var temp := body.get_node("AnimatedSprite2D")
 	codons += body.get_node("AnimatedSprite2D/Letter").text
 	print(codons)
 	if codons.length() >= 3:
