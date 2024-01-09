@@ -29,7 +29,7 @@ func lose() -> void:
 		highScore = score
 	score = 0
 	$Player.set_deferred("started", false)
-	$HUD.show_game_over(highScore)
+	$HUD.show_game_over(str(highScore))
 	$Music.stop()
 
 
@@ -50,11 +50,11 @@ func next_level() -> void:
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 
 
-func to_anti_codon(codons: String) -> Array[String]:
+func to_anti_codon(codons: Array) -> Array[String]:
 	var antiCodons: Array[String] = []
-	for codon in codons:
+	for  codon : String in codons:
 		var antiCodon := ""
-		for c in codon:
+		for c : String in codon:
 			if (c == 'U'):
 				antiCodon += 'A'
 			elif (c == 'A'):
