@@ -1,6 +1,8 @@
 extends Control
 ## pause menu functionality
 
+var pause:Control
+
 func _on_resume_pressed() -> void:
 	get_parent().resume_game()
 

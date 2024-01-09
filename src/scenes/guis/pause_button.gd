@@ -18,6 +18,7 @@ func _process(_delta:float) -> void:
 ## Shows pause screen scene
 func show_pause_screen() -> void:
 	pause_screen = menu_scene.instantiate()
+	pause_screen.pause = self
 	add_child(pause_screen)
 	$Button.hide()
 
