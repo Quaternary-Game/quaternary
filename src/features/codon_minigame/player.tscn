@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cor4gnepy3mty"]
+
+[ext_resource type="Script" path="res://features/codon_minigame/player.gd" id="1_38t5c"]
+[ext_resource type="Texture2D" uid="uid://d3kkhn1238243" path="res://features/codon_minigame/art/trna.png" id="2_iyoie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cvk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iyoie")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5uev"]
+size = Vector2(73, 134)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_38t5c")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.41074e-06, 7)
+scale = Vector2(0.772727, 0.627119)
+sprite_frames = SubResource("SpriteFrames_7cvk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 8)
+shape = SubResource("RectangleShape2D_e5uev")
+
+[node name="Codons" type="Label" parent="."]
+offset_left = -34.0
+offset_top = 19.0
+offset_right = 37.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 26
+text = "PPP"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

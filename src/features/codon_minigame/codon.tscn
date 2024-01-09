@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://chpmmji3lmgrs"]
+
+[ext_resource type="Script" path="res://features/codon_minigame/codon.gd" id="1_c7rjt"]
+[ext_resource type="Texture2D" uid="uid://dgfq4btnmh4pl" path="res://features/codon_minigame/art/Codons/codonA.png" id="1_fpwb8"]
+[ext_resource type="Texture2D" uid="uid://c3jvcsrv3e3l8" path="res://features/codon_minigame/art/Codons/codonC.png" id="2_oc3pi"]
+[ext_resource type="Texture2D" uid="uid://cmwgpp1n8tq2u" path="res://features/codon_minigame/art/Codons/codong.png" id="3_4slc6"]
+[ext_resource type="Texture2D" uid="uid://1edy7ffwpng8" path="res://features/codon_minigame/art/Codons/codonu.png" id="4_eu454"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sb7jx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fpwb8")
+}],
+"loop": true,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oc3pi")
+}],
+"loop": true,
+"name": &"C",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4slc6")
+}],
+"loop": true,
+"name": &"G",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eu454")
+}],
+"loop": true,
+"name": &"U",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlpfu"]
+size = Vector2(41, 61)
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_c7rjt")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.09732, 7.27838)
+scale = Vector2(0.369128, 0.362162)
+sprite_frames = SubResource("SpriteFrames_sb7jx")
+animation = &"A"
+offset = Vector2(-26, -27)
+
+[node name="Letter" type="Label" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -88.5
+offset_right = -34.5
+offset_bottom = -61.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_vlpfu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
