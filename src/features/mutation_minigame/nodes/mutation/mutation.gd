@@ -22,7 +22,7 @@ var mutation: Dictionary = {
 	},
 }
 
-func _ready():
+func _ready() -> void:
 	tooltip_text = mutation[type]["Tooltip_Text"]
 	icon = mutation[type]["Icon"]
 	if type == Globals.Mutation.DELETION:
