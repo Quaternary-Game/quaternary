@@ -7,14 +7,11 @@ class_name DragButton extends Button
 ## set this in child classes to control the drop data of the button, can be anything
 var drop_data: Variant
 
-func _ready():
-	pass
-	
 var dragging: bool = false
 
-func _get_drag_data(at_position):
-	var preview = Control.new()
-	var me = self.duplicate()
+func _get_drag_data(_at_position: Vector2) -> Variant:
+	var preview: Control = Control.new()
+	var me: DragButton = self.duplicate()
 	preview.add_child(me)
 	me.position = Vector2(0,0)
 	
@@ -25,7 +22,7 @@ func _get_drag_data(at_position):
 	
 var done: bool = false
 
-func _notification(what):
+func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_DRAG_END:
 			if dragging and !is_drag_successful() and not done:
