@@ -2,7 +2,7 @@ extends PanelContainer
 
 @export var base: Globals.NitrogenousBase = Globals.NitrogenousBase.BLANK:
 	set(value):
-		var details = Globals.NitrogenousBaseDetails[value]
+		var details: Dictionary = Globals.NitrogenousBaseDetails[value]
 		$Label.text = details.name
 		if value != Globals.NitrogenousBase.BLANK:
 			tooltip_text = tr(details.long_name)
@@ -12,9 +12,13 @@ extends PanelContainer
 		
 @export var bg_visible: bool = true:
 	set = set_bg_visible
-signal mutation(node, mutation)
-var is_deleted = false
-func set_bg_visible(value):
+
+const Mutation = preload("res://features/mutation_minigame/nodes/mutation/mutation.gd")
+# Can't use self type for node without using "class_name"
+signal mutation(node: Node, mutation: Mutation )
+
+var is_deleted: bool = false
+func set_bg_visible(value: bool) -> void:
 	if value:
 		self.remove_theme_stylebox_override("Panel")
 	else:
@@ -44,14 +48,9 @@ var nitro_bases :Dictionary = {
 	
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
 
 	
-func _can_drop_data(_position, data):
+func _can_drop_data(_position: Vector2, data: Variant) -> bool:
 	if data is Dictionary and get_parent().droppable:
 		if (data["Type"] == Globals.Mutation.INSERTION and base == Globals.NitrogenousBase.BLANK):
 			return true
@@ -59,6 +58,6 @@ func _can_drop_data(_position, data):
 			return true
 	return false
 	
-func _drop_data(_at_position, data):
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	mutation.emit(self, data)
 	
