@@ -33,14 +33,15 @@ func _on_timer_timeout() -> void:
 		$Timer.stop()
 		return
 		
-	if countdown <= 10:
+  
+	if countdown == 1:
+		flashes = 5
+	elif countdown <= 3:
+		flashes = 3
+	elif countdown <= 5:
+		flashes = 2
+	elif countdown <= 10:
 		flashes = 1
-		if countdown <= 5:
-			flashes = 2
-			if countdown <= 3:
-				flashes = 3
-				if countdown == 1:
-					flashes = 5
 
 	for i in flashes: 
 		$Countdown.visible = false
