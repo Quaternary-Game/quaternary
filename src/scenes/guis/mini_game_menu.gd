@@ -9,9 +9,12 @@ func _on_pressed() -> void:
 	$play_button.disabled = false
 
 func _on_play_button_pressed() -> void:
-	var mini_game: String = $mini_game_scroller/mini_game_box/build_the_codons.button_group.get_pressed_button().text
-	print(mini_game)
-	#Add scene switch to appropriate mini game
-
+	if $mini_game_scroller/mini_game_box/build_the_codons.button_pressed:
+		SceneSwitching.goto_scene('res://features/codon_minigame/main.tscn')
+	elif $mini_game_scroller/mini_game_box/punnet_square.button_pressed:
+		SceneSwitching.goto_scene('res://features/punnett-square/nodes/main/main.tscn')
+	elif $mini_game_scroller/mini_game_box/mutation_minigame.button_pressed:
+		SceneSwitching.goto_scene('res://features/mutation_minigame/nodes/main/main.tscn')
+		
 func _on_main_menu_button_pressed() -> void:
-	pass # Replace with scene switch to main
+	SceneSwitching.goto_mainmenu()
