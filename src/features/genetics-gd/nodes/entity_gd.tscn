@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxthawek7qkti"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_gd.gd" id="1_hgb48"]
+[ext_resource type="Texture2D" uid="uid://c0e27yyglaisa" path="res://features/genetics-gd/assets/entity.png" id="2_hjodj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtsxf"]
+radius = 32.0
+
+[node name="EntityGD" type="RigidBody2D"]
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_hgb48")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hjodj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vtsxf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
