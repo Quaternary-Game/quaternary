@@ -3,6 +3,7 @@ extends Node
 
 ## currently active scene
 var current_scene:Node = null
+const loading_path:String = "res://features/loading-screen/loading_screen.tscn"
 
 ## Sets current scene
 func _ready() -> void:
@@ -20,6 +21,7 @@ func goto_scene(path:String) -> void:
 ## completes a deffered scene switching
 func _deferred_go_to_scene(path:String) -> void:
 	current_scene.free()
-	var next_scene:Resource = ResourceLoader.load(path)
+	var next_scene:Resource = ResourceLoader.load(loading_path)
 	current_scene = next_scene.instantiate()
 	get_tree().root.add_child(current_scene)
+	current_scene.load_scene(path)
