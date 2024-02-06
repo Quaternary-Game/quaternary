@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var num_entities := 100
+@export var num_food := 100
 @export var entity_scene: PackedScene
+@export var food_scene: PackedScene
 
 var rng := RandomNumberGenerator.new()
 var num_children := 0
@@ -22,10 +24,16 @@ func _ready() -> void:
 		entity.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
 		self.add_child(entity)
 	
-	num_children = self.get_children().size()
+	# Spawn Food
+	for i in num_food:
+		var entity := food_scene.instantiate()
+		var viewport_size := get_viewport_rect().size
+		entity.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
+		self.add_child(entity)
 
 func _process(_delta: float) -> void:
 	var main_title := "Entity Stress Test"
-	var children_title := str(num_children) + " entities"
+	num_children = self.get_children().size()
+	var children_title := str(num_children) + " children"
 	var fps_title := str(Engine.get_frames_per_second()) + " fps"
 	DisplayServer.window_set_title(main_title + " | " + children_title + " | " + fps_title)

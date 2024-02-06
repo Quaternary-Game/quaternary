@@ -20,4 +20,9 @@ texture = ExtResource("2_hjodj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vtsxf")
 
+[node name="FoodDecayTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="FoodDecayTimer" to="." method="_on_food_decay_timer_timeout"]

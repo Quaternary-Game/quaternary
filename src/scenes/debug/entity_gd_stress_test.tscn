@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc06laf3csqfv"]
+[gd_scene load_steps=4 format=3 uid="uid://dc06laf3csqfv"]
 
 [ext_resource type="Script" path="res://scenes/debug/entity_gd_stress_test.gd" id="1_34mlh"]
 [ext_resource type="PackedScene" uid="uid://bxthawek7qkti" path="res://features/genetics-gd/nodes/entity_gd.tscn" id="1_fuf07"]
+[ext_resource type="PackedScene" uid="uid://c82ialfvd8uww" path="res://features/genetics-gd/nodes/food.tscn" id="3_wh3y6"]
 
 [node name="EntityGDStressTest" type="Node2D"]
 script = ExtResource("1_34mlh")
 entity_scene = ExtResource("1_fuf07")
+food_scene = ExtResource("3_wh3y6")
