@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 	self.position = self.position.clamp(Vector2.ZERO, screen_size)
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	print("Body entered!")
