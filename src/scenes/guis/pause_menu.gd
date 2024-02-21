@@ -7,7 +7,8 @@ func _on_resume_pressed() -> void:
 	pause.resume_game()
 
 func _on_exit_pressed() -> void:
-	## add logic to reuturn to main menu
+	## unpauses system before going to main menu
+	get_tree().paused = false
 	SceneSwitching.goto_mainmenu()
 
 func _on_settings_pressed() -> void:
