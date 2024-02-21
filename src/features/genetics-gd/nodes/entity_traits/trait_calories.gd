@@ -63,6 +63,8 @@ func _ready() -> void:
 	$DecayTimer.paused = self._deferred_enabled
 	$DecayTimer.wait_time = self._deferred_decay_rate_sec
 
+func _process(_delta: float) -> void:
+	$DebugLabel.text = str(self.calories)
 
 func _on_decay_timer_timeout() -> void:
 	self.calories -= self.calorie_decay_amount

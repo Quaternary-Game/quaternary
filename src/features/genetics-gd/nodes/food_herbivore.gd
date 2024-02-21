@@ -1,9 +1,9 @@
-class_name Food extends StaticBody2D
+class_name FoodHerbivore extends StaticBody2D
 
 @export var stages := [
-	preload("res://features/genetics-gd/assets/food/food1.png"),
-	preload("res://features/genetics-gd/assets/food/food2.png"),
-	preload("res://features/genetics-gd/assets/food/food3.png"),
+	preload("res://features/genetics-gd/assets/herbivore_food/herbivore_food1.png"),
+	preload("res://features/genetics-gd/assets/herbivore_food/herbivore_food2.png"),
+	preload("res://features/genetics-gd/assets/herbivore_food/herbivore_food3.png"),
 ]
 
 @export var food_available: int

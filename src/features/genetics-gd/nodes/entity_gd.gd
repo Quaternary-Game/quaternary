@@ -1,10 +1,10 @@
-class_name Entity extends Node2D
+class_name EntityGD extends RigidBody2D
 
 @export var direction := Vector2(1, 0)
 @export var speed := 40
 @export var initial_traits: Array[PackedScene] = []
 
-var _traits := {}
+var traits := {}
 
 # Miscellaneous processes
 var rng := RandomNumberGenerator.new()
@@ -30,15 +30,15 @@ func _physics_process(delta: float) -> void:
 func add_trait(new_trait: PackedScene) -> void:
 	var _new_trait := new_trait.instantiate()
 	assert(_new_trait is TraitBase)
-	self._traits[_new_trait.unique_trait_name] = _new_trait
+	self.traits[_new_trait.unique_trait_name] = _new_trait
 	add_child(_new_trait)
 	
 func remove_trait(unique_trait_name: String) -> bool:
-	var _trait: TraitBase = self._traits.get(unique_trait_name)
+	var _trait: TraitBase = self.traits.get(unique_trait_name)
 	if _trait != null:
 		return false
 		
-	self._traits.erase(unique_trait_name)
+	self.traits.erase(unique_trait_name)
 	remove_child(_trait)
 	
 	return true

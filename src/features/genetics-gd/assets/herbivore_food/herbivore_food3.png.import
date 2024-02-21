@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xoxvpdxhs62f"
-path="res://.godot/imported/food2.png-fb5a9eca75dc24902a66fc01dddcd0a1.ctex"
+uid="uid://ch6sghg3vhios"
+path="res://.godot/imported/herbivore_food3.png-19fe08ffcbe74cdc1fd7f4c3ec0b3e4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://features/genetics-gd/assets/food/food2.png"
-dest_files=["res://.godot/imported/food2.png-fb5a9eca75dc24902a66fc01dddcd0a1.ctex"]
+source_file="res://features/genetics-gd/assets/herbivore_food/herbivore_food3.png"
+dest_files=["res://.godot/imported/herbivore_food3.png-19fe08ffcbe74cdc1fd7f4c3ec0b3e4b.ctex"]
 
 [params]
 
