@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdssiddyejuw5"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.gd" id="1_5ft1b"]
+
+[node name="TraitCalorie" type="Node2D"]
+script = ExtResource("1_5ft1b")
+decay_enabled = true
+decay_rate_sec = 10.0
+unique_trait_name = "calories"
+
+[node name="DecayTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]

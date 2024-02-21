@@ -2,14 +2,12 @@ class_name TraitBase extends Node2D
 
 @export var unique_trait_name: String
 
-func initialize(entity: Entity) -> void:
-	pass
+var entity: Entity
 
-func pre_physics_process(entity: Entity) -> void:
-	pass
+func initialize() -> void:
+	assert(self.unique_trait_name != null)
+	assert(self.unique_trait_name.length() > 0)
 	
-func post_physics_process(entity: Entity) -> void:
-	pass
-
-func on_body_enter(entity: Entity, other: Node) -> void:
-	pass
+	self.entity = get_parent()
+	assert(self.entity is Entity)
+	assert(self.entity != null)
