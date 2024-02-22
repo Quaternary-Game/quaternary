@@ -1,4 +1,4 @@
-class_name LightDirected extends Area2D
+class_name LightDirected extends StaticBody2D
 
 @export_range(0, 1) var intensity : float :
 	get:

@@ -2,8 +2,10 @@ extends Node2D
 
 @export var num_entities := 100
 @export var num_food := 100
+@export var num_light := 100
 @export var entity_scene: PackedScene
 @export var food_scene: PackedScene
+@export var light_scene: PackedScene
 
 var rng := RandomNumberGenerator.new()
 var num_children := 0
@@ -17,16 +19,23 @@ func _ready() -> void:
 		printerr("Invalid Entity Scene on EntityGDStressTest")
 		return
 	
-	# Spawn Entities
-	for i in num_entities:
-		var entity := entity_scene.instantiate()
+	# Spawn Food
+	for i in num_food:
+		var entity := food_scene.instantiate()
+		var viewport_size := get_viewport_rect().size
+		entity.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
+		self.add_child(entity)
+		
+	# Spawn Light
+	for i in num_light:
+		var entity := light_scene.instantiate()
 		var viewport_size := get_viewport_rect().size
 		entity.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
 		self.add_child(entity)
 	
-	# Spawn Food
-	for i in num_food:
-		var entity := food_scene.instantiate()
+	# Spawn Entities
+	for i in num_entities:
+		var entity := entity_scene.instantiate()
 		var viewport_size := get_viewport_rect().size
 		entity.position = Vector2(rng.randf_range(0, viewport_size.x), rng.randf_range(0, viewport_size.y))
 		self.add_child(entity)
