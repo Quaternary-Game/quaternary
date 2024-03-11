@@ -15,5 +15,6 @@ func load_scene(scene_path:String) -> void:
 	
 	if load_status == ResourceLoader.THREAD_LOAD_LOADED:
 		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(scene_path))
+		self.queue_free()
 	else:
 		print("error loading")
