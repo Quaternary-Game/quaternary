@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://7cweutxyn54j"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/environment_modifiers/light_directed.gd" id="1_hvggr"]
+[ext_resource type="Texture2D" uid="uid://hrqw6dr0rem8" path="res://features/genetics-gd/assets/light_overlay.png" id="2_ixj2a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cl7yg"]
+
+[node name="LightDirected" type="StaticBody2D"]
+script = ExtResource("1_hvggr")
+intensity = 1.0
+radius = 48.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cl7yg")
+
+[node name="Overlay" type="TextureRect" parent="."]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ixj2a")
+expand_mode = 1

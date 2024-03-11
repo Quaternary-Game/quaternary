@@ -59,6 +59,10 @@ run/main_scene="res://scenes/guis/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[layer_names]
+
+2d_physics/layer_1="Entities"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.298039, 0.337255, 0.415686, 1)

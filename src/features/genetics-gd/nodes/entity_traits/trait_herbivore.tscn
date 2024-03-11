@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvm4f8qv4puj3"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_herbivore.gd" id="1_oq4t1"]
+
+[node name="TraitHerbivore" type="Node2D"]
+script = ExtResource("1_oq4t1")
+unique_trait_name = "herbivore"
