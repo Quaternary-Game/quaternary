@@ -17,6 +17,7 @@ func _process(_delta:float) -> void:
 
 ## Shows pause screen scene
 func show_pause_screen() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause_screen = menu_scene.instantiate()
 	pause_screen.pause = self
 	$Button.hide()
