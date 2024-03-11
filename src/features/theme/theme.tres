@@ -1,8 +1,61 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2b3tygkc5ala"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c2b3tygkc5ala"]
 
+[ext_resource type="FontFile" uid="uid://cq7q13iuyoppw" path="res://features/theme/fonts/FiraCode-SemiBold.ttf" id="1_wkvb4"]
 [ext_resource type="Script" path="res://features/theme/theme.gd" id="2_ip3k4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40b1i"]
+draw_center = false
+border_blend = true
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh8gr"]
+bg_color = Color(0.533333, 0.752941, 0.815686, 0.27451)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+shadow_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2p8j"]
+bg_color = Color(0, 0, 0, 0.0980392)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.243137)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 11
+shadow_color = Color(0, 0, 0, 0.141176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbnxi"]
+bg_color = Color(0.368627, 0.505882, 0.67451, 0.45098)
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 13
+corner_radius_top_right = 13
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 13
+corner_detail = 6
+
 [resource]
+Button/colors/font_hover_color = Color(0.533333, 0.752941, 0.815686, 1)
+Button/colors/font_pressed_color = Color(0.180392, 0.203922, 0.25098, 1)
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 41
+Button/fonts/font = ExtResource("1_wkvb4")
+Button/styles/focus = SubResource("StyleBoxFlat_40b1i")
+Button/styles/hover = SubResource("StyleBoxFlat_xh8gr")
+Button/styles/normal = SubResource("StyleBoxFlat_i2p8j")
+Button/styles/pressed = SubResource("StyleBoxFlat_dbnxi")
 Nucleotide/colors/A = Color(0, 1, 0, 1)
 Nucleotide/colors/C = Color(1, 0.647059, 0, 1)
 Nucleotide/colors/G = Color(0, 0, 1, 1)
