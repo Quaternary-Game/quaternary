@@ -35,8 +35,8 @@ func _init() -> void:
 	styleboxes()
 	
 	print(get_color_type_list())
-	for i in get_color_type_list():
+	for i: String in get_color_type_list():
 		print("color type %s:%s" % [i, get_color_list(i)])
-	for i in get_stylebox_type_list():
+	for i: String in get_stylebox_type_list():
 		print("stylebox type %s: %s" % [i, get_stylebox_list(i)])
 	
