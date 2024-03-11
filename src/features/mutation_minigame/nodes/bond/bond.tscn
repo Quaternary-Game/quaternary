@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bglov8xbbvs5u"]
+
+[ext_resource type="Script" path="res://features/mutation_minigame/nodes/bond/bond.gd" id="1_fakmk"]
+
+[node name="Bond" type="Line2D"]
+script = ExtResource("1_fakmk")
