@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv4k83q2oyppm"]
+
+[ext_resource type="Script" path="res://features/main_game/UI/trait_menu/trait_menu.gd" id="1_sp3pd"]
+
+[node name="TraitMenu" type="FlowContainer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sp3pd")

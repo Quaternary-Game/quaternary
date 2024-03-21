@@ -20,7 +20,7 @@ func _ready() -> void:
 	self.add_child(bottom)
 	#top.joint_mode = Line2D.LINE_JOINT_ROUND
 	#top.round_precision = 30
-	print(get_viewport_rect().size - (global_position + self.size))
+	#print(get_viewport_rect().size - (global_position + self.size))
 	for i in range(resolution):
 		top.add_point(Vector2(0,0))
 		bottom.add_point(Vector2(0,0))
