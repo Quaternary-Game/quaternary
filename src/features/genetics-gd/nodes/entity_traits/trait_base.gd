@@ -1,6 +1,8 @@
 class_name TraitBase extends Node2D
 
 @export var unique_trait_name: String
+@export var display_name : String = tr(unique_trait_name)
+@export var icon: Texture2D
 
 var entity: EntityGD
 

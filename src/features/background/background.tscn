@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi0kmdrtrp78l"]
+
+[ext_resource type="PackedScene" uid="uid://ux47ijj24wyn" path="res://features/background/molecule.tscn" id="1_v6qs7"]
+
+[node name="Background" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Molecule" parent="." instance=ExtResource("1_v6qs7")]
+layout_mode = 1
+offset_left = 970.0
+offset_top = 439.0
+offset_right = -950.0
+offset_bottom = -633.0

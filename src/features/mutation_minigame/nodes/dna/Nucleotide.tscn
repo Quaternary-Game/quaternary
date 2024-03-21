@@ -4,10 +4,9 @@
 [ext_resource type="FontFile" uid="uid://c44jo1vqdhoyr" path="res://features/mutation_minigame/nodes/dna/FiraCode-Bold.ttf" id="2_spdic"]
 
 [node name="nucleotide" type="PanelContainer"]
-custom_minimum_size = Vector2(40, 0)
+custom_minimum_size = Vector2(30, 0)
 offset_right = 77.0
 offset_bottom = 78.0
-size_flags_vertical = 3
 script = ExtResource("1_dvfxq")
 
 [node name="Label" type="Label" parent="."]
