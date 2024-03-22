@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnfnj6h4jk3tm"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.gd" id="1_ejnac"]
+
+[node name="TraitPhotoautotroph" type="Node2D"]
+script = ExtResource("1_ejnac")
+increment_rate_sec = 1.0
+unique_trait_name = "photoautotroph"
+
+[node name="IncrementTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="IncrementTimer" to="." method="_on_increment_timer_timeout"]

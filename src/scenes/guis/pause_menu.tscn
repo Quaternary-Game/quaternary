@@ -10,6 +10,7 @@ layer = 128
 script = ExtResource("1_ytf5f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,19 +36,19 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Resume"
+text = "pause-menu.resume"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Settings"
+text = "pause-menu.settings"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "Exit Game"
+text = "pause-menu.exit"
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]

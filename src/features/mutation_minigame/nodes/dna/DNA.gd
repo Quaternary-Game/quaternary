@@ -6,6 +6,7 @@ var base_scene: Resource = preload("res://features/mutation_minigame/nodes/dna/N
 const Nucleotide := preload("res://features/mutation_minigame/nodes/dna/Nucleotide.gd")
 
 signal mutation(sequence: Array)
+signal mutating
 
 func add_base(base_id: Globals.NitrogenousBase = Globals.NitrogenousBase.BLANK) -> Nucleotide:
 	var base: Nucleotide = base_scene.instantiate()
@@ -18,18 +19,18 @@ var bases := [Globals.NitrogenousBase.A,
 				 Globals.NitrogenousBase.G,
 				 Globals.NitrogenousBase.T,
 				 Globals.NitrogenousBase.C]
-				
+
 func random_dna(length: int) -> void:
 	var rng := RandomNumberGenerator.new()
-	
+
 	var _start: Nucleotide = add_base()
 	for i in range(length):
 		var _base := add_base(bases[rng.randi_range(0, bases.size()-1)])
 		var _spacer := add_base()
-		
+
 func mutate_random(number_of_mutations: int = 4) -> Array:
 	var rng := RandomNumberGenerator.new()
-	
+
 	var possible_mutations := [
 		Globals.Mutation.INSERTION,
 		Globals.Mutation.DELETION,
@@ -51,7 +52,7 @@ func mutate_random(number_of_mutations: int = 4) -> Array:
 				elif random_child.get("base") != null:
 					if rand_mutation != Globals.Mutation.INSERTION and random_child.visible:
 						return random_child
-			# needed to make all code paths return a value 
+			# needed to make all code paths return a value
 			return random_child
 		random_child = check_mutation.call()
 		var current_mutation := {
@@ -60,14 +61,23 @@ func mutate_random(number_of_mutations: int = 4) -> Array:
 			"node": random_child
 		}
 		mutations.append(current_mutation)
-		mutation_handler(random_child, current_mutation)
+		await mutation_handler(random_child, current_mutation, true)
 	return mutations
 
-	
-func mutation_handler(node: Control, data: Dictionary) -> void:
+
+func mutation_handler(node: Control, data: Dictionary, fast: bool = false) -> void:
+	mutating.emit()
+	var hide_slide_child:Callable = self.hide_slide_child
+	if fast:
+		hide_slide_child = func(node:Control) -> void:
+			node.visible=false
+	var reveal_slide_child:Callable = self.reveal_slide_child
+	if fast:
+		reveal_slide_child = func(node:Control) -> void:
+			node.visible=true
 	if data["Type"] == Globals.Mutation.DELETION:
-		self.hide_slide_child(node)
-		self.hide_slide_child(self.get_child(node.get_index() + 1))
+		await hide_slide_child.call(node)
+		await hide_slide_child.call(self.get_child(node.get_index() + 1))
 		node.is_deleted = true
 	elif data["Type"] == Globals.Mutation.INSERTION:
 		var blank: Nucleotide= add_base()
@@ -76,23 +86,20 @@ func mutation_handler(node: Control, data: Dictionary) -> void:
 		blank.visible = false
 		self.move_child(blank, node.get_index()+1)
 		self.move_child(base, node.get_index()+1)
-		self.reveal_slide_child(base)
-		self.reveal_slide_child(blank)
+		await reveal_slide_child.call(base)
+		await reveal_slide_child.call(blank)
 	elif data["Type"] == Globals.Mutation.SUBSTITUTION:
 		node.base = data["Base"]
-		
-		print(node.base)
-		print(data)
-	
+
 	mutation.emit(sequence())
 
 func make_reciprocal_strand() -> void:
 	for n: Nucleotide in sequence_nodes():
 		n.base = Globals.NitrogenousBaseDetails[n.base].bond
-	
+
 func sequence_nodes() -> Array[Nucleotide]:
 	var children := get_children()
-	
+
 	var sequence_array: Array[Nucleotide] = []
 	for c in children:
 		if c.get("base") != Globals.NitrogenousBase.BLANK  and c.get("base") != null and c.is_deleted == false:

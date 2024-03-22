@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxthawek7qkti"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_gd.gd" id="1_hgb48"]
+[ext_resource type="Texture2D" uid="uid://c0e27yyglaisa" path="res://features/genetics-gd/assets/entity.png" id="2_hjodj"]
+[ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="3_jiq8g"]
+[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_random_movement.tscn" id="4_5h72h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtsxf"]
+radius = 32.0
+
+[node name="EntityGD" type="RigidBody2D"]
+process_mode = 3
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 16
+contact_monitor = true
+script = ExtResource("1_hgb48")
+initial_traits = Array[PackedScene]([ExtResource("3_jiq8g"), ExtResource("4_5h72h")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hjodj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vtsxf")

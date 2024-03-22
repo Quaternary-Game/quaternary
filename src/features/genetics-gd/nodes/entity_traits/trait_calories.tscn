@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdssiddyejuw5"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.gd" id="1_5ft1b"]
+[ext_resource type="Texture2D" uid="uid://ch7mvbl2hsa70" path="res://features/genetics-gd/assets/calorie.svg" id="2_rqo3x"]
+
+[node name="TraitCalorie" type="Node2D"]
+script = ExtResource("1_5ft1b")
+decay_enabled = true
+decay_rate_sec = 10.0
+unique_trait_name = "calories"
+display_name = "calories"
+icon = ExtResource("2_rqo3x")
+
+[node name="DecayTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DebugLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]
