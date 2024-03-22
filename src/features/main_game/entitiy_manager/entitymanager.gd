@@ -8,13 +8,12 @@ const UiTrait = preload("res://features/main_game/UI/traits/trait.gd")
 
 var marker_count: int = 0
 
-var paused: bool:
+var paused : bool = false:
 	get:
 		return paused
 	set(value):
-		if not value and paused != value:
-			for e in entities():
-				e.go()
+		for i in entities():
+			i.paused = value
 		paused = value
 
 func markers() -> Array[Marker2D]:
@@ -38,10 +37,6 @@ func _ready() -> void:
 	self.paused = true
 
 
-func _on_ui_start() -> void:
-	self.paused = false
-	
-
 
 var circles : Array[Node2D]= []
 
@@ -58,3 +53,7 @@ func _on_ui_trait_drag_start(t: UiTrait) -> void:
 		i.add_child(circles[-1])
 		circles[-1].animate_circle()
 		circles[-1].entity = i
+
+
+func _on_ui_play(value: bool) -> void:
+	self.paused = !value

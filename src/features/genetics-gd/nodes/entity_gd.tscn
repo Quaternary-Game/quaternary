@@ -9,7 +9,6 @@
 radius = 32.0
 
 [node name="EntityGD" type="RigidBody2D"]
-process_mode = 3
 freeze = true
 freeze_mode = 1
 max_contacts_reported = 16

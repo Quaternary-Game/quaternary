@@ -50,9 +50,10 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="StartLevel" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+[node name="Start_Pause" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Start"
+toggle_mode = true
+text = "Play"
 
 [node name="ToggleTraitMenu" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
@@ -98,5 +99,6 @@ text = "Trait 1"
 layout_mode = 2
 text = "Trait 2"
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartLevel" to="." method="_on_start_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_level_pressed"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_pause_toggled"]
 [connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/ToggleTraitMenu" to="." method="_on_toggle_trait_menu_toggled"]
