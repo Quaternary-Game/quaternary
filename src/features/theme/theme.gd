@@ -15,10 +15,10 @@ extends Theme
 @export var color08 : Color = Color("88C0D0")
 @export var color09 : Color = Color("81A1C1")
 @export var color10 : Color = Color("5E81AC")
-@export var color11 : Color = Color("BF616A")
+@export var color11 : Color = Color("BF616A") ## RED
 @export var color12 : Color = Color("D08770")
 @export var color13 : Color = Color("EBCB8B")
-@export var color14 : Color = Color("A3BE8C")
+@export var color14 : Color = Color("A3BE8C") ## GREEN
 @export var color15 : Color = Color("B48EAD")
 
 @export var bg: Color = Color("283618")
