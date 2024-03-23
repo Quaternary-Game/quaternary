@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1nfou0xtjgcm"]
+
+[ext_resource type="Script" path="res://features/main_game/UI/traits/trait_drag_item.gd" id="1_v44u7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p16vv"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_v44u7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p16vv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ecefqwp20pv"]
+
+[ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entitiy_manager/entitymanager.tscn" id="1_4ttpq"]
+[ext_resource type="PackedScene" uid="uid://ccnrwji4dp8rl" path="res://features/main_game/UI/UI.tscn" id="2_bp0cn"]
+
+[node name="Level1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Entitymanager" parent="." instance=ExtResource("1_4ttpq")]
+
+[node name="Marker2D" type="Marker2D" parent="Entitymanager"]
+position = Vector2(1486, 195)
+
+[node name="UI" parent="." instance=ExtResource("2_bp0cn")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="play" from="UI" to="Entitymanager" method="_on_ui_play"]
+[connection signal="trait_drag_end" from="UI" to="Entitymanager" method="_on_ui_trait_drag_end"]
+[connection signal="trait_drag_start" from="UI" to="Entitymanager" method="_on_ui_trait_drag_start"]

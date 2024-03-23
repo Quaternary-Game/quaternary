@@ -1,2 +1,4 @@
 *.blend1
 .secrets
+src/features/translation/translation.es.translation
+src/features/translation/translation.en.translation

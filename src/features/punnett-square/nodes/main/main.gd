@@ -11,13 +11,14 @@ var countdown:int ## current time left
 var game_over_sound:AudioStream = preload("res://features/sound-effects/assets/game_over.wav")
 var punnett_square_scene:PackedScene = preload('res://features/punnett-square/nodes/punnet_square/punnett_square.tscn')
 var select_scene:PackedScene = preload("res://features/punnett-square/nodes/select_screen/select_screen.tscn")
+var lose_scene:PackedScene = preload("res://features/punnett-square/nodes/lose_screen/lose_screen.tscn")
 
 var flashes:int ## number of times to flash timer
 
 ## set up start screen
 func _ready() -> void:
 	countdown = time
-	$StartScreen/Label.text = "You have %s second to fill\nthe Punnett Square" % str(self.time)
+	$StartScreen/Label.text = "You have %s seconds to fill\nthe Punnett Square" % str(self.time)
 	$Countdown.text = str(countdown)
 
 ## runs each second
@@ -52,9 +53,9 @@ func _on_timer_timeout() -> void:
 ## Show game over screen
 func game_over() -> void:
 	get_node("PunnettSquare").queue_free()
-	$EndGame.text = "Time's Up!"
 	$AudioStreamPlayer2D.stream = game_over_sound
 	$AudioStreamPlayer2D.play()
+	show_lose_screen()
 
 ## set up main game screen and punnett square and start game
 func start_game() -> void:
@@ -75,8 +76,17 @@ func show_select_screen(offspring_set:Dictionary) -> void:
 	select_screen.set_choices(offspring_set)
 	self.add_child(select_screen)
 
+## Set up post game screen when player loses
+func show_lose_screen() -> void:
+	$EndGame.visible = false
+	$Countdown.visible = false
+	
+	var lose_screen:Control = lose_scene.instantiate()
+	self.add_child(lose_screen)
+
 ## Show win screen and transition to select screen
 func _on_punnett_square_game_won() -> void:
+	# could add victory sound here
 	var offspring_set:Dictionary = get_node("PunnettSquare").get_offspring_set()
 	$PunnettSquare.queue_free()
 	$Timer.stop()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctvnoc1hklgns"]
+[gd_scene load_steps=5 format=3 uid="uid://ctvnoc1hklgns"]
 
 [ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/UI.gd" id="1_j1rui"]
 [ext_resource type="PackedScene" uid="uid://cqh02rjae8qi6" path="res://features/dynamicmenu/DynamicMenu.tscn" id="2_s1ja6"]
+[ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/DNABOX.gd" id="3_2rtd3"]
 [ext_resource type="PackedScene" uid="uid://drxre10a5wiml" path="res://features/mutation_minigame/nodes/dna/DNA.tscn" id="3_det5c"]
 
 [node name="UI" type="Control"]
@@ -12,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1rui")
+DNA_length = 6
+number_of_mutations = 5
 
 [node name="DynamicMenu" parent="." instance=ExtResource("2_s1ja6")]
 layout_mode = 1
@@ -27,13 +30,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DNABOX" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.468
-anchor_right = 0.8
-anchor_bottom = 0.695
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/separation = 100
+script = ExtResource("3_2rtd3")
 
 [node name="DNA" parent="DNABOX" instance=ExtResource("3_det5c")]
 layout_mode = 2
