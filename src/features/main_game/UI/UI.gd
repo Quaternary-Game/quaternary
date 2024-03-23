@@ -4,7 +4,7 @@ var trait_menu: Control
 var trait_menu_panel: Control
 var ogmodulate: Color = self.modulate
 const TraitDragButton = preload("res://features/main_game/UI/traits/trait.gd")
-signal start
+signal play(value: bool)
 signal trait_drag_start(t: TraitDragButton)
 signal trait_drag_end
 
@@ -38,5 +38,6 @@ func end_drag_button_handler(success: bool) -> void:
 	trait_drag_end.emit()
 
 
-func _on_start_level_pressed() -> void:
-	start.emit()
+
+func _on_start_pause_toggled(toggled_on:bool) -> void:
+	play.emit(toggled_on)

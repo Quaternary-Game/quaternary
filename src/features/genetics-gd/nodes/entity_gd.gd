@@ -3,11 +3,19 @@ class_name EntityGD extends RigidBody2D
 
 @export var initial_traits: Array[PackedScene] = []
 
-			
+var paused : bool :
+	get:
+		return process_mode == Node.PROCESS_MODE_DISABLED
+	set(value):
+		if value:
+			process_mode = Node.PROCESS_MODE_DISABLED
+		else:
+			process_mode = Node.PROCESS_MODE_INHERIT
+		
 
 var traits := {}
  
-func go() -> void:
+func _ready() -> void:
 	for t in self.initial_traits:
 		self.add_trait(t)
 
