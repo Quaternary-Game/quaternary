@@ -1,8 +1,12 @@
 extends Node
 
 @export var mob_scene: PackedScene
+
+# file path for game save
+const save_path:String = "user://gamesave.save"
+
 var score : int = 0
-var highScore : int = 0
+var highScore : int
 # consider an enum here to enforce better typing
 var acids := {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG"], "Serine": ["UCU", "UCC", "UCA", "UCG"], "Tyrosine": ["UAU", "UAC"], "Cysteine": ["UGU", "UGC"], "Tryptophan": ["UGG"] }
 var goalAcid: String
@@ -11,6 +15,7 @@ var codons := ""
 var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
 
 func _ready() -> void:
+	load_game()
 	Input.set_custom_mouse_cursor(arrow, 0, Vector2(12, 12))
 
 func win() -> void:
@@ -27,6 +32,7 @@ func lose() -> void:
 	$Player/CollisionShape2D.set_deferred("disabled", true)
 	if int(score) > int(highScore):
 		highScore = score
+		save_game()
 	score = 0
 	$Player.set_deferred("started", false)
 	$HUD.show_game_over(str(highScore))
@@ -110,3 +116,38 @@ func node_hit(body: Node2D) -> void:
 		else:
 			lose()
 	body.queue_free()
+
+# saves scene data to a save file
+func save_game() -> void:
+	var file:FileAccess = FileAccess.open(self.save_path, FileAccess.WRITE)
+	var json:String = JSON.stringify(save())
+	file.store_line(json)
+
+# returns dictionary of data to be saved from this scene
+func save() -> Dictionary:
+	var save_data:Dictionary = {
+		'filename':self.get_scene_file_path(),
+		'high_score':self.highScore
+	}
+	
+	return save_data
+
+# loads scene variables from save file
+func load_game() -> void:
+	# access variables from file if it exists
+	if FileAccess.file_exists(self.save_path):
+		# open file 
+		var file:FileAccess = FileAccess.open(self.save_path, FileAccess.READ)
+		# create a json object to use for parsing
+		var json:JSON = JSON.new()
+		# parse data into json object
+		json.parse(file.get_line())
+		# retreive data into dictionary variable
+		var data:Variant = json.data
+		
+		# set scene variables
+		self.highScore = data['high_score']
+		
+	# otherwise set to default values
+	else:
+		self.highScore = 0

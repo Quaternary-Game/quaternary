@@ -11,9 +11,9 @@ func show_acid(text: String) -> void:
 	$GoalAcid.text = "Goal: " + text
 	$GoalAcid.show()
 
-func show_game_over(_highScore: String) -> void:
+func show_game_over(highScore: String) -> void:
 	$GoalAcid.hide()
-	show_message("Incorrect! Game Over!")
+	show_message("Incorrect! Game Over!\nHigh Score: %s" %highScore)
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
 	
