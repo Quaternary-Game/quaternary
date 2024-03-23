@@ -5,3 +5,4 @@
 [node name="TraitRandomMovement" type="Node2D"]
 script = ExtResource("1_0dfgc")
 unique_trait_name = "randommovement"
+display_name = "Random Movement"

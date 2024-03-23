@@ -46,9 +46,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+[node name="Traitlist" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="Start_Pause" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
