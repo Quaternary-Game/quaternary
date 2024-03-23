@@ -26,7 +26,7 @@ text = "Select desired offspring:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="SelectMenu" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,7 +40,47 @@ offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionButton" type="OptionButton" parent="PanelContainer"]
+[node name="OptionButton" type="OptionButton" parent="SelectMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 alignment = 1
+
+[node name="NextButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 260.0
+offset_right = 200.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="NextButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Next"
+
+[node name="MainMenuButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -860.0
+offset_top = 260.0
+offset_right = -460.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="MainMenuButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[connection signal="pressed" from="MainMenuButton/Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmd08soab4116"]
+[gd_scene load_steps=2 format=3 uid="uid://cmd08soab4116"]
 
-[ext_resource type="Theme" uid="uid://c2b3tygkc5ala" path="res://features/theme/theme.tres" id="1_cdyke"]
-[ext_resource type="StyleBox" uid="uid://c4fggtyf1map3" path="res://features/theme/styleboxes/panel_stylebox.tres" id="2_bcirl"]
 [ext_resource type="Script" path="res://features/punnett-square/nodes/offspring/offspring.gd" id="2_g2mnn"]
 
 [node name="Offspring" type="PanelContainer"]
@@ -10,8 +8,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_cdyke")
-theme_override_styles/panel = ExtResource("2_bcirl")
 script = ExtResource("2_g2mnn")
 
 [node name="Genotype" type="LineEdit" parent="."]

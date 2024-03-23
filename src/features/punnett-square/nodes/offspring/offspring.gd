@@ -6,14 +6,13 @@ extends PanelContainer
 
 @export var correct_genotype:String ## correct genotype for the cell
 
-var correct_color:Color ## Color when input is correct
-var incorrect_color:Color = Color("ff0000") ## color when input is incorrect
+var correct_color:Color = get_theme_color("14", "pallete") ## Color when input is correct
+var incorrect_color:Color = get_theme_color("11", "pallete") ## color when input is incorrect
 var correct:bool ## boolean flag for input
 
 ## set color and flag to incorrect initially
 func _ready() -> void:
-	correct_color = self.modulate
-	self.modulate = Color("ff0000")
+	self.modulate = incorrect_color
 	correct = false
 
 ## To be called by main scene when building punnett square
