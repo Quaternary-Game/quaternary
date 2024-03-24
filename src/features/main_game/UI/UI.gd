@@ -30,7 +30,7 @@ func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
 		tween.parallel().tween_property(trait_menu_panel, "modulate", ogmodulate, 0.5)
 		tween.parallel().tween_property(trait_menu_panel, "scale", Vector2(1,1), 0.5)
 	else:
-		trait_menu.pivot_offset = trait_menu.get_rect().size
+		trait_menu_panel.pivot_offset = trait_menu.get_rect().size
 		tween.parallel().tween_property(trait_menu_panel, "modulate", Color(0,0,0,0), 0.5)
 		tween.parallel().tween_property(trait_menu_panel, "scale", Vector2(0, 1), 0.5)
 	

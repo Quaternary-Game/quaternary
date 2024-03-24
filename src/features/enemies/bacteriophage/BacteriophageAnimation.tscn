@@ -1,0 +1,191 @@
+[gd_scene load_steps=43 format=3 uid="uid://prlcdt2uhveh"]
+
+[ext_resource type="Texture2D" uid="uid://dtt21f1cbiutu" path="res://features/enemies/bacteriophage/Down/0036.png" id="1_2t1ax"]
+[ext_resource type="Texture2D" uid="uid://d2fplkq7kbcdc" path="res://features/enemies/bacteriophage/Down/0037.png" id="2_vdg4f"]
+[ext_resource type="Texture2D" uid="uid://dc38jxjbxoedi" path="res://features/enemies/bacteriophage/Down/0038.png" id="3_2o6i5"]
+[ext_resource type="Texture2D" uid="uid://cwww7hv7iepwq" path="res://features/enemies/bacteriophage/Down/0039.png" id="4_oku0m"]
+[ext_resource type="Texture2D" uid="uid://bj3uolc4ptft7" path="res://features/enemies/bacteriophage/Down/0040.png" id="5_0psfc"]
+[ext_resource type="Texture2D" uid="uid://bvmq42kw328f" path="res://features/enemies/bacteriophage/Down/0041.png" id="6_apkk2"]
+[ext_resource type="Texture2D" uid="uid://c2fbjgjnpjeb0" path="res://features/enemies/bacteriophage/Down/0042.png" id="7_win03"]
+[ext_resource type="Texture2D" uid="uid://dp47bqmno6jio" path="res://features/enemies/bacteriophage/Down/0043.png" id="8_8h28u"]
+[ext_resource type="Texture2D" uid="uid://dpulq5opd7uh1" path="res://features/enemies/bacteriophage/Down/0044.png" id="9_6u2rw"]
+[ext_resource type="Texture2D" uid="uid://g16evffsix8p" path="res://features/enemies/bacteriophage/Down/0045.png" id="10_bpyg3"]
+[ext_resource type="Texture2D" uid="uid://cbhxs8ofq77cu" path="res://features/enemies/bacteriophage/Left/0036.png" id="11_hgq1t"]
+[ext_resource type="Texture2D" uid="uid://ysn2p20a2nmo" path="res://features/enemies/bacteriophage/Left/0037.png" id="12_hkyp1"]
+[ext_resource type="Texture2D" uid="uid://bjqntu1jgiml2" path="res://features/enemies/bacteriophage/Left/0038.png" id="13_kgput"]
+[ext_resource type="Texture2D" uid="uid://dxxr3tp5817b3" path="res://features/enemies/bacteriophage/Left/0039.png" id="14_as003"]
+[ext_resource type="Texture2D" uid="uid://dn10r8wgw4snb" path="res://features/enemies/bacteriophage/Left/0040.png" id="15_a7lo5"]
+[ext_resource type="Texture2D" uid="uid://bxbh88d0wwo6j" path="res://features/enemies/bacteriophage/Left/0041.png" id="16_2mgqu"]
+[ext_resource type="Texture2D" uid="uid://udd0gqp5qsi1" path="res://features/enemies/bacteriophage/Left/0042.png" id="17_hnp1t"]
+[ext_resource type="Texture2D" uid="uid://bi4d3hidfhx4q" path="res://features/enemies/bacteriophage/Left/0043.png" id="18_c6cc2"]
+[ext_resource type="Texture2D" uid="uid://cjruuftm0ngw1" path="res://features/enemies/bacteriophage/Left/0044.png" id="19_uorxy"]
+[ext_resource type="Texture2D" uid="uid://brgs6m8v3ivi8" path="res://features/enemies/bacteriophage/Left/0045.png" id="20_a1o6a"]
+[ext_resource type="Texture2D" uid="uid://4r7pnljg57wi" path="res://features/enemies/bacteriophage/Right/0036.png" id="21_7h27q"]
+[ext_resource type="Texture2D" uid="uid://b4m03thwthnxj" path="res://features/enemies/bacteriophage/Right/0037.png" id="22_qtnxm"]
+[ext_resource type="Texture2D" uid="uid://cog2pio7jl85q" path="res://features/enemies/bacteriophage/Right/0038.png" id="23_xg6t7"]
+[ext_resource type="Texture2D" uid="uid://dwj3n8e6ijh3" path="res://features/enemies/bacteriophage/Right/0039.png" id="24_87qn2"]
+[ext_resource type="Texture2D" uid="uid://duvhkd7yml2m5" path="res://features/enemies/bacteriophage/Right/0040.png" id="25_idx34"]
+[ext_resource type="Texture2D" uid="uid://b77nnaaossx18" path="res://features/enemies/bacteriophage/Right/0041.png" id="26_f023n"]
+[ext_resource type="Texture2D" uid="uid://b4y7hb4qpr3gw" path="res://features/enemies/bacteriophage/Right/0042.png" id="27_jn3vc"]
+[ext_resource type="Texture2D" uid="uid://d3jlytbgsclaa" path="res://features/enemies/bacteriophage/Right/0043.png" id="28_3m2cm"]
+[ext_resource type="Texture2D" uid="uid://rlbaj5td67hq" path="res://features/enemies/bacteriophage/Right/0044.png" id="29_5yshg"]
+[ext_resource type="Texture2D" uid="uid://bnejgwgxgkkpq" path="res://features/enemies/bacteriophage/Right/0045.png" id="30_b5x8v"]
+[ext_resource type="Texture2D" uid="uid://bdqhfbn23rhly" path="res://features/enemies/bacteriophage/Up/0036.png" id="31_1fy1w"]
+[ext_resource type="Texture2D" uid="uid://5ll7enik5csg" path="res://features/enemies/bacteriophage/Up/0037.png" id="32_a8k3i"]
+[ext_resource type="Texture2D" uid="uid://b2pf1ib0ptx88" path="res://features/enemies/bacteriophage/Up/0038.png" id="33_y8eg0"]
+[ext_resource type="Texture2D" uid="uid://5uttebihjfbe" path="res://features/enemies/bacteriophage/Up/0039.png" id="34_yditf"]
+[ext_resource type="Texture2D" uid="uid://b2d1x15y17pfm" path="res://features/enemies/bacteriophage/Up/0040.png" id="35_h4oek"]
+[ext_resource type="Texture2D" uid="uid://ccym0ku5he7ek" path="res://features/enemies/bacteriophage/Up/0041.png" id="36_8cr40"]
+[ext_resource type="Texture2D" uid="uid://bsgpumlhu0hj4" path="res://features/enemies/bacteriophage/Up/0042.png" id="37_f3mnx"]
+[ext_resource type="Texture2D" uid="uid://cc2d8aorbo73o" path="res://features/enemies/bacteriophage/Up/0043.png" id="38_ehpfl"]
+[ext_resource type="Texture2D" uid="uid://cl25wjtd0p8uk" path="res://features/enemies/bacteriophage/Up/0044.png" id="39_tu3xh"]
+[ext_resource type="Texture2D" uid="uid://byh8apkbch8nf" path="res://features/enemies/bacteriophage/Up/0045.png" id="40_vthv8"]
+[ext_resource type="Script" path="res://features/enemies/bacteriophage/BacteriophageAnimation.gd" id="41_upm81"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmyi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2t1ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vdg4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2o6i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oku0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0psfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_apkk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_win03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8h28u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6u2rw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bpyg3")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_hgq1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hkyp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kgput")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_as003")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a7lo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2mgqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hnp1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_c6cc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uorxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a1o6a")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_7h27q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_qtnxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_xg6t7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_87qn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_idx34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_f023n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_jn3vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3m2cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5yshg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_b5x8v")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_1fy1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_a8k3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_y8eg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_yditf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_h4oek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_8cr40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_f3mnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ehpfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_tu3xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_vthv8")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 60.0
+}]
+
+[node name="BacteriophageAnimation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_xmyi6")
+animation = &"Down"
+script = ExtResource("41_upm81")

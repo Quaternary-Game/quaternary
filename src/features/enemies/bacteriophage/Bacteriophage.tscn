@@ -189,4 +189,3 @@ animations = [{
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2vtuk")
 animation = &"Down"
-frame_progress = 0.237019

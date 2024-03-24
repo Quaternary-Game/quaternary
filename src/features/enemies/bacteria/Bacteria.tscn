@@ -178,5 +178,6 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8k8xs")
-frame_progress = 0.792751
+frame = 25
+frame_progress = 0.980197
 speed_scale = 0.5
