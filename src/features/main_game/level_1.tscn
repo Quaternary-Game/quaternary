@@ -21,6 +21,8 @@ position = Vector2(1486, 195)
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[connection signal="end_show_traits" from="Entitymanager" to="UI" method="_on_entitymanager_end_show_traits"]
+[connection signal="show_traits" from="Entitymanager" to="UI" method="_on_entitymanager_show_traits"]
 [connection signal="play" from="UI" to="Entitymanager" method="_on_ui_play"]
 [connection signal="trait_drag_end" from="UI" to="Entitymanager" method="_on_ui_trait_drag_end"]
 [connection signal="trait_drag_start" from="UI" to="Entitymanager" method="_on_ui_trait_drag_start"]

@@ -5,3 +5,4 @@
 [node name="TraitHerbivore" type="Node2D"]
 script = ExtResource("1_oq4t1")
 unique_trait_name = "herbivore"
+display_name = "Herbivore"

@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi0kmdrtrp78l"]
+[gd_scene load_steps=9 format=3 uid="uid://bi0kmdrtrp78l"]
 
-[ext_resource type="PackedScene" uid="uid://ux47ijj24wyn" path="res://features/background/molecule.tscn" id="1_v6qs7"]
+[ext_resource type="Script" path="res://features/background/background.gd" id="1_ej5m8"]
+[ext_resource type="PackedScene" uid="uid://b46qlabmm2enx" path="res://features/background/CharacterPath.tscn" id="2_0q5l4"]
+[ext_resource type="PackedScene" uid="uid://prlcdt2uhveh" path="res://features/enemies/bacteriophage/BacteriophageAnimation.tscn" id="2_e8s5o"]
+[ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="4_lc7t2"]
+
+[sub_resource type="Curve2D" id="Curve2D_hpfxq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2012, 509, 0, 0, 0, 0, 1950, 509, 0, 0, 0, 0, 1908, 506, 0, 0, 0, 0, 1860, 530, 0, 0, 0, 0, 1820, 594, 0, 0, 0, 0, 1747, 674, 0, 0, 0, 0, 1734, 728, 0, 0, 0, 0, 1665, 829, 0, 0, 0, 0, 1593, 853, 0, 0, 0, 0, 1513, 800, 0, 0, 0, 0, 1411, 722, 0, 0, 0, 0, 1379, 682, 0, 0, 0, 0, 1331, 610, 0, 0, 0, 0, 1219, 479, 0, 0, 0, 0, 1147, 335, 0, 0, 0, 0, 1053, 266, 0, 0, 0, 0, 992, 226, 0, 0, 0, 0, 885, 295, 0, 0, 0, 0, 768, 423, 0, 0, 0, 0, 752, 469, 0, 0, 0, 0, 728, 525, 0, 0, 0, 0, 709, 597, 0, 0, 0, 0, 677, 680, 0, 0, 0, 0, 597, 840, 0, 0, 0, 0, 522, 928, 0, 0, 0, 0, 397, 904, 0, 0, 0, 0, 314, 834, 0, 0, 0, 0, 300, 760, 0, 0, 0, 0, 252, 605, 0, 0, 0, 0, 223, 466, 0, 0, 0, 0, 260, 340, 0, 0, 0, 0, 119, 180, 0, 0, 0, 0, -7, 63, 0, 0, 0, 0, -49, 15, 0, 0, 0, 0, -79, -17)
+}
+point_count = 35
+
+[sub_resource type="Curve2D" id="Curve2D_8g8lc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 386, -49, 0, 0, 0, 0, 559, 23, 0, 0, 0, 0, 658, 65, 0, 0, 0, 0, 792, 103, 0, 0, 0, 0, 800, 167, 0, 0, 0, 0, 802, 247, 0, 0, 0, 0, 744, 292, 0, 0, 0, 0, 682, 378, 0, 0, 0, 0, 677, 490, 0, 0, 0, 0, 682, 607, 0, 0, 0, 0, 733, 664, 0, 0, 0, 0, 792, 696, 0, 0, 0, 0, 826, 728, 0, 0, 0, 0, 853, 784, 0, 0, 0, 0, 909, 861, 0, 0, 0, 0, 939, 944, 0, 0, 0, 0, 955, 997, 0, 0, 0, 0, 1003, 1045, 0, 0, 0, 0, 1021, 1093, 0, 0, 0, 0, 1069, 1144, 0, 0, 0, 0, 1139, 1168, 0, 0, 0, 0, 1168, 1061, 0, 0, 0, 0, 1184, 995, 0, 0, 0, 0, 1189, 936, 0, 0, 0, 0, 1192, 834, 0, 0, 0, 0, 1203, 768, 0, 0, 0, 0, 1216, 728, 0, 0, 0, 0, 1219, 658, 0, 0, 0, 0, 1224, 527, 0, 0, 0, 0, 1230, 429, 0, 0, 0, 0, 1235, 351, 0, 0, 0, 0, 1232, 263, 0, 0, 0, 0, 1224, 127, 0, 0, 0, 0, 1243, 12, 0, 0, 0, 0, 1248, -57, 0, 0, 0, 0, 1243, -143)
+}
+point_count = 36
+
+[sub_resource type="Curve2D" id="Curve2D_mye6c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -582, 320, 0, 0, 0, 0, -245, 666, 0, 0, 0, 0, -185, 847, 0, 0, 0, 0, 44, 901, 0, 0, 0, 0, 212, 939, 0, 0, 0, 0, 450, 987, 0, 0, 0, 0, 605, 945, 0, 0, 0, 0, 742, 999, 0, 0, 0, 0, 677, 490, -104.768, 3.1748, 104.768, -3.1748, 812, 320, 0, 0, 0, 0, 1015, 457, -3.1748, -133.342, 3.1748, 133.342, 1142, 653, 0, 0, 0, 0, 1120, 891, 0, 0, 0, 0, 1066, 812, 0, 0, 0, 0, 1012, 860, 0, 0, 0, 0, 901, 806, 0, 0, 0, 0, 939, 944, 0, 0, 0, 0, 955, 997, 0, 0, 0, 0, 1003, 1045, 0, 0, 0, 0, 1021, 1093, 0, 0, 0, 0, 1069, 1144, 0, 0, 0, 0, 1139, 1168, 0, 0, 0, 0, 1168, 1061, 0, 0, 0, 0, 1184, 995, 0, 0, 0, 0, 1189, 936, 0, 0, 0, 0, 1192, 834, 0, 0, 0, 0, 1203, 768, 0, 0, 0, 0, 1216, 728, 0, 0, 0, 0, 1219, 658, 0, 0, 0, 0, 1224, 527, 0, 0, 0, 0, 1230, 429, 34.9228, 98.4189, -34.9228, -98.4189, 1235, 351, 0, 0, 0, 0, 1037, 260, -180.964, -85.7197, 180.964, 85.7197, 1224, 127, -231.761, -98.4189, 231.761, 98.4189, 1437, 507, -177.789, 330.179, 177.789, -330.179, 1771, 161, 0, 0, 0, 0, 1243, -143)
+}
+point_count = 37
+
+[sub_resource type="Curve2D" id="Curve2D_iwcfq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -582, 320, 0, 0, 0, 0, -245, 666, 0, 0, 0, 0, -185, 847, 0, 0, 0, 0, 44, 901, 0, 0, 0, 0, 212, 939, 0, 0, 0, 0, 450, 987, 0, 0, 0, 0, 605, 945, 0, 0, 0, 0, 742, 999, 0, 0, 0, 0, 677, 490, -104.768, 3.1748, 104.768, -3.1748, 812, 320, 0, 0, 0, 0, 1015, 457, -3.1748, -133.342, 3.1748, 133.342, 1142, 653, 0, 0, 0, 0, 1120, 891, 0, 0, 0, 0, 1066, 812, 0, 0, 0, 0, 1012, 860, 0, 0, 0, 0, 901, 806, 0, 0, 0, 0, 939, 944, 0, 0, 0, 0, 955, 997, 0, 0, 0, 0, 1003, 1045, 0, 0, 0, 0, 1021, 1093, 0, 0, 0, 0, 1069, 1144, 0, 0, 0, 0, 1139, 1168, 0, 0, 0, 0, 1168, 1061, 0, 0, 0, 0, 1184, 995, 0, 0, 0, 0, 1189, 936, 0, 0, 0, 0, 1192, 834, 0, 0, 0, 0, 1203, 768, 0, 0, 0, 0, 1216, 728, 0, 0, 0, 0, 1219, 658, 0, 0, 0, 0, 1224, 527, 0, 0, 0, 0, 1230, 429, 34.9228, 98.4189, -34.9228, -98.4189, 1235, 351, 0, 0, 0, 0, 1037, 260, -180.964, -85.7197, 180.964, 85.7197, 1224, 127, -231.761, -98.4189, 231.761, 98.4189, 1437, 507, -177.789, 330.179, 177.789, -330.179, 1771, 161, 0, 0, 0, 0, 1243, -143)
+}
+point_count = 37
 
 [node name="Background" type="Control"]
 layout_mode = 3
@@ -9,10 +36,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ej5m8")
 
-[node name="Molecule" parent="." instance=ExtResource("1_v6qs7")]
-layout_mode = 1
-offset_left = 970.0
-offset_top = 439.0
-offset_right = -950.0
-offset_bottom = -633.0
+[node name="BacteriophagePath" parent="." instance=ExtResource("2_0q5l4")]
+curve = SubResource("Curve2D_hpfxq")
+animation_scene = ExtResource("2_e8s5o")
+duration = 20.0
+
+[node name="BacteriophagePath2" parent="." instance=ExtResource("2_0q5l4")]
+animation_scene = ExtResource("2_e8s5o")
+duration = 30.0
+
+[node name="BacteriophagePath3" parent="." instance=ExtResource("2_0q5l4")]
+curve = SubResource("Curve2D_8g8lc")
+animation_scene = ExtResource("2_e8s5o")
+duration = 8.0
+
+[node name="Bacteria" parent="." instance=ExtResource("2_0q5l4")]
+position = Vector2(302, 44)
+curve = SubResource("Curve2D_mye6c")
+animation_scale = 0.3
+duration = 50.0
+
+[node name="Bacteria2" parent="." instance=ExtResource("2_0q5l4")]
+position = Vector2(-105, 1336)
+rotation = -1.45502
+curve = SubResource("Curve2D_iwcfq")
+animation_scale = 0.3
+duration = 50.0
+
+[node name="Spider" parent="." instance=ExtResource("2_0q5l4")]
+animation_scene = ExtResource("4_lc7t2")
+duration = 40.0

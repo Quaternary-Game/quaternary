@@ -25,7 +25,7 @@ func clear_circle() -> void:
 	var tween : Tween = create_tween()
 	tween.tween_property(self, "circle_size", initial_size, 0.2)
 	await tween.finished
-	queue_free()
+
 func _draw() -> void:
 	draw_arc(self.position, circle_size, 0, 2*PI, 100, color)
 

@@ -6,6 +6,7 @@
 script = ExtResource("1_ejnac")
 increment_rate_sec = 1.0
 unique_trait_name = "photoautotroph"
+display_name = "Photoautotroph"
 
 [node name="IncrementTimer" type="Timer" parent="."]
 
