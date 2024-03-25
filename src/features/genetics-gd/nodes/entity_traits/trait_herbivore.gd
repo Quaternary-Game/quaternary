@@ -13,6 +13,7 @@ class_name TraitHerbivore extends TraitBase
 
 @export var calorie_increment_amount := 300
 
+
 func _ready() -> void:
 	self.initialize()
 	self.entity.body_entered.connect(self._on_body_entered)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://features/main_game/entitiy_manager/entity_selector.gd" id="1_br3c1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nb60v"]
-radius = 34.0588
+radius = 71.007
 
 [node name="EntitySelector" type="Area2D"]
 process_mode = 3
