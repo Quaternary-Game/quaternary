@@ -1,42 +1,68 @@
-extends Area2D
-
-
-@export var initial_size : int = 0
-@export var final_size : int = 100
-
+extends SelectionCircle
 var entity : EntityGD
 
-var color := Control.new().get_theme_color("circle", "trait")
-var circle_size : int = initial_size:
-	get:
-		return circle_size
+var loci_selected : Array[bool]
+var loci_coords: Array[Vector2]
+var selecting_loci: bool = false: 
 	set(value):
-	
-		circle_size = value
-		queue_redraw()
+		selecting_loci = value
+		if not value:
+			init_loci_selected()
 
+var angle_step :float: 
+	set(value):
+		angle_step = value
+		angle_offset = (PI/2) + (angle_step/2)
+		
+var angle_offset: float
+var entered_area: Area2D
 
-func animate_circle() -> void:
-	var tween : Tween = create_tween()
-	tween.tween_property(self, "circle_size", final_size, 0.2)
-	
-func clear_circle() -> void:
-	# can't use same tween for both, not sure why
-	var tween : Tween = create_tween()
-	tween.tween_property(self, "circle_size", initial_size, 0.2)
-	await tween.finished
+func _ready() -> void:
+	angle_step = 2*PI/self.entity.ploidy
+	for i in range(self.entity.ploidy):
+		loci_selected.append(false)
+		var x : float = final_size * cos(i * angle_step + angle_offset)
+		var y : float = final_size * sin(i * angle_step + angle_offset)
+		loci_coords.append(Vector2(x, y))
+		
+func init_loci_selected() -> void:
+	for i in range(self.entity.ploidy):
+		loci_selected[i] = 0
 
 func _draw() -> void:
-	draw_arc(self.position, circle_size, 0, 2*PI, 100, color)
 
+	for i in range(self.entity.ploidy):
+		draw_arc(Vector2(0,0), circle_size + 15 * float(loci_selected[i]), i*angle_step + PI/2, (i+1) * angle_step + PI/2, 100, color)
+	init_loci_selected()
 
 func _on_area_entered(area: Area2D) -> void:
-	print("entered")
+	selecting_loci = true
+	entered_area = area
 	area.dropped.connect(drop_handler)
 
 func _on_area_exited(area: Area2D) -> void:
-	print("exited")
+	selecting_loci = false
 	area.dropped.disconnect(drop_handler)
+	init_loci_selected()
+	queue_redraw()
+	
 
 func drop_handler(area: Area2D) -> void:
-	entity.add_trait(area.TraitScene)
+	entity.add_trait(area.TraitScene, closest_loci())
+
+func closest_loci() -> int:
+	var max :Vector2= loci_coords.reduce(func (max: Vector2, value: Vector2) -> Vector2:
+			var translated_max : Vector2= global_position + max
+			var translated_value: Vector2 = global_position+value
+			if translated_value.distance_to(entered_area.global_position) < translated_max.distance_to(entered_area.global_position):
+				return	value
+			else:
+				return max
+			)
+	return loci_coords.find(max)
+
+func _process(delta: float) -> void:
+	if selecting_loci:
+		var closest : int = closest_loci()
+		loci_selected[closest] = true
+		queue_redraw()

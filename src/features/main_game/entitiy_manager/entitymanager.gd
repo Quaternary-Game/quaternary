@@ -6,7 +6,7 @@ extends Node2D
 var circlescene := preload("res://features/main_game/entitiy_manager/trait_circle.tscn")
 var entity_selector_scene := preload("res://features/main_game/entitiy_manager/entity_selector.tscn")
 const UiTrait = preload("res://features/main_game/UI/traits/trait.gd")
-
+var entity : EntityGD
 
 var marker_count: int = 0
 
@@ -75,9 +75,10 @@ func _on_ui_trait_drag_start(t: UiTrait) -> void:
 	circles = []
 	for i in entities():
 		circles.append(circlescene.instantiate())
+		circles[-1].entity = i
 		i.add_child(circles[-1])
 		circles[-1].animate_circle()
-		circles[-1].entity = i
+		
 
 
 func _on_ui_play(value: bool) -> void:

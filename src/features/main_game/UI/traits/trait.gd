@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 		
 func end_drag_handler(success: bool)-> void:
 	preview_node.emit()
-	print("emitted")
 	preview_node.queue_free()	
 
 		

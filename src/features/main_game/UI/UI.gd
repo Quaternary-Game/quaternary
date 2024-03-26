@@ -47,10 +47,9 @@ func _on_start_pause_toggled(toggled_on:bool) -> void:
 
 
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
-	for i: TraitBase in entity.traits.values():
+	for i: Array in entity.genotype.values():
 		var l := entity_trait_list_item_scene.instantiate()
-		l.text = i.display_name
-		print(i.display_name)
+		l.text = "LOCI: %s\n1: %s\n2: %s" % [i[0].loci, i[0].display_name, i[1].display_name]
 		entity_trait_list.add_child(l)
 
 

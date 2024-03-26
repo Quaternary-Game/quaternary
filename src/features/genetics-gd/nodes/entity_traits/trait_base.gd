@@ -1,8 +1,14 @@
 class_name TraitBase extends Node2D
 
 @export var unique_trait_name: String
-@export var display_name : String = tr(unique_trait_name)
+@export var display_name : String
 @export var icon: Texture2D
+## name of gene loci (traits on same loci will be dominant/recessive to each other)
+@export var loci: String
+## dominance priority of trait
+## traits with higher dominance are dominant to traits with lower dominance
+## equal dominance gives codominant or incomplete dominant phenotype
+@export var dominance: int = 0
 
 var entity: EntityGD
 
