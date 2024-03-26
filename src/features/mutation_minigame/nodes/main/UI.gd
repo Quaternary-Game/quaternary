@@ -44,9 +44,24 @@ func on_win() -> void:
 func on_lose() -> void:
 	$EndButtons.visible = true
 	var l: Label = Label.new()
-	l.text = "You lose! Correct Sequence: %s" % (dna_mutated.reciprocal_sequence())
+	l.text = "You lose! Correct Sequence: %s" % sequence_to_string(dna_mutated.reciprocal_sequence())
 	print(dna_mutated.reciprocal_sequence())
 	$DNABOX.add_child(l)
+
+# return string equivalent of a sequence of base ID's
+func sequence_to_string(sequence:Array) -> String:
+	var seq_str:String = ""
+	for base:int in sequence:
+		match base:
+			0:
+				seq_str += "A "
+			1:
+				seq_str += "G "
+			2:
+				seq_str += "T "
+			3:
+				seq_str += "C "
+	return seq_str
 
 func check_mutation(sequence: Array) -> void:
 	draw_bonds(dna_mutated, $DNABOX/DNA)
