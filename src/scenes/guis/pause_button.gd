@@ -7,11 +7,16 @@ extends Control
 var menu_scene:PackedScene = preload("res://scenes/guis/pause_menu.tscn")
 var pause_screen:CanvasLayer
 var paused:bool = false
+## Grabs the current scenes path, used for restarting scene
+@onready var paused_scene:String = SceneSwitching.current_scene.scene_file_path
 
+#func _ready() -> void:
+	#paused_scene = get_tree().current_scene.scene_file_path
+	
 ## listens for pause key (esc)
 func _process(_delta:float) -> void:
 	if not paused:
-		if Input.is_action_pressed('pause'):
+		if Input.is_action_just_released('pause'):
 			show_pause_screen()
 			paused = true
 
@@ -20,6 +25,7 @@ func show_pause_screen() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause_screen = menu_scene.instantiate()
 	pause_screen.pause = self
+	pause_screen.current_scene = self.paused_scene
 	$Button.hide()
 	get_tree().paused = true
 	add_child(pause_screen)
