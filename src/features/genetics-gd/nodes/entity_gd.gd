@@ -2,7 +2,7 @@ class_name EntityGD extends RigidBody2D
 
 
 # this needs to be configurable with genotype in mind
-# so we have a list of "loci
+# so we have a list of "loci"
 @export var initial_genotype: Array[Loci] = []
 
 var paused : bool :
@@ -55,21 +55,29 @@ func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
 	elif _new_trait.loci not in genotype:
 		create_loci(_new_trait.loci)
 		genotype[_new_trait.loci][loci_index] = _new_trait
-		phenotype[_new_trait.loci] = []
+		phenotype[_new_trait.loci] = [] as Array[TraitBase]
 		
 	var dominant := dominant_trait_at_loci(_new_trait.loci)
 	for i:TraitBase in phenotype[_new_trait.loci]:
-		if i not in dominant:
+		if trait_is_in(_new_trait, dominant):
 			phenotype[_new_trait.loci].erase(i)
 			traits.erase(i.unique_trait_name)
 			i.queue_free()
 	for i:TraitBase in dominant:
-		if i not in phenotype[_new_trait.loci] and not i is TraitNone:
+		if trait_is_in(_new_trait, phenotype[_new_trait.loci]) and not i is TraitNone:
+
 			phenotype[_new_trait.loci].append(i)
 			traits[_new_trait.unique_trait_name] = _new_trait
 			self.add_child(i)
 	traits_changed.emit()
-	phenotype[_new_trait.loci] = dominant_trait_at_loci(_new_trait.loci)
+
+func trait_is_in(t: TraitBase, arr: Array[TraitBase]) -> bool:
+	var _trait_is_in : bool = false
+		# only unique traits get added to phenotype
+	for n : TraitBase in arr:
+		if n.unique_trait_name == t.unique_trait_name:
+			_trait_is_in = true
+	return _trait_is_in
 	
 # this is basically argmax for dominant attribute
 func dominant_trait_at_loci(loci: String) -> Array[TraitBase]:
