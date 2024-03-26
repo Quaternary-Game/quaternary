@@ -72,12 +72,11 @@ func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
 	traits_changed.emit()
 
 func trait_is_in(t: TraitBase, arr: Array[TraitBase]) -> bool:
-	var _trait_is_in : bool = false
 		# only unique traits get added to phenotype
 	for n : TraitBase in arr:
 		if n.unique_trait_name == t.unique_trait_name:
-			_trait_is_in = true
-	return _trait_is_in
+			return true
+	return false
 	
 # this is basically argmax for dominant attribute
 func dominant_trait_at_loci(loci: String) -> Array[TraitBase]:
