@@ -7,6 +7,7 @@ extends Control
 var menu_scene:PackedScene = preload("res://scenes/guis/pause_menu.tscn")
 var pause_screen:CanvasLayer
 var paused:bool = false
+## Grabs the current scenes path, used for restarting scene
 @onready var paused_scene:String = SceneSwitching.current_scene.scene_file_path
 
 #func _ready() -> void:
