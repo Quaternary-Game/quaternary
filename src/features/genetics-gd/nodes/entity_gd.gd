@@ -93,7 +93,7 @@ func dominant_trait_at_loci(loci: String) -> Array[TraitBase]:
 	
 		
 func remove_trait(loci: String, loci_index: int = 0) -> bool:
-	if loci not in genotype or loci_index >= ploidy:
+	if loci not in genotype or loci_index >= ploidy or loci_index < 0:
 		return false
 	var none := none_scene.instantiate()
 	none.loci = loci
