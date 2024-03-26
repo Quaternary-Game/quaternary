@@ -9,6 +9,7 @@ var paused : bool :
 	get:
 		return process_mode == Node.PROCESS_MODE_DISABLED
 	set(value):
+		print(traits)
 		if value:
 			process_mode = Node.PROCESS_MODE_DISABLED
 		else:
@@ -59,13 +60,13 @@ func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
 		
 	var dominant := dominant_trait_at_loci(_new_trait.loci)
 	for i:TraitBase in phenotype[_new_trait.loci]:
-		if trait_is_in(_new_trait, dominant):
+		if not trait_is_in(_new_trait, dominant):
 			phenotype[_new_trait.loci].erase(i)
 			traits.erase(i.unique_trait_name)
 			i.queue_free()
 	for i:TraitBase in dominant:
-		if trait_is_in(_new_trait, phenotype[_new_trait.loci]) and not i is TraitNone:
-
+		if not trait_is_in(_new_trait, phenotype[_new_trait.loci]) and not i is TraitNone:
+			print("hello")
 			phenotype[_new_trait.loci].append(i)
 			traits[_new_trait.unique_trait_name] = _new_trait
 			self.add_child(i)
