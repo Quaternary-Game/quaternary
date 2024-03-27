@@ -66,7 +66,6 @@ func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
 			i.queue_free()
 	for i:TraitBase in dominant:
 		if not trait_is_in(_new_trait, phenotype[_new_trait.loci]) and not i is TraitNone:
-			print("hello")
 			phenotype[_new_trait.loci].append(i)
 			traits[_new_trait.unique_trait_name] = _new_trait
 			self.add_child(i)

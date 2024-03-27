@@ -1,4 +1,4 @@
-class_name SelectionCircle extends Node2D
+class_name SelectionCircle extends Area2D
 
 
 @export var initial_size : int = 0
