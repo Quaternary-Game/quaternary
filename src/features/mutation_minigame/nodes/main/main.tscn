@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctvnoc1hklgns"]
+[gd_scene load_steps=6 format=3 uid="uid://ctvnoc1hklgns"]
 
 [ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/UI.gd" id="1_j1rui"]
 [ext_resource type="PackedScene" uid="uid://cqh02rjae8qi6" path="res://features/dynamicmenu/DynamicMenu.tscn" id="2_s1ja6"]
 [ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/DNABOX.gd" id="3_2rtd3"]
 [ext_resource type="PackedScene" uid="uid://drxre10a5wiml" path="res://features/mutation_minigame/nodes/dna/DNA.tscn" id="3_det5c"]
+[ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="5_8wv44"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -42,3 +43,44 @@ script = ExtResource("3_2rtd3")
 
 [node name="DNA" parent="DNABOX" instance=ExtResource("3_det5c")]
 layout_mode = 2
+
+[node name="EndButtons" type="HBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -280.0
+offset_right = 400.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="EndButtons"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "mini.play_again"
+
+[node name="Exit" type="Button" parent="EndButtons"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "main-menu.exit"
+
+[node name="Container" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 75.0
+
+[node name="PauseButton" parent="Container" instance=ExtResource("5_8wv44")]
+custom_minimum_size = Vector2(155, 55)
+layout_mode = 2
+
+[connection signal="pressed" from="EndButtons/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="EndButtons/Exit" to="." method="_on_exit_pressed"]

@@ -17,7 +17,7 @@ var mutation: Dictionary = {
 		"Tooltip_Text": "A deletion mutation deletes a nucleotide, causing a frameshift."
 	},
 	Globals.Mutation.SUBSTITUTION:{
-		"Icon": preload("res://features/mutation_minigame/nodes/mutation/substitution_icon.svg"),
+		"Icon": preload("res://features/mutation_minigame/nodes/mutation/substitution_icon.png"),
 		"Tooltip_Text": "A substitution mutation changes one nucleotide into another."
 	},
 }

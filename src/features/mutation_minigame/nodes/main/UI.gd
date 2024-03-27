@@ -35,16 +35,42 @@ func make_bonds(template_strand: DNA, compliment_strand: DNA) -> void:
 
 	draw_bonds(template_strand, compliment_strand)
 
+func on_win() -> void:
+	$EndButtons.visible = true
+	var l: Label = Label.new()
+	l.text = "You win!"
+	$DNABOX.add_child(l)
+	
+func on_lose() -> void:
+	$EndButtons.visible = true
+	var l: Label = Label.new()
+	l.text = "You lose! Correct Sequence: %s" % sequence_to_string(dna_mutated.reciprocal_sequence())
+	print(dna_mutated.reciprocal_sequence())
+	$DNABOX.add_child(l)
 
+# return string equivalent of a sequence of base ID's
+func sequence_to_string(sequence:Array) -> String:
+	var seq_str:String = ""
+	for base:int in sequence:
+		match base:
+			0:
+				seq_str += "A "
+			1:
+				seq_str += "G "
+			2:
+				seq_str += "T "
+			3:
+				seq_str += "C "
+	return seq_str
 
 func check_mutation(sequence: Array) -> void:
 	draw_bonds(dna_mutated, $DNABOX/DNA)
 	var win :bool = (sequence == dna_mutated.reciprocal_sequence())
 	if win:
-		var l: Label = Label.new()
-		l.text = "You win!"
-		$DNABOX.add_child(l)
-
+		on_win()
+	# true if game is lost
+	elif self.number_of_mutations - $DynamicMenu.hidden_children == 0:
+		on_lose()
 
 func _ready() -> void:
 	$DNABOX/DNA.random_dna(DNA_length)
@@ -64,3 +90,9 @@ func _ready() -> void:
 		$DynamicMenu.add_child(mutation)
 
 	make_bonds(dna_mutated, $DNABOX/DNA)
+
+func _on_play_again_pressed() -> void:
+	SceneSwitching.goto_scene(SceneSwitching.current_scene.scene_file_path)
+
+func _on_exit_pressed() -> void:
+	SceneSwitching.goto_mainmenu()

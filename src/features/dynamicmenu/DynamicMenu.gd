@@ -3,6 +3,8 @@ class_name DynamicMenu extends Control
 ##
 ## extend this class on top of a box or grid container for automatic spacing
 
+var hidden_children:int = 0
+
 ## Animate the reveal of a child of the dynamic menu
 func reveal_slide_child(node: Control) -> void:
 	var spacer := Control.new()
@@ -21,6 +23,8 @@ func reveal_slide_child(node: Control) -> void:
 		node.visible = true
 	tween.connect("finished", spacer_finished)
 	await tween.finished
+	
+	hidden_children -= 1
 
 ## Animate the dissapearance of a child of the dynamic menu
 func hide_slide_child(node: Control) -> void:
@@ -35,3 +39,5 @@ func hide_slide_child(node: Control) -> void:
 		self.remove_child(spacer)
 	tween.connect("finished", spacer_finished)
 	await tween.finished
+	
+	hidden_children += 1
