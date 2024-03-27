@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccnrwji4dp8rl"]
+[gd_scene load_steps=7 format=3 uid="uid://ccnrwji4dp8rl"]
 
 [ext_resource type="Script" path="res://features/main_game/UI/UI.gd" id="1_qcesi"]
 [ext_resource type="Texture2D" uid="uid://b1iaeeaty2grx" path="res://features/main_game/UI/assets/toggle-sidebar.svg" id="2_1wlll"]
 [ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="2_c50ox"]
 [ext_resource type="PackedScene" uid="uid://dv4k83q2oyppm" path="res://features/main_game/UI/trait_menu/trait_menu.tscn" id="2_cmehw"]
-[ext_resource type="PackedScene" uid="uid://x512garedn3u" path="res://features/main_game/UI/traits/trait.tscn" id="3_t7nr0"]
 [ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="6_obrlx"]
 [ext_resource type="PackedScene" uid="uid://bvm4f8qv4puj3" path="res://features/genetics-gd/nodes/entity_traits/trait_herbivore.tscn" id="7_5tyfb"]
 
@@ -93,16 +92,8 @@ layout_mode = 2
 
 [node name="TraitMenu" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource("2_cmehw")]
 layout_mode = 2
-
-[node name="Trait" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/TraitMenu" instance=ExtResource("3_t7nr0")]
-layout_mode = 2
-text = "Trait 1"
-entitytrait = ExtResource("6_obrlx")
-
-[node name="Trait2" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/TraitMenu" instance=ExtResource("3_t7nr0")]
-layout_mode = 2
-text = "Trait 2"
-entitytrait = ExtResource("7_5tyfb")
+traitlist = Array[PackedScene]([ExtResource("6_obrlx"), ExtResource("7_5tyfb")])
+traitpoints = Array[int]([5, 10])
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_level_pressed"]
 [connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_pause_toggled"]

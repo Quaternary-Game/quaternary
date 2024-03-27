@@ -1,6 +1,6 @@
 extends SelectionCircle
 var entity : EntityGD
-
+const trait_drag_item = preload("res://features/main_game/UI/traits/trait_drag_item.gd")
 var loci_selected : Array[bool]
 var loci_coords: Array[Vector2]
 var selecting_loci: bool = false: 
@@ -36,15 +36,17 @@ func _draw() -> void:
 	init_loci_selected()
 
 func _on_area_entered(area: Area2D) -> void:
-	selecting_loci = true
-	entered_area = area
-	area.dropped.connect(drop_handler)
+	if area is trait_drag_item:
+		selecting_loci = true
+		entered_area = area
+		area.dropped.connect(drop_handler)
 
 func _on_area_exited(area: Area2D) -> void:
-	selecting_loci = false
-	area.dropped.disconnect(drop_handler)
-	init_loci_selected()
-	queue_redraw()
+	if entered_area == area:
+		selecting_loci = false
+		area.dropped.disconnect(drop_handler)
+		init_loci_selected()
+		queue_redraw()
 	
 
 func drop_handler(area: Area2D) -> void:

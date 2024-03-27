@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://hqdokn722ml6"]
+[gd_scene load_steps=3 format=3 uid="uid://hqdokn722ml6"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_random_movement.gd" id="1_0dfgc"]
+[ext_resource type="Texture2D" uid="uid://48at1v8ykqag" path="res://features/genetics-gd/assets/random_movement.svg" id="2_ee8x1"]
 
 [node name="TraitRandomMovement" type="Node2D"]
 script = ExtResource("1_0dfgc")
 unique_trait_name = "randommovement"
 display_name = "Random Movement"
+icon = ExtResource("2_ee8x1")
 loci = "movement"

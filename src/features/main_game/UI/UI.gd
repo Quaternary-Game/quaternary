@@ -37,7 +37,7 @@ func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
 		
 func start_drag_button_handler(data: Variant) -> void:
 	trait_drag_start.emit(data)
-func end_drag_button_handler(success: bool) -> void:
+func end_drag_button_handler(data: Variant, success: bool) -> void:
 	trait_drag_end.emit()
 
 
@@ -49,11 +49,16 @@ func _on_start_pause_toggled(toggled_on:bool) -> void:
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 	for i: Array in entity.genotype.values():
 		var l := entity_trait_list_item_scene.instantiate()
-		l.text = "LOCI: %s\n1: %s\n2: %s" % [i[0].loci, i[0].display_name, i[1].display_name]
+		var image_size := 30
+		l.append_text("[center]%s\n" % i[0].loci.capitalize())
+		l.add_image(i[0].icon, image_size, image_size)
+		l.append_text(":")
+		l.add_image(i[1].icon, image_size, image_size)
+
 		entity_trait_list.add_child(l)
 
 
 func _on_entitymanager_end_show_traits() -> void:
 	for i: Node in entity_trait_list.get_children():
-		if i is Label:
+		if i is RichTextLabel:
 			i.queue_free()

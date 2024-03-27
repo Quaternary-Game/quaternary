@@ -13,8 +13,8 @@ func _ready() -> void:
 var check_for_trait_changes : bool = false
 func _on_mouse_entered() -> void:
 	# this should probably tie into the drag signal somehow
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		animate_circle()
+	#if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	animate_circle()
 	show_traits.emit(entity)
 	check_for_trait_changes = true
 
