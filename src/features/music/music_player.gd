@@ -25,3 +25,12 @@ func play_new_beginnings() -> void:
 	if player.stream != new_beginnings:
 		player.stream = new_beginnings
 		player.play()
+
+func pause() -> void:
+	player.stream_paused = true
+	$PausedPlayer.play()
+	
+func resume() -> void:
+	$PausedPlayer.stop()
+	player.stream_paused = true
+	

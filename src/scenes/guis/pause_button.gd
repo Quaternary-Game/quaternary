@@ -30,14 +30,16 @@ func show_pause_screen() -> void:
 	get_tree().paused = true
 	add_child(pause_screen)
 
-## Show pause screen on button press
+## Pause game and show pause screen on button press
 func _on_button_pressed() -> void:
 	if not paused:
 		show_pause_screen()
+		MusicPlayer.pause()
 		paused = true
 
 func resume_game() -> void:
 	get_tree().paused = false
 	$Button.show()
 	paused = false
+	MusicPlayer.resume()
 	pause_screen.queue_free()
