@@ -17,11 +17,12 @@ var paused:bool = false
 func _process(_delta:float) -> void:
 	if not paused:
 		if Input.is_action_just_released('pause'):
-			show_pause_screen()
-			paused = true
+			pause_game()
 
 ## Shows pause screen scene
-func show_pause_screen() -> void:
+func pause_game() -> void:
+	paused = true
+	MusicPlayer.pause()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pause_screen = menu_scene.instantiate()
 	pause_screen.pause = self
@@ -33,9 +34,7 @@ func show_pause_screen() -> void:
 ## Pause game and show pause screen on button press
 func _on_button_pressed() -> void:
 	if not paused:
-		show_pause_screen()
-		MusicPlayer.pause()
-		paused = true
+		pause_game()
 
 func resume_game() -> void:
 	get_tree().paused = false
