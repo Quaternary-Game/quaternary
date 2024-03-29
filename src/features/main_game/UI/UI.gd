@@ -23,7 +23,6 @@ func _ready() -> void:
 		
 	
 func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
-	print("toggled %s" % toggled_on)
 	var tween : Tween = create_tween()
 
 	if toggled_on:
@@ -50,6 +49,9 @@ func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 	for i: Array in entity.genotype.values():
 		var l := entity_trait_list_item_scene.instantiate()
 		var image_size := 30
+		# this handles a bug that I have only seen once and have been unable to reproduce
+		if not is_instance_valid(i[0]) or not is_instance_valid(i[1]):
+			return
 		l.append_text("[center]%s\n" % i[0].loci.capitalize())
 		l.add_image(i[0].icon, image_size, image_size)
 		l.append_text(":")

@@ -1,4 +1,4 @@
-extends TraitBase
+class_name TraitMovement extends TraitBase
 
 @export var direction := Vector2(1, 0)
 @export var speed := 60

@@ -24,12 +24,27 @@ func markers() -> Array[Marker2D]:
 		if i is Marker2D:
 			_markers.append(i)
 	return _markers
+
+func enemies() -> Array[EntityEnemy]:
+	var _entities : Array[EntityEnemy] = []
+	for i: Node in get_children():
+		if i is EntityEnemy:
+			_entities.append(i)
+	return _entities
+
 func entities() -> Array[EntityGD]:
 	var _entities : Array[EntityGD] = []
 	for i: Node in get_children():
 		if i is EntityGD:
 			_entities.append(i)
 	return _entities
+func players() -> Array[EntityGD]:
+	var _entities : Array[EntityGD] = []
+	for i: Node in get_children():
+		if i is EntityGD and not i is EntityEnemy:
+			_entities.append(i)
+	return _entities
+
 	
 func instance_entities() -> void:
 	for marker in markers():
@@ -73,7 +88,7 @@ func _on_ui_trait_drag_end() -> void:
 
 func _on_ui_trait_drag_start(t: UiTrait) -> void:
 	circles = []
-	for i in entities():
+	for i in players():
 		circles.append(circlescene.instantiate())
 		circles[-1].entity = i
 		i.add_child(circles[-1])

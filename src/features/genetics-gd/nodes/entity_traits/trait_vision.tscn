@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbmqektmfbebj"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.gd" id="1_yjeyk"]
+[ext_resource type="Texture2D" uid="uid://dcexyelpia41f" path="res://features/genetics-gd/assets/vision.svg" id="2_x1q6r"]
+
+[node name="TraitVision" type="Node2D"]
+z_index = -1
+script = ExtResource("1_yjeyk")
+unique_trait_name = "vision"
+display_name = "Vision"
+icon = ExtResource("2_x1q6r")
+loci = "senses"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(0, 0, 58, -67.75, 23.25, -87.75, -8, -89, -30.75, -83, -58.5, -63)

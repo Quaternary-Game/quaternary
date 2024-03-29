@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hqdokn722ml6"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.gd" id="1_j4x0x"]
+[ext_resource type="Texture2D" uid="uid://48at1v8ykqag" path="res://features/genetics-gd/assets/random_movement.svg" id="2_hyhot"]
+
+[node name="TraitMovement" type="Node2D"]
+script = ExtResource("1_j4x0x")
+unique_trait_name = "movement"
+display_name = "Movement"
+icon = ExtResource("2_hyhot")
+loci = "movement"

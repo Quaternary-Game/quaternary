@@ -20,7 +20,7 @@ class_name TraitCalories extends TraitBase
 	set(value):
 		calories = value
 		if calories <= 0:
-			self.queue_free()
+			self.entity.death()
 
 
 

@@ -43,7 +43,6 @@ func traits() -> Array[UiTrait]:
 
 func trait_begin_drag_handler(data: Variant) -> void:
 	preview_value = data.points
-	print(data.points)
 func trait_end_drag_handler(data: Variant, success: bool) -> void:
 	if success:
 		points = points - data.points

@@ -5,11 +5,19 @@ class_name EntityGD extends CharacterBody2D
 # so we have a list of "loci"
 @export var initial_genotype: Array[Loci] = []
 
+## should be set with move_and_slide() calls  
+var collided: bool = false:
+	set(value):
+		collided = value
+		if value:
+			collision.emit(get_last_slide_collision().get_collider())
+		
+signal collision(node: Node2D)
+
 var paused : bool :
 	get:
 		return process_mode == Node.PROCESS_MODE_DISABLED
 	set(value):
-		print(traits)
 		if value:
 			process_mode = Node.PROCESS_MODE_DISABLED
 		else:
@@ -103,8 +111,18 @@ func remove_trait(loci: String, loci_index: int = 0) -> bool:
 	_add_trait(none, loci_index)
 	return true
 
+func has_trait(t: String) -> bool:
+	return t in traits
+
+func has_traits(_traits : Array[String]) -> bool:
+	for i in _traits:
+		if not i in traits:
+			return false
+	return true
+		
 
 func death() -> void:
 	# might want to put a death animation here
 	#https://godotshaders.com/shader/transparent-noise-border/
+	self.get_parent().remove_child(self)
 	self.queue_free()

@@ -22,7 +22,6 @@ func area_entered_handler(area: Area2D) -> void:
 		droppable = true
 
 func area_exited_handler(area: Area2D) -> void:
-	print(area)
 	if area is TraitCircle:
 		droppable = false
 	

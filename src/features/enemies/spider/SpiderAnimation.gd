@@ -10,4 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotation = previous_position.direction_to(global_position).angle()
+	if get_parent() is EntityGD:
+		return
+	var next_rotation: float = previous_position.direction_to(global_position).angle() + PI/2
+	rotation = rotate_toward(rotation, next_rotation, delta*2)
+	previous_position = global_position
