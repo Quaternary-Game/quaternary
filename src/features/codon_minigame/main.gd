@@ -24,6 +24,7 @@ func win() -> void:
 	$Player/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().call_group("mobs", "queue_free")
 	score += 1
+	SoundPlayer.play_complete()
 	$HUD.show_next_level(score)
 
 func lose() -> void:
@@ -106,6 +107,7 @@ func _on_start_timer_timeout() -> void:
 
 
 func node_hit(body: Node2D) -> void:
+	SoundPlayer.play_grab()
 	var temp := body.get_node("AnimatedSprite2D")
 	codons += body.get_node("AnimatedSprite2D/Letter").text
 	print(codons)

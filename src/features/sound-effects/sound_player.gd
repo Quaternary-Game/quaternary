@@ -7,7 +7,10 @@ var streams:Dictionary = {
 	'hover': preload("res://features/sound-effects/assets/hover.mp3"),
 	'crunch': preload("res://features/sound-effects/assets/crunch.wav"),
 	'incompatible': preload("res://features/sound-effects/assets/incompatible.ogg"),
-	'confirm': preload("res://features/sound-effects/assets/confirm.ogg")
+	'confirm': preload("res://features/sound-effects/assets/confirm.ogg"),
+	'game_over': preload("res://features/sound-effects/assets/game_over.wav"),
+	'complete': preload('res://features/sound-effects/assets/complete.wav'),
+	'grab': preload('res://features/sound-effects/assets/grab.ogg')
 }
 
 ## All AudioStreamPlayers, one for each stream
@@ -60,3 +63,12 @@ func play_incompatible() -> void:
 	
 func play_confirm() -> void:
 	players.confirm.play()
+
+func play_game_over() -> void:
+	players.game_over.play()
+	
+func play_complete() -> void:
+	players.complete.play()
+
+func play_grab() -> void:
+	players.grab.play()
