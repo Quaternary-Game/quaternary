@@ -17,19 +17,13 @@ func _ready() -> void:
 	add_child(paused_player)
 
 func play_track2() -> void:
-	if player.stream != track2:
-		player.stream = track2
-		player.play()
+	play_track(track2)
 
 func play_sketching() -> void:
-	if player.stream != sketching:
-		player.stream = sketching
-		player.play()
+	play_track(sketching)
 
 func play_new_beginnings() -> void:
-	if player.stream != new_beginnings:
-		player.stream = new_beginnings
-		player.play()
+	play_track(new_beginnings)
 
 func pause() -> void:
 	player.stream_paused = true
@@ -39,3 +33,8 @@ func resume() -> void:
 	paused_player.stop()
 	player.stream_paused = false
 	
+func play_track(track:AudioStream) -> void:
+	if player.stream != track:
+		player.stop()
+		player.stream = track
+		player.play()
