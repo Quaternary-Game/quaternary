@@ -15,6 +15,7 @@ var codons := ""
 var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
 
 func _ready() -> void:
+	MusicPlayer.play_new_beginnings()
 	load_game()
 	Input.set_custom_mouse_cursor(arrow, 0, Vector2(12, 12))
 
@@ -36,11 +37,9 @@ func lose() -> void:
 	score = 0
 	$Player.set_deferred("started", false)
 	$HUD.show_game_over(str(highScore))
-	$Music.stop()
 
 
 func new_game() -> void:
-	$Music.play()
 	$Player.start($StartPosition.position)
 	next_level()
 
