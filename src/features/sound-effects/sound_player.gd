@@ -4,10 +4,11 @@ extends Node
 ## AudioStream object for all sound effects
 var streams:Dictionary = {
 	'select': preload("res://features/sound-effects/assets/select.mp3"),
-	'hover': preload("res://features/sound-effects/assets/hover.mp3")
+	'hover': preload("res://features/sound-effects/assets/hover.mp3"),
+	'crunch': preload("res://features/sound-effects/assets/crunch.wav"),
+	'incompatible': preload("res://features/sound-effects/assets/incompatible.ogg"),
+	'confirm': preload("res://features/sound-effects/assets/confirm.ogg")
 }
-
-#@onready var player:AudioStreamPlayback
 
 ## All AudioStreamPlayers, one for each stream
 var players:Dictionary
@@ -29,8 +30,6 @@ func _ready() -> void:
 	
 	# connect signal for nodes added
 	get_tree().node_added.connect(_on_node_added)
-	
-	
 
 # recursive function for initial signal connection
 func connect_buttons(root:Node) -> void:
@@ -52,3 +51,12 @@ func play_select() -> void:
 
 func play_hover() -> void:
 	players.hover.play(0.15)
+
+func play_crunch() -> void:
+	players.crunch.play()
+	
+func play_incompatible() -> void:
+	players.incompatible.play()
+	
+func play_confirm() -> void:
+	players.confirm.play()
