@@ -8,7 +8,6 @@ extends Control
 
 var countdown:int ## current time left
 ## scenes
-var game_over_sound:AudioStream = preload("res://features/sound-effects/assets/game_over.wav")
 var punnett_square_scene:PackedScene = preload('res://features/punnett-square/nodes/punnet_square/punnett_square.tscn')
 var select_scene:PackedScene = preload("res://features/punnett-square/nodes/select_screen/select_screen.tscn")
 var lose_scene:PackedScene = preload("res://features/punnett-square/nodes/lose_screen/lose_screen.tscn")
@@ -45,6 +44,7 @@ func _on_timer_timeout() -> void:
 		flashes = 1
 
 	for i in flashes: 
+		SoundPlayer.play_tick()
 		$Countdown.visible = false
 		await get_tree().create_timer(0.1).timeout
 		$Countdown.visible = true	
@@ -53,8 +53,7 @@ func _on_timer_timeout() -> void:
 ## Show game over screen
 func game_over() -> void:
 	get_node("PunnettSquare").queue_free()
-	$AudioStreamPlayer2D.stream = game_over_sound
-	$AudioStreamPlayer2D.play()
+	SoundPlayer.play_game_over()
 	show_lose_screen()
 
 ## set up main game screen and punnett square and start game
@@ -92,7 +91,7 @@ func _on_punnett_square_game_won() -> void:
 	$Timer.stop()
 	$EndGame.text = "You Won!"
 	# play winning sound
-	
+	SoundPlayer.play_complete()
 	# wait a few seconds before switching to select screen
 	await get_tree().create_timer(3).timeout
 	show_select_screen(offspring_set)

@@ -10,7 +10,8 @@ var streams:Dictionary = {
 	'confirm': preload("res://features/sound-effects/assets/confirm.ogg"),
 	'game_over': preload("res://features/sound-effects/assets/game_over.wav"),
 	'complete': preload('res://features/sound-effects/assets/complete.wav'),
-	'grab': preload('res://features/sound-effects/assets/grab.ogg')
+	'grab': preload('res://features/sound-effects/assets/grab.ogg'),
+	'tick': preload('res://features/sound-effects/assets/tick.ogg')
 }
 
 ## All AudioStreamPlayers, one for each stream
@@ -26,6 +27,7 @@ func _ready() -> void:
 	
 	players.select.volume_db = -12
 	players.hover.volume_db = -12
+	players.confirm.volume_db = -12
 	
 	# this makes sure we connect buttons that 
 	# in the main menu
@@ -72,3 +74,6 @@ func play_complete() -> void:
 
 func play_grab() -> void:
 	players.grab.play()
+
+func play_tick() -> void:
+	players.tick.play()
