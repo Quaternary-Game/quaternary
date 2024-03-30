@@ -32,7 +32,7 @@ func patrol() -> void:
 		self.entity.velocity = self.entity.global_position.direction_to(territory.global_position + next_point) * speed
 		
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	patrol()
 	if territory not in self.entity.area.get_overlapping_areas():
 		var direction: Vector2 = self.entity.global_position.direction_to(territory.global_position)

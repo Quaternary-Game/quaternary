@@ -32,11 +32,11 @@ func attack() -> void:
 	var seen: Array[EntityGD] = self.entity.traits["vision"].seen_entities
 	if len(seen) > 0:
 		disable_normal_movement()
-		var closest: EntityGD = seen.reduce(func(max: EntityGD, value: EntityGD) -> EntityGD:
-			if self.entity.position.distance_to(value.position) < self.entity.position.distance_to(max.position):
+		var closest: EntityGD = seen.reduce(func(_max: EntityGD, value: EntityGD) -> EntityGD:
+			if self.entity.position.distance_to(value.position) < self.entity.position.distance_to(_max.position):
 				return value
 			else:
-				return max
+				return _max
 			)
 		
 		self.entity.velocity = self.entity.position.direction_to(closest.position) * speed
@@ -44,7 +44,7 @@ func attack() -> void:
 	else:
 		enable_normal_movement()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if "vision" in self.entity.traits:
 		attack()
 

@@ -24,14 +24,14 @@ var paused : bool :
 			process_mode = Node.PROCESS_MODE_INHERIT
 		
 
-var traits := {}
+var traits : Dictionary= {}
 
 ## each element should be a list (length 2 = diploid) of traits
 ## loci should be the key
-var genotype := {} 
+var genotype : Dictionary= {} 
 
 ## each element should be a loci key with some number of traits corresponding to the maximum dominance value
-var phenotype := {}
+var phenotype : Dictionary = {}
 
 ## how many genes in each loci (humans and our creatures are diploid)
 ## eventually, this should be configurable
@@ -43,20 +43,20 @@ signal traits_changed
  
 func _ready() -> void:
 	for l:Loci in self.initial_genotype:
-		for t_index in range(len(l.traits)): 
+		for t_index: int in range(len(l.traits)): 
 			self.add_trait(l.traits[t_index], t_index)
 
-var none_scene := preload("res://features/genetics-gd/nodes/entity_traits/trait_none.tscn")
+var none_scene : Resource = preload("res://features/genetics-gd/nodes/entity_traits/trait_none.tscn")
 func create_loci(loci: String) -> void:
 	genotype[loci] = []
-	for i in range(ploidy):
+	for i : int in range(ploidy):
 		var none : TraitNone = none_scene.instantiate()
 		none.loci = loci
 		genotype[loci].append(none)
 
 func add_trait(new_trait: PackedScene, loci_index: int = 0) -> void:
 	if new_trait.can_instantiate():
-		var _new_trait := new_trait.instantiate()
+		var _new_trait : TraitBase = new_trait.instantiate()
 		_add_trait(_new_trait, loci_index)
 
 func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
@@ -68,7 +68,7 @@ func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
 		genotype[_new_trait.loci][loci_index] = _new_trait
 		phenotype[_new_trait.loci] = [] as Array[TraitBase]
 		
-	var dominant := dominant_trait_at_loci(_new_trait.loci)
+	var dominant : Array[TraitBase] = dominant_trait_at_loci(_new_trait.loci)
 	for i:TraitBase in phenotype[_new_trait.loci]:
 		if not trait_is_in(i, dominant):
 			phenotype[_new_trait.loci].erase(i)
@@ -106,7 +106,7 @@ func dominant_trait_at_loci(loci: String) -> Array[TraitBase]:
 func remove_trait(loci: String, loci_index: int = 0) -> bool:
 	if loci not in genotype or loci_index >= ploidy or loci_index < 0:
 		return false
-	var none := none_scene.instantiate()
+	var none : TraitNone= none_scene.instantiate()
 	none.loci = loci
 	_add_trait(none, loci_index)
 	return true
@@ -115,7 +115,7 @@ func has_trait(t: String) -> bool:
 	return t in traits
 
 func has_traits(_traits : Array[String]) -> bool:
-	for i in _traits:
+	for i : String in _traits:
 		if not i in traits:
 			return false
 	return true

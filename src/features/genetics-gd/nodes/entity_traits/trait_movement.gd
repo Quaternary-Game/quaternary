@@ -1,9 +1,9 @@
 class_name TraitMovement extends TraitBase
 
-@export var direction := Vector2(1, 0)
-@export var speed := 60
+@export var direction : Vector2= Vector2(1, 0)
+@export var speed : float = 60
 
-var rng := RandomNumberGenerator.new()
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var screen_size: Vector2
 
 func _ready()-> void:
@@ -13,11 +13,11 @@ func _ready()-> void:
 	change_direction()
 
 func change_direction() -> void:
-	var new_direction := Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1))
+	var new_direction : Vector2= Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1))
 	self.direction = new_direction.normalized()
 	self.entity.velocity = self.direction * self.speed
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var should_change: bool = rng.randi_range(0, 120) == 30
 	
 	if should_change:

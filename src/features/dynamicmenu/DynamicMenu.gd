@@ -7,7 +7,7 @@ var hidden_children:int = 0
 
 ## Animate the reveal of a child of the dynamic menu
 func reveal_slide_child(node: Control) -> void:
-	var spacer := Control.new()
+	var spacer :Control= Control.new()
 	# set this if you want a min size for the spacer
 	#spacer.custom_minimum_size = Vector2(1,1)
 	self.add_child(spacer)

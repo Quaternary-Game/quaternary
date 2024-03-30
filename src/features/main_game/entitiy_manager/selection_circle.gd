@@ -6,7 +6,7 @@ class_name SelectionCircle extends Area2D
 
 
 
-var color := Control.new().get_theme_color("circle", "trait")
+var color : Color = Control.new().get_theme_color("circle", "trait")
 var circle_size : int = initial_size:
 	get:
 		return circle_size

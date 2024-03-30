@@ -10,7 +10,7 @@ var center: Vector2 = Vector2.ZERO
 @onready var radius : float = $CollisionShape2D.shape.radius
 
 func _ready() -> void:
-	for i in range(spokes):
+	for i: int in range(spokes):
 		var step : float = i * 2 * PI / spokes
 		var point : Vector2 = Vector2(sin(step )*radius, cos(step)*radius)
 		points.append(point)
@@ -18,14 +18,14 @@ func _ready() -> void:
 func _draw() -> void:
 	
 	print(radius)
-	tiers = radius/50
+	tiers = int(radius/50)
 	
-	for point in points:
+	for point : Vector2 in points:
 		draw_line(Vector2.ZERO, point, color, -1, true)
 	
-	for t in range(tiers):
+	for t: int in range(tiers):
 		var step :float = (tiers-t)/float(tiers)
-		for p in range(len(points)):
+		for p: int in range(len(points)):
 		
 			var p1 : Vector2 = points[p-1] * step
 			var p2 : Vector2 = points[p] * step

@@ -1,6 +1,6 @@
 extends VBoxContainer
-const UiTrait = preload("res://features/main_game/UI/traits/trait.gd")
-var UiTraitScene := preload("res://features/main_game/UI/traits/trait.tscn")
+const UiTrait : Resource = preload("res://features/main_game/UI/traits/trait.gd")
+var UiTraitScene : Resource = preload("res://features/main_game/UI/traits/trait.tscn")
 var disabled_color :Color = get_theme_color("11", "pallete")
 
 var preview_value: int = 0:
@@ -15,7 +15,7 @@ var preview_value: int = 0:
 @export var points : int = 10:
 	set(value):
 		points = value
-		for i in traits():
+		for i: UiTrait in traits():
 			if i.points > points:
 				i.modulate = disabled_color
 				i.process_mode = Node.PROCESS_MODE_DISABLED
@@ -24,7 +24,7 @@ var preview_value: int = 0:
 @export var traitpoints: Array[int] = []
 
 func _ready() ->void:
-	for t in range(len(traitlist)):
+	for t: int in range(len(traitlist)):
 		var _trait :UiTrait = UiTraitScene.instantiate()
 		_trait.entitytrait = traitlist[t]
 		_trait.points = traitpoints[t]
@@ -34,7 +34,7 @@ func _ready() ->void:
 		
 
 func traits() -> Array[UiTrait]:
-	var children := $TraitGrid.get_children()
+	var children : Array[Node] = $TraitGrid.get_children()
 	var _traits : Array[UiTrait] = []
 	for c:Node in children:
 		if c is UiTrait:

@@ -35,9 +35,9 @@ func build_square(parent1:String, parent2:String) -> void:
 	var new_header:PanelContainer
 	var new_offspring:PanelContainer
 	
-	var alleles:String = ""
+	var _alleles:String = ""
 	# add top row of headers
-	for i in genotype_length:
+	for i : int in genotype_length:
 		new_header = header_scene.instantiate()
 		
 		# sets container sizing to fill and expand
@@ -46,10 +46,10 @@ func build_square(parent1:String, parent2:String) -> void:
 		
 		new_header.set_allele(parent1_allele_combos[i])
 		add_child(new_header)
-		alleles = ""
+		_alleles = ""
 	
 	# add additional rows
-	for i in genotype_length:
+	for i : int in genotype_length:
 		new_header = header_scene.instantiate()
 		# sets container sizing to fill and expand
 		new_header.size_flags_horizontal = 3
@@ -59,7 +59,7 @@ func build_square(parent1:String, parent2:String) -> void:
 		add_child(new_header)
 		
 		# add the offspring cells
-		for j in genotype_length:
+		for j : int in genotype_length:
 			new_offspring = offspring_scene.instantiate()
 			# sets container sizing to fill and expand
 			new_offspring.size_flags_horizontal = 3
@@ -74,7 +74,7 @@ func build_square(parent1:String, parent2:String) -> void:
 func get_allele_combos(genotype:String) -> Array[String]:
 	# seperate the genotype into a list of traits
 	var traits:Array[String] = []
-	for i in range(0,len(genotype),2):
+	for i: int in range(0,len(genotype),2):
 		traits.append(genotype[i]+genotype[i+1])
 	
 	return generate_combos(traits)
@@ -87,19 +87,19 @@ func generate_combos(traits:Array[String]) -> Array[String]:
 		combos.append(traits[0][1])
 		return combos
 	if len(traits) == 2:
-		for i in 2:
-			for j in 2:
+		for i : int in 2:
+			for j: int in 2:
 				combos.append(traits[0][i] + traits[1][j])
 		return combos 
 	else:
 		var posterior_combos:Array[String] = generate_combos(traits.slice(1))
-		for i in 2:
-			for j in len(posterior_combos):
+		for i: int in 2:
+			for j : int in len(posterior_combos):
 				combos.append(traits[0][i] + posterior_combos[j])
 		return combos
 		
 ## check if full square is correct
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if n_correct == n_needed:
 		game_won.emit()
 

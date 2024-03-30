@@ -11,7 +11,7 @@ class_name TraitHerbivore extends TraitBase
 ## Customizations:
 ## - calorie_increment_amount: Integer value to increase the calorie amount by
 
-@export var calorie_increment_amount := 300
+@export var calorie_increment_amount : int= 300
 
 
 func _ready() -> void:

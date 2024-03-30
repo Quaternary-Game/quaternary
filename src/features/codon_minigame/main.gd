@@ -8,15 +8,15 @@ const save_path:String = "user://gamesave.save"
 var score : int = 0
 var highScore : int
 # consider an enum here to enforce better typing
-var acids := {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG"], "Serine": ["UCU", "UCC", "UCA", "UCG"], "Tyrosine": ["UAU", "UAC"], "Cysteine": ["UGU", "UGC"], "Tryptophan": ["UGG"] }
+var acids :Dictionary= {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG"], "Serine": ["UCU", "UCC", "UCA", "UCG"], "Tyrosine": ["UAU", "UAC"], "Cysteine": ["UGU", "UGC"], "Tryptophan": ["UGG"] }
 var goalAcid: String
-var codons := ""
+var codons :String = ""
 
 var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
 
 func _ready() -> void:
 	load_game()
-	Input.set_custom_mouse_cursor(arrow, 0, Vector2(12, 12))
+	Input.set_custom_mouse_cursor(arrow,Input.CURSOR_ARROW, Vector2(12, 12))
 
 func win() -> void:
 	$MobTimer.stop()
@@ -56,10 +56,10 @@ func next_level() -> void:
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 
 
-func to_anti_codon(codons: Array) -> Array[String]:
+func to_anti_codon(_codons: Array) -> Array[String]:
 	var antiCodons: Array[String] = []
-	for  codon : String in codons:
-		var antiCodon := ""
+	for  codon : String in _codons:
+		var antiCodon : String = ""
 		for c : String in codon:
 			if (c == 'U'):
 				antiCodon += 'A'
@@ -74,10 +74,10 @@ func to_anti_codon(codons: Array) -> Array[String]:
 		
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
-	var mob := mob_scene.instantiate()
+	var mob : Node = mob_scene.instantiate()
 
 	# Choose a random location on Path2D.
-	var mob_spawn_location := get_node("MobPath/MobSpawnLocation")
+	var mob_spawn_location :Node = get_node("MobPath/MobSpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
 
 	# Set the mob's direction perpendicular to the path direction.
@@ -107,7 +107,7 @@ func _on_start_timer_timeout() -> void:
 
 
 func node_hit(body: Node2D) -> void:
-	var temp := body.get_node("AnimatedSprite2D")
+	var _temp :Node = body.get_node("AnimatedSprite2D")
 	codons += body.get_node("AnimatedSprite2D/Letter").text
 	print(codons)
 	if codons.length() >= 3:

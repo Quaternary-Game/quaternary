@@ -3,9 +3,9 @@ var toggle: Button
 var trait_menu: Control
 var trait_menu_panel: Control
 var entity_trait_list: Control
-var entity_trait_list_item_scene := preload("res://features/main_game/UI/trait_list/trait_list_item.tscn")
+var entity_trait_list_item_scene : Resource = preload("res://features/main_game/UI/trait_list/trait_list_item.tscn")
 var ogmodulate: Color = self.modulate
-const TraitDragButton = preload("res://features/main_game/UI/traits/trait.gd")
+const TraitDragButton : Resource = preload("res://features/main_game/UI/traits/trait.gd")
 signal play(value: bool)
 signal trait_drag_start(t: TraitDragButton)
 signal trait_drag_end
@@ -36,7 +36,7 @@ func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
 		
 func start_drag_button_handler(data: Variant) -> void:
 	trait_drag_start.emit(data)
-func end_drag_button_handler(data: Variant, success: bool) -> void:
+func end_drag_button_handler(_data: Variant, _success: bool) -> void:
 	trait_drag_end.emit()
 
 
@@ -47,8 +47,8 @@ func _on_start_pause_toggled(toggled_on:bool) -> void:
 
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 	for i: Array in entity.genotype.values():
-		var l := entity_trait_list_item_scene.instantiate()
-		var image_size := 30
+		var l :Control = entity_trait_list_item_scene.instantiate()
+		var image_size : int = 30
 		# this handles a bug that I have only seen once and have been unable to reproduce
 		if not is_instance_valid(i[0]) or not is_instance_valid(i[1]):
 			return
