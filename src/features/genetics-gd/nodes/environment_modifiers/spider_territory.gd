@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _draw() -> void:
 	
-	print(radius)
+	
 	tiers = int(radius/50)
 	
 	for point : Vector2 in points:

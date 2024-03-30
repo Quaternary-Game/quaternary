@@ -10,4 +10,4 @@ func _process(delta: float) -> void:
 	
 func _ready() -> void:
 	super._ready()
-	print(traits)
+
