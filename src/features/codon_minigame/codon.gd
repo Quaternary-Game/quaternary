@@ -1,5 +1,5 @@
 extends RigidBody2D
-var codons := ["G", "U", "A", "C"]
+var codons : Array= ["G", "U", "A", "C"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var codon : String = codons[(randi() % codons.size())]

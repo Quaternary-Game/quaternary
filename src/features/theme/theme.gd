@@ -58,7 +58,11 @@ func colors() -> void:
 	set_color("bond", "Background", color06)
 	set_color("circle", "trait", color06)
 	set_color("entity_selector", "entity_manager", color11)
-
+	
+	set_color("green", "pallete", color14)
+	set_color("red", "pallete", color11)
+	set_color("yellow","pallete", color13)
+	
 func modify_stylebox(name: StringName,theme_type: StringName, property: StringName, value: Variant ) -> void:
 	# needed to avoid lengthy syntax for modification of stylebox properties
 	var stylebox: StyleBox = get_stylebox(name, theme_type)

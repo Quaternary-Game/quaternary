@@ -30,7 +30,7 @@ func button_down_handler() -> void:
 	begin_drag.emit(self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _dragging:
 		preview_node.global_position = get_global_mouse_position()
 		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

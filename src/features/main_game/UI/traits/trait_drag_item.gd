@@ -4,7 +4,7 @@ var Trait : TraitBase
 var TraitScene: PackedScene
 var button: Control
 var droppable  : bool = false
-const TraitCircle = preload("res://features/main_game/entitiy_manager/trait_circle.gd")
+const TraitCircle : Resource= preload("res://features/main_game/entitiy_manager/trait_circle.gd")
 
 signal dropped(Self: Area2D)
 func emit() -> void:
@@ -25,7 +25,6 @@ func area_entered_handler(area: Area2D) -> void:
 		droppable = true
 
 func area_exited_handler(area: Area2D) -> void:
-	print(area)
 	if area is TraitCircle:
 		droppable = false
 	

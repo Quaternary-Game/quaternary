@@ -3,12 +3,13 @@ extends Node
 
 ## currently active scene
 var current_scene:Node = null
-const loading_path:String = "res://features/loading-screen/loading_screen.tscn"
+var loading_screen:Control = preload("res://features/loading-screen/loading_screen.tscn").instantiate()
 
 ## Sets current scene
 func _ready() -> void:
 	var root:Window = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	loading_screen.loaded.connect(loaded)
 	#current_scene = root.get_child(1)
 
 ## Changes scene to main menu
@@ -24,17 +25,11 @@ func goto_scene(path:String) -> void:
 
 ## completes a deffered scene switching
 func _deferred_go_to_scene(path:String) -> void:
-	#get_tree().change_scene_to_packed(ResourceLoader.load(loading_path))
-	#get_tree().current_scene.load_scene(path)
-	
-	# using loading_screen
-	#current_scene.free()
-	#var load_scene:Resource = ResourceLoader.load(loading_path)
-	#current_scene = load_scene.instantiate()
-	#get_tree().root.add_child(current_scene)
-	#current_scene.load_scene(path)
-	
 	current_scene.free()
-	var load_scene:Resource = ResourceLoader.load(path)
-	current_scene = load_scene.instantiate()
+	get_tree().root.add_child(loading_screen)
+	var load_scene:Resource = loading_screen.load_scene(path)
+
+func loaded(scene: Resource) -> void:
+	get_tree().root.remove_child(loading_screen)
+	current_scene = scene.instantiate()
 	get_tree().root.add_child(current_scene)

@@ -20,7 +20,7 @@ func _ready() -> void:
 func set_correct_genotype(p1:String, p2:String) -> String:
 	var genotype:String = ""
 	var s:Array[String]
-	for i in len(p1):
+	for i : int in len(p1):
 		s = [p1[i], p2[i]]
 		s.sort()
 		genotype += s[0] + s[1]
@@ -35,7 +35,7 @@ func check_genotype() -> bool:
 
 ## Called when input changes
 ## updates color based on input
-func _on_genotype_text_changed(new_text: String) -> void:
+func _on_genotype_text_changed(_new_text: String) -> void:
 	if check_genotype():
 		SoundPlayer.play_confirm()
 		self.modulate = correct_color

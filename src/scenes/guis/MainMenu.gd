@@ -16,4 +16,4 @@ func _on_settings_button_pressed() -> void:
 func _on_play_button_pressed() -> void:
 	# placeholder, ideally should have level select menu
 	# or some more complicated behavior
-	SceneSwitching.goto_scene("res://features/main_game/level_1.tscn")
+	SceneSwitching.goto_scene("res://features/main_game/levels/level_1/level_1.tscn")

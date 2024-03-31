@@ -5,10 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="3_utyax"]
 
 [node name="TraitTerritory" type="Node2D"]
+z_index = -2
 script = ExtResource("1_anpxt")
-territory = ExtResource("2_w1fy8")
+territory_scene = ExtResource("2_w1fy8")
 unique_trait_name = "territory"
 display_name = "Territory"
 icon = ExtResource("3_utyax")
-loci = "behavior"
+loci = "movement"
 dominance = 1
