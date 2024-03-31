@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0ljd21vfxble"]
+[gd_scene load_steps=4 format=3 uid="uid://b0ljd21vfxble"]
 
 [ext_resource type="Script" path="res://features/loading-screen/loading_screen.gd" id="1_06nui"]
+[ext_resource type="Script" path="res://features/loading-screen/ProgressBar.gd" id="2_s2pld"]
+[ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="3_xkjcf"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -11,16 +13,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06nui")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -50.0
-offset_right = 500.0
-offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_s2pld")
+
+[node name="Spider" parent="ProgressBar" instance=ExtResource("3_xkjcf")]
+position = Vector2(-200, 0)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)

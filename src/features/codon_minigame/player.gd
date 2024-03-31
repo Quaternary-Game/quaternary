@@ -3,12 +3,12 @@ extends Area2D
 @export var speed: int = 800
 
 # get custom codon type for body collisions
-const Codon = preload("res://features/codon_minigame/codon.gd")
+const Codon : Resource = preload("res://features/codon_minigame/codon.gd")
 
 var screen_size: Vector2 
 signal hit
 
-var velocity := Vector2()
+var velocity :Vector2= Vector2()
 var started: bool = false
 
 # Called when the node enters the scene tree for the first time.

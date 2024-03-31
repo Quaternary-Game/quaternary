@@ -13,7 +13,7 @@ extends PanelContainer
 @export var bg_visible: bool = true:
 	set = set_bg_visible
 
-const Mutation = preload("res://features/mutation_minigame/nodes/mutation/mutation.gd")
+const Mutation : Resource= preload("res://features/mutation_minigame/nodes/mutation/mutation.gd")
 # Can't use self type for node without using "class_name"
 signal mutation(node: Node, mutation: Mutation )
 

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjwiwvitrng7x"]
+[gd_scene load_steps=3 format=3 uid="uid://bjwiwvitrng7x"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_age.gd" id="1_wv4mf"]
+[ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="2_ccfdf"]
 
 [node name="TraitAge" type="Node2D"]
 script = ExtResource("1_wv4mf")
+unique_trait_name = "age"
+display_name = "Age"
+icon = ExtResource("2_ccfdf")
+loci = "age"

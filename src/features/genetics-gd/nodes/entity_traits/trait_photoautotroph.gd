@@ -12,11 +12,12 @@ class_name TraitPhotoautotroph extends TraitBase
 ## - calorie_increment_amount: Integer value to increase the calorie amount by.
 ##   - This number is multiplied by the intensity of the light body
 ## - increment_rate_sec: Float number of seconds that defines the rate at which calories increase
-
-@export var calorie_increment_amount := 300
+@export var calorie_increment_amount : int = 300
 
 ## Float number of seconds that defines the rate at which calories decay
-@export var increment_rate_sec : float :
+@export var increment_rate_sec : float
+
+@onready var _increment_rate_sec : float = increment_rate_sec :
 	get:
 		return $Increment_timer.wait_time
 	set(value):
@@ -31,7 +32,7 @@ var _light_bodies: Dictionary = {}
 
 func _ready() -> void:
 	self.initialize()
-	self.increment_rate_sec = self._deferred_increment_rate_sec
+	self._increment_rate_sec = self._deferred_increment_rate_sec
 	self.entity.area.body_entered.connect(self._on_body_entered)
 	self.entity.area.body_exited.connect(self._on_body_exited)
 
@@ -60,4 +61,4 @@ func _on_increment_timer_timeout() -> void:
 		return
 	
 	for body: LightDirected in self._light_bodies.values():
-		trait_calories.calories += self.calorie_increment_amount * body.intensity
+		trait_calories.calories += int(self.calorie_increment_amount * body.intensity)

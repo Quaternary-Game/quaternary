@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxthawek7qkti"]
+[gd_scene load_steps=6 format=3 uid="uid://bxthawek7qkti"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_gd.gd" id="1_hgb48"]
 [ext_resource type="Texture2D" uid="uid://c0e27yyglaisa" path="res://features/genetics-gd/assets/entity.png" id="2_hjodj"]
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="3_j1edh"]
-[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_random_movement.tscn" id="4_5h72h"]
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_ca6e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtsxf"]
@@ -25,7 +24,6 @@ traits = Array[PackedScene]([ExtResource("4_ca6e3"), ExtResource("4_ca6e3")])
 
 [node name="Loci 2" type="Node" parent="."]
 script = ExtResource("3_j1edh")
-traits = Array[PackedScene]([ExtResource("4_5h72h")])
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 4
