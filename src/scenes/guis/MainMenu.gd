@@ -1,5 +1,8 @@
 extends Control
 
+func _ready() -> void:
+	MusicPlayer.play_track2()
+
 func _on_mini_game_button_pressed() -> void:
 	SceneSwitching.goto_scene("res://scenes/guis/mini_game_menu.tscn")
 

@@ -16,6 +16,8 @@ func _on_exit_pressed() -> void:
 	## unpauses system before going to main menu
 	get_tree().paused = false
 	SceneSwitching.goto_mainmenu()
+	MusicPlayer.resume()
+	MusicPlayer.play_track2()
 
 func _on_settings_pressed() -> void:
 	# add logic to bring up settings screen
@@ -25,3 +27,4 @@ func _on_settings_pressed() -> void:
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	SceneSwitching.goto_scene(current_scene)
+	MusicPlayer.resume()

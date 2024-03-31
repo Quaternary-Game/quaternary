@@ -36,6 +36,7 @@ func make_bonds(template_strand: DNA, compliment_strand: DNA) -> void:
 	draw_bonds(template_strand, compliment_strand)
 
 func on_win() -> void:
+	SoundPlayer.play_complete()
 	$EndButtons.visible = true
 	var l: Label = Label.new()
 	l.text = "You win!"
@@ -43,6 +44,7 @@ func on_win() -> void:
 	
 func on_lose() -> void:
 	$EndButtons.visible = true
+	SoundPlayer.play_game_over()
 	var l: Label = Label.new()
 	l.text = "You lose! Correct Sequence: %s" % sequence_to_string(dna_mutated.reciprocal_sequence())
 	print(dna_mutated.reciprocal_sequence())
@@ -73,6 +75,7 @@ func check_mutation(sequence: Array) -> void:
 		on_lose()
 
 func _ready() -> void:
+	MusicPlayer.play_new_beginnings()
 	$DNABOX/DNA.random_dna(DNA_length)
 	dna_mutated = $DNABOX/DNA.duplicate()
 	dna_mutated.droppable = false
