@@ -28,6 +28,7 @@ func _ready() -> void:
 	players.select.volume_db = -12
 	players.hover.volume_db = -12
 	players.confirm.volume_db = -12
+	players.grab.volume_db = -12
 	
 	# this makes sure we connect buttons that 
 	# in the main menu
