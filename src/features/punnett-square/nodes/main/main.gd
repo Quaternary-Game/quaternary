@@ -16,6 +16,8 @@ var flashes:int ## number of times to flash timer
 
 ## set up start screen
 func _ready() -> void:
+	MusicPlayer.play_new_beginnings()
+	
 	countdown = time
 	$StartScreen/Label.text = "You have %s seconds to fill\nthe Punnett Square" % str(self.time)
 	$Countdown.text = str(countdown)

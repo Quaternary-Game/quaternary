@@ -75,6 +75,7 @@ func check_mutation(sequence: Array) -> void:
 		on_lose()
 
 func _ready() -> void:
+	MusicPlayer.play_new_beginnings()
 	$DNABOX/DNA.random_dna(DNA_length)
 	dna_mutated = $DNABOX/DNA.duplicate()
 	dna_mutated.droppable = false
