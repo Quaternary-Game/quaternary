@@ -47,7 +47,7 @@ func _on_timer_timeout() -> void:
 
 
 	for i : int in flashes:
-  	SoundPlayer.play_tick()
+		SoundPlayer.play_tick()
 		$Countdown.visible = false
 		await get_tree().create_timer(0.1).timeout
 		$Countdown.visible = true	
