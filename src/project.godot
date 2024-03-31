@@ -16,6 +16,8 @@ config/features=PackedStringArray("4.2")
 
 [autoload]
 
+MusicPlayer="*res://features/music/music_player.gd"
+SoundPlayer="*res://features/sound-effects/sound_player.gd"
 SceneSwitching="*res://features/scene-switching/scene_switching.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 

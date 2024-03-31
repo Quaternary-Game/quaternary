@@ -10,6 +10,9 @@ signal dropped(Self: Area2D)
 func emit() -> void:
 	if droppable:
 		dropped.emit(self)
+		SoundPlayer.play_confirm()
+	else:
+		SoundPlayer.play_incompatible()
 
 func _ready() -> void:
 	area_entered.connect(area_entered_handler)
