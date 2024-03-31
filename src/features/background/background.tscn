@@ -66,5 +66,7 @@ animation_scale = 0.3
 duration = 50.0
 
 [node name="Spider" parent="." instance=ExtResource("2_0q5l4")]
+texture_filter = 6
 animation_scene = ExtResource("4_lc7t2")
+animation_scale = 1.0
 duration = 40.0

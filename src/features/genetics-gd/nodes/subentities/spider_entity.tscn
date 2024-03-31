@@ -15,7 +15,6 @@ script = ExtResource("1_s01hy")
 initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), NodePath("Loci 4")]
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_m4jxw")]
-scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 27)

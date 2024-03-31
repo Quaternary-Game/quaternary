@@ -27,4 +27,4 @@ script = ExtResource("2_s2pld")
 [node name="Spider" parent="ProgressBar" instance=ExtResource("3_xkjcf")]
 position = Vector2(-200, 0)
 rotation = 1.5708
-scale = Vector2(0.2, 0.2)
+speed_scale = 2.0
