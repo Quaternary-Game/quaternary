@@ -22,18 +22,18 @@ func _exit_tree() -> void:
 
 
 
-func patrol() -> void:
+func patrol(delta: float) -> void:
 	if round(global_position) == round(territory.global_position + next_point):
 		if next_point == territory.center:
 			next_point = territory.points[rng.randi_range(0, len(territory.points)-1)]
 		else:
 			next_point = territory.center
 	else:
-		self.entity.velocity = self.entity.global_position.direction_to(territory.global_position + next_point) * speed
-		
+		var v: Vector2 = self.entity.global_position.direction_to(territory.global_position + next_point) * speed
+		self.entity.velocity = lerp(self.entity.velocity, v, delta*5)
 
-func _physics_process(_delta: float) -> void:
-	patrol()
+func _physics_process(delta: float) -> void:
+	patrol(delta)
 	if territory not in self.entity.area.get_overlapping_areas():
 		var direction: Vector2 = self.entity.global_position.direction_to(territory.global_position)
 		self.entity.velocity = direction * speed

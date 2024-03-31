@@ -171,6 +171,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_8s121")
 frame_progress = 0.237691
 speed_scale = 0.5

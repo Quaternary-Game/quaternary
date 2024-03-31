@@ -25,3 +25,6 @@ func see_entity(body: Node2D) -> void:
 func lost_entity(body: Node2D) -> void:
 	if body is EntityGD:
 		seen_entities.erase(body)
+		
+func _process(delta: float) -> void:
+	rotation = rotate_toward(rotation, self.entity.velocity.angle() + PI/2, delta*2)
