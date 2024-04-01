@@ -9,3 +9,5 @@ unique_trait_name = "carnivore"
 display_name = "Carnivore"
 icon = ExtResource("2_13ekt")
 loci = "vore"
+
+[node name="BiteDelay" type="Timer" parent="."]

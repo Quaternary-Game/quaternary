@@ -3,6 +3,7 @@ class_name TraitVision extends TraitBase
 func _ready() -> void:
 	initialize()
 	$Area2D.body_entered.connect(see_entity)
+	$Area2D.body_exited.connect(lost_entity)
 	
 func _draw() -> void:
 	var areascale: Vector2 = $Area2D/Shape.scale/2

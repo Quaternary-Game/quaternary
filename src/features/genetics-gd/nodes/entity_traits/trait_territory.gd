@@ -9,6 +9,8 @@ var next_point : Vector2
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
+var patrolling: bool = true
+
 func _ready() -> void:
 	initialize()
 	rng.randomize()
@@ -33,9 +35,10 @@ func patrol(delta: float) -> void:
 		self.entity.velocity = lerp(self.entity.velocity, v, delta*5)
 
 func _physics_process(delta: float) -> void:
-	patrol(delta)
+	if patrolling:
+		patrol(delta)
 	if territory not in self.entity.area.get_overlapping_areas():
 		var direction: Vector2 = self.entity.global_position.direction_to(territory.global_position)
-		self.entity.velocity = direction * speed
+		self.entity.velocity += direction * speed * delta
 	self.entity.collided = self.entity.move_and_slide()
 	
