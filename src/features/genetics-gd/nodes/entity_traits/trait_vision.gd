@@ -24,6 +24,8 @@ func see_entity(body: Node2D) -> void:
 
 
 func lost_entity(body: Node2D) -> void:
+	if body.tree_exited.is_connected(lost_entity.bind(body)):
+		body.tree_exiting.disconnect(lost_entity.bind(body))
 	if body is EntityGD:
 		seen_entities.erase(body)
 		

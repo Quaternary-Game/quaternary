@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ip7hgoqckpc"]
 
-[ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/spider_entity.gd" id="1_8iy2x"]
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/bacteria_entity.gd" id="1_5ib6x"]
 [ext_resource type="PackedScene" uid="uid://bnwgcdvm7dukc" path="res://features/enemies/bacteria/BacteriaAnimation.tscn" id="2_74m66"]
 [ext_resource type="Shape2D" uid="uid://bxkfvpf4pxt45" path="res://features/genetics-gd/nodes/subentities/spider_shape.tres" id="3_gajgl"]
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="4_wtijq"]
@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_evyvo"]
 [ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_g6jlf"]
 
-[node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
-script = ExtResource("1_8iy2x")
-initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), NodePath("Loci 4")]
+[node name="Bacteria" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
+script = ExtResource("1_5ib6x")
+initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2")]
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_74m66")]
 position = Vector2(0, -4)

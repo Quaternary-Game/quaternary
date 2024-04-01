@@ -4,6 +4,7 @@ var trait_menu: Control
 var trait_menu_panel: Control
 var entity_trait_list: Control
 var entity_trait_list_item_scene : Resource = preload("res://features/main_game/UI/trait_list/trait_list_item.tscn")
+
 var ogmodulate: Color = self.modulate
 const TraitDragButton : Resource = preload("res://features/main_game/UI/traits/trait.gd")
 signal play(value: bool)
@@ -60,9 +61,14 @@ func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 		l.add_image(i[1].icon, image_size, image_size)
 
 		entity_trait_list.add_child(l)
-
+	if "calories" in entity.traits:
+		entity_trait_list.add_child(entity.traits["calories"].progress_bar)
+	if "age" in entity.traits:
+		entity_trait_list.add_child(entity.traits["calories"].progress_bar)
 
 func _on_entitymanager_end_show_traits() -> void:
 	for i: Node in entity_trait_list.get_children():
 		if i is RichTextLabel:
 			i.queue_free()
+		elif i is TextureProgressBar:
+			entity_trait_list.remove_child(i)

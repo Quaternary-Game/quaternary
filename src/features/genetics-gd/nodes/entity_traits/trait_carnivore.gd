@@ -1,6 +1,6 @@
 class_name TraitCarnivore extends TraitBase
 
-var blood : Resource= preload("res://features/genetics-gd/nodes/VisualEffects/Blood.tscn")
+var blood: Resource = preload ("res://features/genetics-gd/nodes/VisualEffects/Blood.tscn")
 
 func _ready() -> void:
 	initialize()
@@ -8,31 +8,27 @@ func _ready() -> void:
 
 var calories_per_collision: int = 500
 
-
-func eat(node: Node2D) -> void:
-	
-	while is_instance_valid(node) and node.get_parent() is EntityGD and "calories" in node.get_parent().traits and node in self.entity.area.get_overlapping_areas():
+func eat(node: Area2D) -> void:
+	while is_instance_valid(node) and node.get_parent() is EntityGD and node.get_parent() != self.entity and "calories" in node.get_parent().traits and node in self.entity.area.get_overlapping_areas():
 		var _entity: EntityGD = node.get_parent()
 		_entity.traits["calories"].calories -= calories_per_collision
 		if "calories" in self.entity.traits:
 			self.entity.traits["calories"].calories += calories_per_collision
-		print("MMMMMMM")
 		SoundPlayer.play_bite()
 		bitten = true
 		$BiteDelay.start()
-		var b : GPUParticles2D= blood.instantiate()
+		var b: GPUParticles2D = blood.instantiate()
 		b.one_shot = true
-		_entity.add_child(b)
+		node.add_child(b)
 		await $BiteDelay.timeout
 		bitten = false
-		
 		
 var bitten: bool = false:
 	set(value):
 		bitten = value
 		if bitten:
 			self.entity.velocity = Vector2.ZERO
-var speed : float
+var speed: float
 
 func enable_normal_movement() -> void:
 	if self.entity.has_trait("territory"):
@@ -69,7 +65,7 @@ func attack(delta: float) -> void:
 			pass
 		else:
 			self.entity.velocity += self.entity.position.direction_to(closest.position) * speed
-			self.entity.velocity = self.entity.velocity.limit_length(speed*2)
+			self.entity.velocity = self.entity.velocity.limit_length(speed * 2)
 			self.entity.collided = self.entity.move_and_slide()
 	else:
 		enable_normal_movement()
@@ -77,4 +73,3 @@ func attack(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if "vision" in self.entity.traits:
 		attack(delta)
-

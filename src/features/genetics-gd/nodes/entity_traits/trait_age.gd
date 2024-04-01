@@ -29,7 +29,6 @@ func _ready() -> void:
 	self.add_child(timer)
 	timer.timeout.connect(self.entity.death)
 	timer.start(max_age)
-	print(timer.is_stopped())
 
 	
 func _draw() -> void:

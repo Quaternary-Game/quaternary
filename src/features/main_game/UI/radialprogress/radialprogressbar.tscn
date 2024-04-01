@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ykad2xskgg8x"]
+
+[ext_resource type="Texture2D" uid="uid://dgfqhxgsd62u" path="res://features/main_game/UI/radialprogress/progress.png" id="1_xcr13"]
+[ext_resource type="Script" path="res://features/main_game/UI/radialprogress/radialprogressbar.gd" id="2_i4yxn"]
+
+[node name="Radialprogressbar" type="TextureProgressBar"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 5
+texture_progress = ExtResource("1_xcr13")
+tint_progress = Color(0.74902, 0.380392, 0.415686, 1)
+script = ExtResource("2_i4yxn")
+high_percent = null
+low_percent = null
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
