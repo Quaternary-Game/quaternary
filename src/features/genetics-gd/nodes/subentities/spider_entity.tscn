@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2m7xdu3md033"]
+[gd_scene load_steps=11 format=3 uid="uid://b2m7xdu3md033"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/spider_entity.gd" id="1_s01hy"]
 [ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="2_m4jxw"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_c67ps"]
 [ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_tiiio"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnsbm"]
+size = Vector2(46.6667, 28.8889)
+
 [node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
 script = ExtResource("1_s01hy")
 initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), NodePath("Loci 4")]
@@ -17,7 +20,7 @@ initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_m4jxw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 27)
+position = Vector2(0, 37)
 shape = ExtResource("3_sysmt")
 
 [node name="Loci 1" type="Node" parent="."]
@@ -41,5 +44,6 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
-position = Vector2(0, 27)
-shape = ExtResource("3_sysmt")
+position = Vector2(0, -31)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_xnsbm")
