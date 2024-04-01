@@ -25,7 +25,7 @@ func win() -> void:
 	$HUD.show_next_level(score)
 
 func lose() -> void:
-	$DeathSound.play()
+	SoundPlayer.play_game_over()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$Player/CollisionShape2D.set_deferred("disabled", true)

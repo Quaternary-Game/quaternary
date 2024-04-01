@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3brcerwdxjja"]
+[gd_scene load_steps=7 format=3 uid="uid://b3brcerwdxjja"]
 
 [ext_resource type="PackedScene" uid="uid://cor4gnepy3mty" path="res://features/codon_minigame/player.tscn" id="1_b7bhc"]
 [ext_resource type="PackedScene" uid="uid://chpmmji3lmgrs" path="res://features/codon_minigame/codon.tscn" id="2_4q4l2"]
 [ext_resource type="Script" path="res://features/codon_minigame/main.gd" id="2_excm5"]
 [ext_resource type="PackedScene" uid="uid://cjuccvijj1xkd" path="res://features/codon_minigame/hud.tscn" id="5_a6vda"]
 [ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="6_unpdm"]
-[ext_resource type="AudioStream" uid="uid://3i0w58rk6ru7" path="res://features/codon_minigame/art/gameover.wav" id="7_k07g1"]
 
 [sub_resource type="Curve2D" id="Curve2D_cd6f2"]
 _data = {
@@ -39,9 +38,6 @@ curve = SubResource("Curve2D_cd6f2")
 script = ExtResource("2_excm5")
 
 [node name="HUD" parent="." instance=ExtResource("5_a6vda")]
-
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_k07g1")
 
 [node name="PauseButton" parent="." instance=ExtResource("6_unpdm")]
 offset_left = 38.0

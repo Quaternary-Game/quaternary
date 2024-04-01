@@ -11,7 +11,8 @@ var streams:Dictionary = {
 	'game_over': preload("res://features/sound-effects/assets/game_over.wav"),
 	'complete': preload('res://features/sound-effects/assets/complete.wav'),
 	'grab': preload('res://features/sound-effects/assets/grab.ogg'),
-	'tick': preload('res://features/sound-effects/assets/tick.ogg')
+	'tick': preload('res://features/sound-effects/assets/tick.ogg'),
+	'bite': preload('res://features/sound-effects/assets/bite.wav')
 }
 
 ## All AudioStreamPlayers, one for each stream
@@ -78,3 +79,6 @@ func play_grab() -> void:
 
 func play_tick() -> void:
 	players.tick.play()
+	
+func play_bite() -> void:
+	players.bite.play()

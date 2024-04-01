@@ -17,6 +17,7 @@ func eat(node: Node2D) -> void:
 		if "calories" in self.entity.traits:
 			self.entity.traits["calories"].calories += calories_per_collision
 		print("MMMMMMM")
+		SoundPlayer.play_bite()
 		bitten = true
 		$BiteDelay.start()
 		var b : GPUParticles2D= blood.instantiate()
