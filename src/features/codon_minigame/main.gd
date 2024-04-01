@@ -12,12 +12,9 @@ var acids :Dictionary= {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG
 var goalAcid: String
 var codons :String = ""
 
-var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
-
 func _ready() -> void:
 	MusicPlayer.play_new_beginnings()
 	load_game()
-	Input.set_custom_mouse_cursor(arrow,Input.CURSOR_ARROW, Vector2(12, 12))
 
 func win() -> void:
 	$MobTimer.stop()
