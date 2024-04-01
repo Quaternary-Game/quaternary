@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccnrwji4dp8rl"]
+[gd_scene load_steps=10 format=3 uid="uid://ccnrwji4dp8rl"]
 
 [ext_resource type="Script" path="res://features/main_game/UI/UI.gd" id="1_qcesi"]
 [ext_resource type="Texture2D" uid="uid://b1iaeeaty2grx" path="res://features/main_game/UI/assets/toggle-sidebar.svg" id="2_1wlll"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="6_obrlx"]
 [ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="7_1j2c8"]
 [ext_resource type="PackedScene" uid="uid://bvm4f8qv4puj3" path="res://features/genetics-gd/nodes/entity_traits/trait_herbivore.tscn" id="7_5tyfb"]
+[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_0ujpn"]
+[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="9_5v7my"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -93,8 +95,8 @@ layout_mode = 2
 
 [node name="TraitMenu" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource("2_cmehw")]
 layout_mode = 2
-traitlist = Array[PackedScene]([ExtResource("6_obrlx"), ExtResource("7_5tyfb"), ExtResource("7_1j2c8")])
-traitpoints = Array[int]([5, 10, 1])
+traitlist = Array[PackedScene]([ExtResource("6_obrlx"), ExtResource("7_5tyfb"), ExtResource("7_1j2c8"), ExtResource("8_0ujpn"), ExtResource("9_5v7my")])
+traitpoints = Array[int]([5, 10, 1, 2, 1])
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_level_pressed"]
 [connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_pause_toggled"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://y6a0hd4jnlsy"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/player_entity/player_entity.gd" id="1_hr8dk"]
+[ext_resource type="Shape2D" uid="uid://bicwp6rfh610j" path="res://features/genetics-gd/nodes/subentities/player_entity/player_collision_shape.tres" id="2_c1ibs"]
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="2_i6u8e"]
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/player_entity/Eyes.gd" id="2_yqhx1"]
+[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="3_sw147"]
+
+[node name="PlayerEntity" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
+script = ExtResource("1_hr8dk")
+body_radius = 30.0
+initial_genotype = [NodePath("Loci 1")]
+
+[node name="Loci 1" type="Node" parent="."]
+script = ExtResource("2_i6u8e")
+traits = Array[PackedScene]([ExtResource("3_sw147"), ExtResource("3_sw147")])
+
+[node name="Eyes" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_yqhx1")
+
+[node name="Left" type="Marker2D" parent="Eyes"]
+position = Vector2(20, -21)
+
+[node name="Look" type="Marker2D" parent="Eyes"]
+position = Vector2(-7.09295e-06, -77.9999)
+rotation = -1.5708
+
+[node name="Right" type="Marker2D" parent="Eyes"]
+position = Vector2(-17, -21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_c1ibs")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = ExtResource("2_c1ibs")

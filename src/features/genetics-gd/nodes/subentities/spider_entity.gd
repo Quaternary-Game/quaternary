@@ -7,6 +7,7 @@ var angular_velocity : float
 func rotate_node(node: Node, delta: float) -> float:
 	var old_rotation: float = node.rotation
 	node.rotation = rotate_toward(node.rotation, velocity.angle() + PI/2, delta*2)
+	node.position = node.position.rotated(node.rotation-old_rotation)
 	return (old_rotation - node.rotation)/(delta*2)
 func _process(delta: float) -> void:
 	rotate_node($AnimatedSprite2D, delta)

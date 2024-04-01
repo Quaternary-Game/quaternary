@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var player_entity: Resource= preload("res://features/genetics-gd/nodes/entity_gd.tscn")
+@export var player_entity: Resource= preload("res://features/genetics-gd/nodes/subentities/player_entity/player_entity.tscn")
 @export var enable_tool: bool = false
 var circlescene : Resource= preload("res://features/main_game/entitiy_manager/trait_circle.tscn")
 var entity_selector_scene : Resource= preload("res://features/main_game/entitiy_manager/entity_selector.tscn")
