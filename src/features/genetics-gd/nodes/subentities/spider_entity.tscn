@@ -16,7 +16,8 @@ size = Vector2(46.6667, 28.8889)
 
 [node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
 script = ExtResource("1_s01hy")
-initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), NodePath("Loci 4")]
+initial_genotype = [NodePath("Movement Loci"), NodePath("Loci 4")]
+hidden_traits = Array[PackedScene]([ExtResource("4_cmrhq"), ExtResource("8_2vrwu")])
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_m4jxw")]
 
@@ -24,17 +25,9 @@ initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2"), NodePath("Loci 3"), 
 position = Vector2(0, 37)
 shape = ExtResource("3_sysmt")
 
-[node name="Loci 1" type="Node" parent="."]
+[node name="Movement Loci" type="Node" parent="."]
 script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("4_cmrhq"), ExtResource("4_cmrhq")])
-
-[node name="Loci 2" type="Node" parent="."]
-script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("5_hq3gj")])
-
-[node name="Loci 3" type="Node" parent="."]
-script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("7_lm8la"), ExtResource("8_2vrwu")])
+traits = Array[PackedScene]([ExtResource("5_hq3gj"), ExtResource("7_lm8la")])
 
 [node name="Loci 4" type="Node" parent="."]
 script = ExtResource("3_b427o")
