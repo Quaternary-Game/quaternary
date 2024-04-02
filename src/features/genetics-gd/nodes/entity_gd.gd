@@ -124,5 +124,6 @@ func has_traits(_traits : Array[String]) -> bool:
 func death() -> void:
 	# might want to put a death animation here
 	#https://godotshaders.com/shader/transparent-noise-border/
-	self.get_parent().remove_child(self)
-	self.queue_free()
+	if is_instance_valid(self):
+		self.get_parent().remove_child(self)
+		self.queue_free()

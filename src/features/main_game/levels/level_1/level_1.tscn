@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1ecefqwp20pv"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ecefqwp20pv"]
 
-[ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entitiy_manager/entitymanager.tscn" id="1_eccss"]
+[ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
 [ext_resource type="PackedScene" uid="uid://ccnrwji4dp8rl" path="res://features/main_game/UI/UI.tscn" id="2_vkeid"]
+[ext_resource type="PackedScene" uid="uid://ip7hgoqckpc" path="res://features/genetics-gd/nodes/subentities/bacteria_entity.tscn" id="3_yv25b"]
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -16,10 +17,21 @@ mouse_filter = 2
 [node name="Entitymanager" parent="." instance=ExtResource("1_eccss")]
 
 [node name="Marker2D" type="Marker2D" parent="Entitymanager"]
-position = Vector2(1132, 992)
+position = Vector2(1053, 695)
 
 [node name="Spider" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(593, 436)
+
+[node name="Spider2" parent="Entitymanager" node_paths=PackedStringArray("initial_genotype") instance=ExtResource("2_crnex")]
+position = Vector2(992, 425)
+initial_genotype = [NodePath("../Spider/Loci 1"), NodePath("../Spider/Loci 2"), NodePath("../Spider/Loci 3"), NodePath("../Spider/Loci 4")]
+
+[node name="Spider3" parent="Entitymanager" node_paths=PackedStringArray("initial_genotype") instance=ExtResource("2_crnex")]
+position = Vector2(1484, 402)
+initial_genotype = [NodePath("../Spider/Loci 1"), NodePath("../Spider/Loci 2"), NodePath("../Spider/Loci 3"), NodePath("../Spider/Loci 4")]
+
+[node name="Bacteria" parent="Entitymanager" instance=ExtResource("3_yv25b")]
+position = Vector2(581, 304)
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1

@@ -12,6 +12,7 @@ func rotate_node(node: Node, delta: float) -> float:
 func _process(delta: float) -> void:
 	rotate_node($AnimatedSprite2D, delta)
 	rotate_node($CollisionShape2D, delta)
+	rotate_node($BodyArea, delta)
 	angular_velocity = rotate_node($Area, delta)
 	$AnimatedSprite2D.speed_scale = (abs(angular_velocity) + round(velocity.length()))/120
 	

@@ -9,7 +9,7 @@ class_name TraitCalories extends TraitBase
 ## - decay_rate_sec: Float number of seconds that defines the rate at which calories decay
 ## - calorie_decay_amount: Integer number that defines the quantity of calories to decay
 
-
+var progress_bar : TextureProgressBar = preload("res://features/main_game/UI/radialprogress/radialprogressbar.tscn").instantiate()
 
 # ################### #
 #  Entity Properties  #
@@ -18,12 +18,22 @@ class_name TraitCalories extends TraitBase
 ## An integer count that represents the number of calories the entity has
 @export var calories : int = 2000:
 	set(value):
-		calories = value
+		if value <= max_calories:
+			calories = value
+			progress_bar.value = value
+		else:
+			calories = max_calories
+			progress_bar.value = value
 		percent = (calories/float(max_calories)) * 100
 		if calories <= 0:
 			self.entity.death()
+			
+var max_calories: int:
+	set(v):
+		max_calories = v
+		progress_bar.max_value = v
+		print("I set the progress maxvalue to %s" % progress_bar.max_value)
 
-@onready var max_calories: int = calories 
 
 var percent : float:
 	set(value):
@@ -80,6 +90,8 @@ func _ready() -> void:
 	self.initialize()
 	self._decay_enabled = self.decay_enabled
 	self._decay_rate_sec = self.decay_rate_sec
+	max_calories = calories
+	calories = calories
 
 func _process(_delta: float) -> void:
 	$DebugLabel.text = str(self.calories)
