@@ -64,7 +64,7 @@ func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 	if "calories" in entity.traits:
 		entity_trait_list.add_child(entity.traits["calories"].progress_bar)
 	if "age" in entity.traits:
-		entity_trait_list.add_child(entity.traits["calories"].progress_bar)
+		entity_trait_list.add_child(entity.traits["age"].progress_bar)
 
 func _on_entitymanager_end_show_traits() -> void:
 	for i: Node in entity_trait_list.get_children():

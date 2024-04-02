@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2m7xdu3md033"]
+[gd_scene load_steps=12 format=3 uid="uid://b2m7xdu3md033"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/spider_entity.gd" id="1_s01hy"]
 [ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="2_m4jxw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_cmrhq"]
 [ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="5_hq3gj"]
 [ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="7_lm8la"]
+[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="8_2vrwu"]
 [ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_c67ps"]
 [ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_tiiio"]
 
@@ -33,7 +34,7 @@ traits = Array[PackedScene]([ExtResource("5_hq3gj")])
 
 [node name="Loci 3" type="Node" parent="."]
 script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("7_lm8la")])
+traits = Array[PackedScene]([ExtResource("7_lm8la"), ExtResource("8_2vrwu")])
 
 [node name="Loci 4" type="Node" parent="."]
 script = ExtResource("3_b427o")
