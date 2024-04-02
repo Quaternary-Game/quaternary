@@ -3,7 +3,9 @@ class_name EntityGD extends CharacterBody2D
 
 # this needs to be configurable with genotype in mind
 # so we have a list of "loci"
-@export var initial_genotype: Array[Loci] = []
+@export_category("Traits")
+@export var initial_genotype: Array[Loci]
+@export var hidden_traits: Array[PackedScene]
 
 ## should be set with move_and_slide() calls  
 var collided: bool = false:
@@ -42,9 +44,12 @@ signal traits_changed
 @onready var area: Area2D = $Area 
  
 func _ready() -> void:
-	for l:Loci in self.initial_genotype:
+	for t: PackedScene in hidden_traits:
+		add_hidden_trait(t)
+	for l:Loci in initial_genotype:
 		for t_index: int in range(len(l.traits)): 
 			self.add_trait(l.traits[t_index], t_index)
+	
 
 var none_scene : Resource = preload("res://features/genetics-gd/nodes/entity_traits/trait_none.tscn")
 func create_loci(loci: String) -> void:
@@ -53,6 +58,11 @@ func create_loci(loci: String) -> void:
 		var none : TraitNone = none_scene.instantiate()
 		none.loci = loci
 		genotype[loci].append(none)
+
+func add_hidden_trait(new_trait: PackedScene) -> void:
+	var _new_trait : TraitBase = new_trait.instantiate()
+	traits[_new_trait.unique_trait_name] = _new_trait
+	add_child(_new_trait)
 
 func add_trait(new_trait: PackedScene, loci_index: int = 0) -> void:
 	if new_trait.can_instantiate():

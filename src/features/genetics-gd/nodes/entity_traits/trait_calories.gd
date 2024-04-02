@@ -32,7 +32,6 @@ var max_calories: int:
 	set(v):
 		max_calories = v
 		progress_bar.max_value = v
-		print("I set the progress maxvalue to %s" % progress_bar.max_value)
 
 
 var percent : float:

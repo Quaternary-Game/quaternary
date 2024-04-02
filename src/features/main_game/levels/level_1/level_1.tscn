@@ -22,13 +22,11 @@ position = Vector2(1053, 695)
 [node name="Spider" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(593, 436)
 
-[node name="Spider2" parent="Entitymanager" node_paths=PackedStringArray("initial_genotype") instance=ExtResource("2_crnex")]
+[node name="Spider2" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(992, 425)
-initial_genotype = [NodePath("../Spider/Loci 1"), NodePath("../Spider/Loci 2"), NodePath("../Spider/Loci 3"), NodePath("../Spider/Loci 4")]
 
-[node name="Spider3" parent="Entitymanager" node_paths=PackedStringArray("initial_genotype") instance=ExtResource("2_crnex")]
+[node name="Spider3" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(1484, 402)
-initial_genotype = [NodePath("../Spider/Loci 1"), NodePath("../Spider/Loci 2"), NodePath("../Spider/Loci 3"), NodePath("../Spider/Loci 4")]
 
 [node name="Bacteria" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(581, 304)

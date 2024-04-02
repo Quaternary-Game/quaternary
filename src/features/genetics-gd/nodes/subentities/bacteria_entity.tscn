@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ip7hgoqckpc"]
+[gd_scene load_steps=7 format=3 uid="uid://ip7hgoqckpc"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/bacteria_entity.gd" id="1_5ib6x"]
 [ext_resource type="PackedScene" uid="uid://bnwgcdvm7dukc" path="res://features/enemies/bacteria/BacteriaAnimation.tscn" id="2_74m66"]
@@ -6,13 +6,11 @@
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="4_wtijq"]
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="5_h27ny"]
 [ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="6_4h0mg"]
-[ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="7_ufb8j"]
-[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_evyvo"]
-[ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_g6jlf"]
 
 [node name="Bacteria" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
 script = ExtResource("1_5ib6x")
-initial_genotype = [NodePath("Loci 1"), NodePath("Loci 2")]
+initial_genotype = [NodePath("Loci 2")]
+hidden_traits = Array[PackedScene]([ExtResource("5_h27ny")])
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_74m66")]
 position = Vector2(0, -4)
@@ -22,21 +20,9 @@ scale = Vector2(0.2, 0.2)
 rotation = 1.5708
 shape = ExtResource("3_gajgl")
 
-[node name="Loci 1" type="Node" parent="."]
-script = ExtResource("4_wtijq")
-traits = Array[PackedScene]([ExtResource("5_h27ny"), ExtResource("5_h27ny")])
-
 [node name="Loci 2" type="Node" parent="."]
 script = ExtResource("4_wtijq")
 traits = Array[PackedScene]([ExtResource("6_4h0mg")])
-
-[node name="Loci 3" type="Node" parent="."]
-script = ExtResource("4_wtijq")
-traits = Array[PackedScene]([ExtResource("7_ufb8j")])
-
-[node name="Loci 4" type="Node" parent="."]
-script = ExtResource("4_wtijq")
-traits = Array[PackedScene]([ExtResource("8_evyvo"), ExtResource("9_g6jlf")])
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 4
