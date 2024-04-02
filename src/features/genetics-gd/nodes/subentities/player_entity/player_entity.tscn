@@ -10,6 +10,7 @@
 script = ExtResource("1_hr8dk")
 body_radius = 30.0
 initial_genotype = [NodePath("Loci 1")]
+hidden_traits = Array[PackedScene]([ExtResource("3_sw147")])
 
 [node name="Loci 1" type="Node" parent="."]
 script = ExtResource("2_i6u8e")
