@@ -9,7 +9,7 @@ increment_rate_sec = 1.0
 unique_trait_name = "photoautotroph"
 display_name = "Photoautotroph"
 icon = ExtResource("2_jk7k5")
-loci = "vore"
+locus_type = 6
 
 [node name="IncrementTimer" type="Timer" parent="."]
 

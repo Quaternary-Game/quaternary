@@ -9,7 +9,7 @@ script = ExtResource("1_yjeyk")
 unique_trait_name = "vision"
 display_name = "Vision"
 icon = ExtResource("2_x1q6r")
-loci = "senses"
+locus_type = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 

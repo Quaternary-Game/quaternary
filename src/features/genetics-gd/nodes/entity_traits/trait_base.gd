@@ -3,8 +3,8 @@ class_name TraitBase extends Node2D
 @export var unique_trait_name: String
 @export var display_name : String
 @export var icon: Texture2D
-## name of gene loci (traits on same loci will be dominant/recessive to each other)
-@export var loci: String
+## The type of the locus (traits on same loci will be dominant/recessive to each other)
+@export var locus_type: GeneticConstants.LocusType
 ## dominance priority of trait
 ## traits with higher dominance are dominant to traits with lower dominance
 ## equal dominance gives codominant or incomplete dominant phenotype

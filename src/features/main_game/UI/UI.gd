@@ -49,16 +49,24 @@ func _on_start_pause_toggled(toggled_on:bool) -> void:
 
 
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
-	for i: Array in entity.genotype.values():
-		var l :Control = entity_trait_list_item_scene.instantiate()
-		var image_size : int = 30
-		# this handles a bug that I have only seen once and have been unable to reproduce
-		if not is_instance_valid(i[0]) or not is_instance_valid(i[1]):
-			return
-		l.append_text("[center]%s\n" % i[0].loci.capitalize())
-		l.add_image(i[0].icon, image_size, image_size)
-		l.append_text(":")
-		l.add_image(i[1].icon, image_size, image_size)
+	for locus: Locus in entity.genotype.get_loci():
+		if locus.hidden:
+			continue
+		
+		var l: Control = entity_trait_list_item_scene.instantiate()
+		var image_size: int = 30
+
+		var first: bool = true
+
+		for allele: Allele in locus.get_alleles():
+			if not is_instance_valid(allele):
+				return
+			if first:
+				l.append_text("[center]%s\n" % locus._type)
+				first = false
+			else:
+				l.append_text(":")
+			l.add_image(allele.get_trait_instance().icon, image_size, image_size)
 
 		entity_trait_list.add_child(l)
 	if "calories" in entity.traits:

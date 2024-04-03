@@ -8,4 +8,4 @@ script = ExtResource("1_j4x0x")
 unique_trait_name = "movement"
 display_name = "Movement"
 icon = ExtResource("2_hyhot")
-loci = "movement"
+locus_type = 3

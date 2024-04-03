@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Genotype" load_steps=8 format=3 uid="uid://clbh35bwgua7c"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="1_1q6fx"]
+[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="1_y8u7x"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_syjdm"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/locus.gd" id="3_a508p"]
+
+[sub_resource type="Resource" id="Resource_beik5"]
+script = ExtResource("2_syjdm")
+scene = ExtResource("1_y8u7x")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_dpl14"]
+script = ExtResource("2_syjdm")
+scene = ExtResource("1_y8u7x")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_o7a04"]
+script = ExtResource("3_a508p")
+hidden = true
+_type = 2
+_alleles = Array[ExtResource("2_syjdm")]([SubResource("Resource_beik5"), SubResource("Resource_dpl14")])
+
+[resource]
+script = ExtResource("1_1q6fx")
+ploidy = 2
+_loci = {
+2: SubResource("Resource_o7a04")
+}
