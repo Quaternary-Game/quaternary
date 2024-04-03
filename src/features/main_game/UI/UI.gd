@@ -62,7 +62,7 @@ func _on_entitymanager_show_traits(entity: EntityGD) -> void:
 			if not is_instance_valid(allele):
 				return
 			if first:
-				l.append_text("[center]%s\n" % locus._type)
+				l.append_text("[center]%s\n" % GeneticConstants.LocusType.keys()[locus._type])
 				first = false
 			else:
 				l.append_text(":")
