@@ -6,6 +6,7 @@
 [ext_resource type="Shape2D" uid="uid://bxkfvpf4pxt45" path="res://features/genetics-gd/nodes/subentities/spider_shape.tres" id="3_gajgl"]
 
 [node name="Bacteria" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_5ib6x")
 genotype = ExtResource("2_6cqtq")
 

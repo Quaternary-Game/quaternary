@@ -48,9 +48,9 @@ func _process(delta: float) -> void:
 	if juvenile:
 		self.entity.scale = Vector2(0.5, 0.5)
 		self.circle_color = juvenile_color
-		self.entity.modulate = Color.GRAY
+		self.entity.self_modulate = Color.GRAY
 	else:
 		var tween : Tween = create_tween()
 		tween.parallel().tween_property(self.entity, "scale", Vector2(1,1), 2)
 		tween.parallel().tween_property(self, "circle_color", adult_color,  2)
-		tween.parallel().tween_property(self.entity, "modulate", Color.WHITE, 2)
+		tween.parallel().tween_property(self.entity, "self_modulate", Color.WHITE, 2)

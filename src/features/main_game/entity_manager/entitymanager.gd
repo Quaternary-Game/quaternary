@@ -1,4 +1,4 @@
-extends Node2D
+class_name EntityManager extends Node2D
 
 
 @export var player_entity: Resource= preload("res://features/genetics-gd/nodes/subentities/player_entity/player_entity.tscn")
@@ -56,14 +56,22 @@ var entity_selectors : Array[Node2D] = []
 
 func instance_entity_selectors() -> void:
 	for entity: EntityGD in entities():
-		entity_selectors.append(entity_selector_scene.instantiate())
-		entity_selectors[-1].entity =entity
-		entity.add_child(entity_selectors[-1])
-		entity_selectors[-1].show_traits.connect(show_entity_traits)
-		entity_selectors[-1].end_traits.connect(end_show_entity_traits)
+		new_entity(entity)
 
 signal show_traits(entity: EntityGD)
 signal end_show_traits
+
+func create_entity_selector(entity: EntityGD) -> void:
+	entity_selectors.append(entity_selector_scene.instantiate())
+	entity_selectors[-1].entity = entity
+	entity.add_child(entity_selectors[-1])
+	entity_selectors[-1].show_traits.connect(show_entity_traits)
+	entity_selectors[-1].end_traits.connect(end_show_entity_traits)
+
+func new_entity(entity: EntityGD) -> void:
+	entity.manager = self
+	print_debug(entity)
+	create_entity_selector(entity)
 
 func show_entity_traits(_entity: EntityGD) -> void:
 	show_traits.emit(_entity)
@@ -82,6 +90,7 @@ var circles : Array[Node2D]= []
 
 func _on_ui_trait_drag_end() -> void:
 	for i : SelectionCircle in circles:
+		circles.erase(i)
 		i.clear_circle()
 		i.queue_free()
 

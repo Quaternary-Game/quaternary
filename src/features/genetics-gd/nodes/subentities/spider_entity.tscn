@@ -9,6 +9,7 @@
 size = Vector2(46.6667, 28.8889)
 
 [node name="Spider" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_s01hy")
 genotype = ExtResource("2_7f30q")
 

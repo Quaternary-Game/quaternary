@@ -40,7 +40,7 @@ func _ready() -> void:
 
 # recursive function for initial signal connection
 func connect_buttons(root:Node) -> void:
-	for child in root.get_children():
+	for child : Node in root.get_children():
 		if child is Button:
 			child.pressed.connect(play_select)
 			child.mouse_entered.connect(play_hover)

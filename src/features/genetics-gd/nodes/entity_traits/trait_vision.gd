@@ -19,7 +19,8 @@ signal seen_entity
 func see_entity(body: Node2D) -> void:
 	if body is EntityGD and body != self.entity:
 		seen_entities.append(body)
-		body.tree_exiting.connect(lost_entity.bind(body))
+		if not body.tree_exiting.is_connected(lost_entity.bind(body)):
+			body.tree_exiting.connect(lost_entity.bind(body))
 		seen_entity.emit()
 
 

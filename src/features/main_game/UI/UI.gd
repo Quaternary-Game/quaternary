@@ -46,9 +46,12 @@ func end_drag_button_handler(_data: Variant, _success: bool) -> void:
 
 func _on_start_pause_toggled(toggled_on:bool) -> void:
 	play.emit(toggled_on)
+	$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Timer.paused = not toggled_on
+
 
 
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
+	
 	for locus: Locus in entity.genotype.get_loci():
 		if locus.hidden:
 			continue
@@ -80,3 +83,7 @@ func _on_entitymanager_end_show_traits() -> void:
 			i.queue_free()
 		elif i is TextureProgressBar:
 			entity_trait_list.remove_child(i)
+
+
+func _on_timer_game_over() -> void:
+	print_debug("game_over")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cedjnivqhw5nj"]
+
+[ext_resource type="Texture2D" uid="uid://dqweuv57ie1l1" path="res://features/genetics-gd/assets/plus.png" id="1_qu1jy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82r5w"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0.001, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+
+[node name="CaloriesGained" type="GPUParticles2D"]
+modulate = Color(0.376471, 0.67451, 0.294118, 1)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_82r5w")
+texture = ExtResource("1_qu1jy")
+lifetime = 0.5
+collision_base_size = 0.0
+visibility_rect = Rect2(-50, -50, 100, 100)
+local_coords = true
