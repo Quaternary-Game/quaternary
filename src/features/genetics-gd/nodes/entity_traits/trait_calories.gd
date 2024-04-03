@@ -10,7 +10,7 @@ class_name TraitCalories extends TraitBase
 ## - calorie_decay_amount: Integer number that defines the quantity of calories to decay
 
 var progress_bar : TextureProgressBar = preload("res://features/main_game/UI/radialprogress/radialprogressbar.tscn").instantiate()
-
+var hungry: Resource = preload("res://features/main_game/UI/radialprogress/calories.png")
 # ################### #
 #  Entity Properties  #
 # ################### #
@@ -91,6 +91,7 @@ func _ready() -> void:
 	self._decay_rate_sec = self.decay_rate_sec
 	max_calories = calories
 	calories = calories
+	progress_bar.texture_over = hungry
 
 func _process(_delta: float) -> void:
 	$DebugLabel.text = str(self.calories)

@@ -24,7 +24,7 @@ script = ExtResource("2_yqhx1")
 position = Vector2(20, -21)
 
 [node name="Look" type="Marker2D" parent="Eyes"]
-position = Vector2(-7.09295e-06, -77.9999)
+position = Vector2(75, 37)
 rotation = -1.5708
 
 [node name="Right" type="Marker2D" parent="Eyes"]
