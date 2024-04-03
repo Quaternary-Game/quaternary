@@ -1,11 +1,8 @@
 class_name EntityGD extends CharacterBody2D
 
 
-# this needs to be configurable with genotype in mind
-# so we have a list of "loci"
 @export_category("Traits")
-@export var initial_genotype: Array[Loci]
-@export var hidden_traits: Array[PackedScene]
+@export var genotype: Genotype
 
 ## should be set with move_and_slide() calls  
 var collided: bool = false:
@@ -26,99 +23,41 @@ var paused : bool :
 			process_mode = Node.PROCESS_MODE_INHERIT
 		
 
-var traits : Dictionary= {}
-
-## each element should be a list (length 2 = diploid) of traits
-## loci should be the key
-var genotype : Dictionary= {} 
-
-## each element should be a loci key with some number of traits corresponding to the maximum dominance value
-var phenotype : Dictionary = {}
-
-## how many genes in each loci (humans and our creatures are diploid)
-## eventually, this should be configurable
-var ploidy : int = 2
+var traits : Dictionary = {}
 
 signal traits_changed
 
 @onready var area: Area2D = $Area 
  
 func _ready() -> void:
-	for t: PackedScene in hidden_traits:
-		add_hidden_trait(t)
-	for l:Loci in initial_genotype:
-		for t_index: int in range(len(l.traits)): 
-			self.add_trait(l.traits[t_index], t_index)
-	
+	self.genotype = self.genotype.clone()
+	self.genotype.dominance_changed.connect(self._dominance_changed)
 
-var none_scene : Resource = preload("res://features/genetics-gd/nodes/entity_traits/trait_none.tscn")
-func create_loci(loci: String) -> void:
-	genotype[loci] = []
-	for i : int in range(ploidy):
-		var none : TraitNone = none_scene.instantiate()
-		none.loci = loci
-		genotype[loci].append(none)
-
-func add_hidden_trait(new_trait: PackedScene) -> void:
-	var _new_trait : TraitBase = new_trait.instantiate()
-	traits[_new_trait.unique_trait_name] = _new_trait
-	add_child(_new_trait)
-
-func add_trait(new_trait: PackedScene, loci_index: int = 0) -> void:
-	if new_trait.can_instantiate():
-		var _new_trait : TraitBase = new_trait.instantiate()
-		_add_trait(_new_trait, loci_index)
-
-func _add_trait(_new_trait: TraitBase, loci_index: int = 0) -> void:
-	assert(_new_trait is TraitBase)
-	if _new_trait.loci in genotype and _new_trait.unique_trait_name != genotype[_new_trait.loci][loci_index].unique_trait_name:
-		genotype[_new_trait.loci][loci_index] = _new_trait
-	elif _new_trait.loci not in genotype:
-		create_loci(_new_trait.loci)
-		genotype[_new_trait.loci][loci_index] = _new_trait
-		phenotype[_new_trait.loci] = [] as Array[TraitBase]
-		
-	var dominant : Array[TraitBase] = dominant_trait_at_loci(_new_trait.loci)
-	for i:TraitBase in phenotype[_new_trait.loci]:
-		if not trait_is_in(i, dominant):
-			phenotype[_new_trait.loci].erase(i)
-			traits.erase(i.unique_trait_name)
-			self.remove_child(i)
-			if i not in genotype[_new_trait.loci]:
-				i.queue_free()
-	for i:TraitBase in dominant:
-		if not trait_is_in(i, phenotype[_new_trait.loci]) and not i is TraitNone:
-			phenotype[_new_trait.loci].append(i)
-			traits[_new_trait.unique_trait_name] = _new_trait
-			self.add_child(i)
+	# Setup initial traits from dominate alleles
+	for locus: Locus in self.genotype.get_loci():
+		for allele: Allele in locus.get_dominate_alleles():
+			var instance: TraitBase = allele.get_trait_instance()
+			traits[instance.unique_trait_name] = instance
+			self.add_child(instance)
 	traits_changed.emit()
 
-func trait_is_in(t: TraitBase, arr: Array[TraitBase]) -> bool:
-		# only unique traits get added to phenotype
-	for n : TraitBase in arr:
-		if n.unique_trait_name == t.unique_trait_name:
-			return true
-	return false
-	
-# this is basically argmax for dominant attribute
-func dominant_trait_at_loci(loci: String) -> Array[TraitBase]:
-	var dominant: Array[TraitBase] = []
-	for i: TraitBase in genotype[loci]:
-		if len(dominant) == 0:
-			dominant.append(i)
-		elif dominant[0].dominance == i.dominance:
-			dominant.append(i)
-		elif dominant[0].dominance < i.dominance:
-			dominant = [i]
-	return dominant
-	
+func add_trait(_new_trait: PackedScene, loci_index: int = 0) -> void:
+	if not _new_trait.can_instantiate():
+		return
+
+	var new_trait: TraitBase = _new_trait.instantiate()
+	assert(new_trait is TraitBase)
+
+	var locus: Locus = self.genotype.add_or_get_locus(new_trait.locus_type)
+	var allele: Allele = Allele.new(_new_trait, locus._type, new_trait)
+	locus.set_allele(allele, loci_index)
 		
-func remove_trait(loci: String, loci_index: int = 0) -> bool:
-	if loci not in genotype or loci_index >= ploidy or loci_index < 0:
+func remove_trait(locus_type: GeneticConstants.LocusType, loci_index: int = 0) -> bool:
+	if not self.genotype.has_locus(locus_type):
 		return false
-	var none : TraitNone= none_scene.instantiate()
-	none.loci = loci
-	_add_trait(none, loci_index)
+	
+	var locus: Locus = self.genotype.add_or_get_locus(locus_type)
+	locus.set_allele(Allele.new(Traits.EMPTY_ALLELE, locus._type), loci_index)
 	return true
 
 func has_trait(t: String) -> bool:
@@ -137,3 +76,33 @@ func death() -> void:
 	if is_instance_valid(self):
 		self.get_parent().remove_child(self)
 		self.queue_free()
+
+func _dominance_changed(locus: Locus, old_dominance: Array[Allele], new_dominance: Array[Allele]) -> void:
+	print("dominance changed")
+	var old_alleles: Array[Allele] = []
+	var new_alleles: Array[Allele] = []
+
+	for allele: Allele in old_dominance:
+		old_alleles.append(allele)
+	
+	for allele: Allele in new_dominance:
+		if allele in old_alleles:
+			old_alleles.erase(allele)
+		else:
+			new_alleles.append(allele)
+
+	# Clean up alleles that are no longer dominant
+	for allele: Allele in old_alleles:
+		var instance: TraitBase = allele.get_trait_instance()
+		traits.erase(instance.unique_trait_name)
+		self.remove_child(instance)
+		if not locus.has_allele(allele):
+			instance.queue_free()
+	
+	# Add alleles that are now dominant
+	for allele: Allele in new_alleles:
+		var instance: TraitBase = allele.get_trait_instance()
+		traits[instance.unique_trait_name] = instance
+		self.add_child(instance)
+	
+	traits_changed.emit()

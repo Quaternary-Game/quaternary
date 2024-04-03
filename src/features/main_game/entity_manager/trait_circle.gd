@@ -18,20 +18,20 @@ var angle_offset: float
 var entered_area: Area2D
 
 func _ready() -> void:
-	angle_step = 2*PI/self.entity.ploidy
-	for i: int in range(self.entity.ploidy):
+	angle_step = 2*PI/self.entity.genotype.ploidy
+	for i: int in range(self.entity.genotype.ploidy):
 		loci_selected.append(false)
 		var x : float = final_size * cos(i * angle_step + angle_offset)
 		var y : float = final_size * sin(i * angle_step + angle_offset)
 		loci_coords.append(Vector2(x, y))
 		
 func init_loci_selected() -> void:
-	for i: int in range(self.entity.ploidy):
+	for i: int in range(self.entity.genotype.ploidy):
 		loci_selected[i] = 0
 
 func _draw() -> void:
 
-	for i: int in range(self.entity.ploidy):
+	for i: int in range(self.entity.genotype.ploidy):
 		draw_arc(Vector2(0,0), circle_size + 15 * float(loci_selected[i]), i*angle_step + PI/2, (i+1) * angle_step + PI/2, 100, color)
 	init_loci_selected()
 

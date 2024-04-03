@@ -16,7 +16,7 @@ signal end_drag(data: Variant, success: bool)
 func _ready() -> void:
 	trait_instance = entitytrait.instantiate()
 	icon = trait_instance.icon
-	tooltip_text = "%s\nDominance Level: %s\nLoci: %s" % [trait_instance.display_name, trait_instance.dominance, trait_instance.loci]
+	tooltip_text = "%s\nDominance Level: %s\nLoci: %s" % [trait_instance.display_name, trait_instance.dominance, trait_instance.locus_type]
 	self.button_down.connect(button_down_handler)
 var _dragging: bool = false
 

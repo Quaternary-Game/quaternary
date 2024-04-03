@@ -1,37 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2m7xdu3md033"]
+[gd_scene load_steps=6 format=3 uid="uid://b2m7xdu3md033"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/spider_entity.gd" id="1_s01hy"]
+[ext_resource type="Resource" uid="uid://mprb6wcc3leo" path="res://features/genetics-gd/nodes/subentities/spider_genotype.tres" id="2_7f30q"]
 [ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="2_m4jxw"]
-[ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="3_b427o"]
 [ext_resource type="Shape2D" uid="uid://bxkfvpf4pxt45" path="res://features/genetics-gd/nodes/subentities/spider_shape.tres" id="3_sysmt"]
-[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_cmrhq"]
-[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="5_hq3gj"]
-[ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="7_lm8la"]
-[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="8_2vrwu"]
-[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_c67ps"]
-[ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_tiiio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnsbm"]
 size = Vector2(46.6667, 28.8889)
 
-[node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
+[node name="Spider" type="CharacterBody2D"]
 script = ExtResource("1_s01hy")
-initial_genotype = [NodePath("Movement Loci"), NodePath("Loci 4")]
-hidden_traits = Array[PackedScene]([ExtResource("4_cmrhq"), ExtResource("8_2vrwu")])
+genotype = ExtResource("2_7f30q")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_m4jxw")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 37)
 shape = ExtResource("3_sysmt")
-
-[node name="Movement Loci" type="Node" parent="."]
-script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("5_hq3gj"), ExtResource("7_lm8la")])
-
-[node name="Loci 4" type="Node" parent="."]
-script = ExtResource("3_b427o")
-traits = Array[PackedScene]([ExtResource("8_c67ps"), ExtResource("9_tiiio")])
 
 [node name="Area" type="Area2D" parent="."]
 position = Vector2(0, -22)

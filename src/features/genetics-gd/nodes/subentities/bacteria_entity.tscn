@@ -1,16 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ip7hgoqckpc"]
+[gd_scene load_steps=5 format=3 uid="uid://ip7hgoqckpc"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/bacteria_entity.gd" id="1_5ib6x"]
+[ext_resource type="Resource" uid="uid://bkwfxsyhqfwyr" path="res://features/genetics-gd/nodes/subentities/bacteria_genotype.tres" id="2_6cqtq"]
 [ext_resource type="PackedScene" uid="uid://bnwgcdvm7dukc" path="res://features/enemies/bacteria/BacteriaAnimation.tscn" id="2_74m66"]
 [ext_resource type="Shape2D" uid="uid://bxkfvpf4pxt45" path="res://features/genetics-gd/nodes/subentities/spider_shape.tres" id="3_gajgl"]
-[ext_resource type="Script" path="res://features/genetics-gd/nodes/loci.gd" id="4_wtijq"]
-[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="5_h27ny"]
-[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="6_4h0mg"]
 
-[node name="Bacteria" type="CharacterBody2D" node_paths=PackedStringArray("initial_genotype")]
+[node name="Bacteria" type="CharacterBody2D"]
 script = ExtResource("1_5ib6x")
-initial_genotype = [NodePath("Loci 2")]
-hidden_traits = Array[PackedScene]([ExtResource("5_h27ny")])
+genotype = ExtResource("2_6cqtq")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_74m66")]
 position = Vector2(0, -4)
@@ -19,10 +16,6 @@ scale = Vector2(0.2, 0.2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = ExtResource("3_gajgl")
-
-[node name="Loci 2" type="Node" parent="."]
-script = ExtResource("4_wtijq")
-traits = Array[PackedScene]([ExtResource("6_4h0mg")])
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 4
