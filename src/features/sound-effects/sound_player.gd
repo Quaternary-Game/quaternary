@@ -25,11 +25,17 @@ func _ready() -> void:
 		players[sound] = AudioStreamPlayer.new()
 		add_child(players[sound])
 		players[sound].stream = streams[sound]
+		players[sound].volume_db = -12
 	
-	players.select.volume_db = -12
-	players.hover.volume_db = -12
-	players.confirm.volume_db = -12
-	players.grab.volume_db = -12
+	
+	#players.select.volume_db = -12
+	#players.hover.volume_db = -12
+	#players.confirm.volume_db = -12
+	#players.grab.volume_db = -12
+	#players.incompatible.volume_db = -12
+	#players.bite.volume_db = -12
+	#players.complete.volume_db = -12
+	players.game_over.volume_db = -6
 	
 	# this makes sure we connect buttons that 
 	# in the main menu
@@ -82,3 +88,8 @@ func play_tick() -> void:
 	
 func play_bite() -> void:
 	players.bite.play()
+
+func play_all() -> void:
+	for player:String in players:
+		players[player].play()
+		await get_tree().create_timer(1).timeout
