@@ -50,6 +50,10 @@ func get_genotype() -> Genotype:
 func get_alleles() -> Array[Allele]:
 	return self._alleles
 
+func get_allele_at(index: int) -> Allele:
+	assert(index >= 0 && index < self._alleles.size(), "Index out of bounds")
+	return self._alleles[index]
+
 ## Returns the dominate alleles for the locus.
 func get_dominate_alleles() -> Array[Allele]:
 	return self._dominate_alleles

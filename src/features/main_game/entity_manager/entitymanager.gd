@@ -70,7 +70,6 @@ func create_entity_selector(entity: EntityGD) -> void:
 
 func new_entity(entity: EntityGD) -> void:
 	entity.manager = self
-	print_debug(entity)
 	create_entity_selector(entity)
 
 func show_entity_traits(_entity: EntityGD) -> void:

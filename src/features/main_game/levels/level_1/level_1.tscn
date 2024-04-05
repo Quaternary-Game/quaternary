@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b1ecefqwp20pv"]
+[gd_scene load_steps=76 format=3 uid="uid://b1ecefqwp20pv"]
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
@@ -12,97 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="7_jh075"]
 [ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="8_6s3pd"]
 [ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="9_3bt72"]
-[ext_resource type="PackedScene" uid="uid://b8g5ih483bf46" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction.tscn" id="10_dhusl"]
+[ext_resource type="PackedScene" uid="uid://beik3q8lbs8k6" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_female.tscn" id="10_abflp"]
 [ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="10_y84dd"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="11_a4163"]
+[ext_resource type="PackedScene" uid="uid://cmbrha4kuol5a" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_male.tscn" id="14_8dhnb"]
 [ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="14_cpl4k"]
-
-[sub_resource type="Resource" id="Resource_6mcel"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("7_jh075")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_n0bot"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("8_6s3pd")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_lu2dh"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 3
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_6mcel"), SubResource("Resource_n0bot")])
-
-[sub_resource type="Resource" id="Resource_dsytr"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_dhusl")
-_type = 4
-
-[sub_resource type="Resource" id="Resource_248hk"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_dhusl")
-_type = 4
-
-[sub_resource type="Resource" id="Resource_3ijql"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 4
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_dsytr"), SubResource("Resource_248hk")])
-
-[sub_resource type="Resource" id="Resource_pqaus"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("9_3bt72")
-_type = 5
-
-[sub_resource type="Resource" id="Resource_37htv"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("9_3bt72")
-_type = 5
-
-[sub_resource type="Resource" id="Resource_7gce5"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 5
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_pqaus"), SubResource("Resource_37htv")])
-
-[sub_resource type="Resource" id="Resource_0yari"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_y84dd")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_wd7xo"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_y84dd")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_cjdtg"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 6
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_0yari"), SubResource("Resource_wd7xo")])
-
-[sub_resource type="Resource" id="Resource_edsdr"]
-resource_local_to_scene = true
-resource_name = "SpiderGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-3: SubResource("Resource_lu2dh"),
-4: SubResource("Resource_3ijql"),
-5: SubResource("Resource_7gce5"),
-6: SubResource("Resource_cjdtg")
-}
-
-[sub_resource type="Resource" id="Resource_2ae2c"]
-resource_local_to_scene = true
-resource_name = "SpiderGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-3: SubResource("Resource_lu2dh"),
-5: SubResource("Resource_7gce5"),
-6: SubResource("Resource_cjdtg")
-}
+[ext_resource type="PackedScene" uid="uid://dr6wcg107fcfa" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_asexual.tscn" id="17_3ctjv"]
 
 [sub_resource type="Resource" id="Resource_bqf7w"]
 script = ExtResource("4_2tp1x")
@@ -136,17 +51,206 @@ hidden = true
 _type = 2
 _alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_aaecd"), SubResource("Resource_bop78")])
 
-[sub_resource type="Resource" id="Resource_inv4r"]
+[sub_resource type="Resource" id="Resource_6mcel"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("7_jh075")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_n0bot"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("8_6s3pd")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_lu2dh"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 3
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_6mcel"), SubResource("Resource_n0bot")])
+
+[sub_resource type="Resource" id="Resource_jggjk"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_abflp")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_gws7e"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_abflp")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_dvxih"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 4
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_jggjk"), SubResource("Resource_gws7e")])
+
+[sub_resource type="Resource" id="Resource_pqaus"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("9_3bt72")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_37htv"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("9_3bt72")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_7gce5"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 5
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_pqaus"), SubResource("Resource_37htv")])
+
+[sub_resource type="Resource" id="Resource_0yari"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_y84dd")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_wd7xo"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_y84dd")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_cjdtg"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 6
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_0yari"), SubResource("Resource_wd7xo")])
+
+[sub_resource type="Resource" id="Resource_gmjkq"]
 resource_local_to_scene = true
-resource_name = "SpiderGenotype"
+resource_name = "SpiderGenotypeFemale"
 script = ExtResource("11_a4163")
 ploidy = 2
 _loci = {
 1: SubResource("Resource_aqsoa"),
 2: SubResource("Resource_o8ddg"),
 3: SubResource("Resource_lu2dh"),
+4: SubResource("Resource_dvxih"),
 5: SubResource("Resource_7gce5"),
 6: SubResource("Resource_cjdtg")
+}
+
+[sub_resource type="Resource" id="Resource_5ks24"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("3_o5nu1")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_tiwmp"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("3_o5nu1")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_6gl1m"]
+script = ExtResource("5_4vf1b")
+hidden = true
+_type = 1
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_5ks24"), SubResource("Resource_tiwmp")])
+
+[sub_resource type="Resource" id="Resource_mulc6"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("6_qohmc")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_l3dfj"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("6_qohmc")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_tfyu1"]
+script = ExtResource("5_4vf1b")
+hidden = true
+_type = 2
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_mulc6"), SubResource("Resource_l3dfj")])
+
+[sub_resource type="Resource" id="Resource_1d0hx"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("7_jh075")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_osfik"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("8_6s3pd")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_qmdg5"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 3
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_1d0hx"), SubResource("Resource_osfik")])
+
+[sub_resource type="Resource" id="Resource_hutur"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("14_8dhnb")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_0cbii"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_abflp")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_wewbr"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 4
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_hutur"), SubResource("Resource_0cbii")])
+
+[sub_resource type="Resource" id="Resource_bqbj1"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("9_3bt72")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_tlie8"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("9_3bt72")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_apg5n"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 5
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_bqbj1"), SubResource("Resource_tlie8")])
+
+[sub_resource type="Resource" id="Resource_dkfmi"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_y84dd")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_u860e"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("10_y84dd")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_tdevc"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 6
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_dkfmi"), SubResource("Resource_u860e")])
+
+[sub_resource type="Resource" id="Resource_vlmdu"]
+resource_local_to_scene = true
+resource_name = "SpiderGenotypeMale"
+script = ExtResource("11_a4163")
+ploidy = 2
+_loci = {
+1: SubResource("Resource_6gl1m"),
+2: SubResource("Resource_tfyu1"),
+3: SubResource("Resource_qmdg5"),
+4: SubResource("Resource_wewbr"),
+5: SubResource("Resource_apg5n"),
+6: SubResource("Resource_tdevc")
+}
+
+[sub_resource type="Resource" id="Resource_fhyxy"]
+resource_local_to_scene = true
+resource_name = "SpiderGenotypeMale"
+script = ExtResource("11_a4163")
+ploidy = 2
+_loci = {
+1: SubResource("Resource_6gl1m"),
+2: SubResource("Resource_tfyu1"),
+3: SubResource("Resource_qmdg5"),
+4: SubResource("Resource_wewbr"),
+5: SubResource("Resource_apg5n"),
+6: SubResource("Resource_tdevc")
 }
 
 [sub_resource type="Resource" id="Resource_lxh8w"]
@@ -161,7 +265,7 @@ _type = 2
 
 [sub_resource type="Resource" id="Resource_6xdu8"]
 script = ExtResource("5_4vf1b")
-hidden = false
+hidden = true
 _type = 2
 _alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_lxh8w"), SubResource("Resource_14o8g")])
 
@@ -197,7 +301,23 @@ hidden = false
 _type = 6
 _alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_4nvwj"), SubResource("Resource_bj8ll")])
 
-[sub_resource type="Resource" id="Resource_yuy0x"]
+[sub_resource type="Resource" id="Resource_sfpyv"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("17_3ctjv")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_0jtj6"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("17_3ctjv")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_hm7e3"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 4
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_sfpyv"), SubResource("Resource_0jtj6")])
+
+[sub_resource type="Resource" id="Resource_hrfhy"]
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
@@ -205,10 +325,11 @@ ploidy = 2
 _loci = {
 2: SubResource("Resource_6xdu8"),
 3: SubResource("Resource_vclho"),
+4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
 }
 
-[sub_resource type="Resource" id="Resource_r6yca"]
+[sub_resource type="Resource" id="Resource_fl0s3"]
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
@@ -216,6 +337,7 @@ ploidy = 2
 _loci = {
 2: SubResource("Resource_6xdu8"),
 3: SubResource("Resource_vclho"),
+4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
 }
 
@@ -254,23 +376,23 @@ position = Vector2(572, 290)
 
 [node name="Spider" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(593, 436)
-genotype = SubResource("Resource_edsdr")
+genotype = SubResource("Resource_gmjkq")
 
 [node name="Spider2" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(604, 249)
-genotype = SubResource("Resource_2ae2c")
+genotype = SubResource("Resource_vlmdu")
 
 [node name="Spider3" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(1484, 402)
-genotype = SubResource("Resource_inv4r")
+genotype = SubResource("Resource_fhyxy")
 
 [node name="Bacteria" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(80, 287)
-genotype = SubResource("Resource_yuy0x")
+genotype = SubResource("Resource_hrfhy")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
-genotype = SubResource("Resource_r6yca")
+genotype = SubResource("Resource_fl0s3")
 
 [node name="Boundary" type="StaticBody2D" parent="Entitymanager"]
 

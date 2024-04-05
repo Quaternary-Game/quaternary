@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Genotype" load_steps=16 format=3 uid="uid://bkwfxsyhqfwyr"]
+[gd_resource type="Resource" script_class="Genotype" load_steps=20 format=3 uid="uid://bkwfxsyhqfwyr"]
 
 [ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="1_jbgoo"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_yt2i6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_ivs4w"]
 [ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="5_g8yga"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="5_kefj6"]
+[ext_resource type="PackedScene" uid="uid://dr6wcg107fcfa" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_asexual.tscn" id="6_a65jr"]
 
 [sub_resource type="Resource" id="Resource_lxh8w"]
 script = ExtResource("2_yt2i6")
@@ -55,6 +56,22 @@ hidden = false
 _type = 6
 _alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_4nvwj"), SubResource("Resource_bj8ll")])
 
+[sub_resource type="Resource" id="Resource_sfpyv"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("6_a65jr")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_0jtj6"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("6_a65jr")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_hm7e3"]
+script = ExtResource("3_n1jj0")
+hidden = false
+_type = 4
+_alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_sfpyv"), SubResource("Resource_0jtj6")])
+
 [resource]
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
@@ -63,5 +80,6 @@ ploidy = 2
 _loci = {
 2: SubResource("Resource_6xdu8"),
 3: SubResource("Resource_vclho"),
+4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
 }

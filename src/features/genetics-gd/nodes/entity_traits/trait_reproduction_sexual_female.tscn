@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://beik3q8lbs8k6"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_base.gd" id="1_xedw7"]
+[ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="2_aff06"]
+
+[node name="TraitReproductionSexualFemale" type="Node2D"]
+script = ExtResource("1_xedw7")
+sex = 1
+unique_trait_name = "reproduction"
+display_name = "Sexual Female"
+icon = ExtResource("2_aff06")
+locus_type = 4
+dominance = 1

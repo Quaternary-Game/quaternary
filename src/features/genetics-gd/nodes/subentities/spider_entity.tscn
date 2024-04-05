@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2m7xdu3md033"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/subentities/spider_entity.gd" id="1_s01hy"]
-[ext_resource type="Resource" uid="uid://mprb6wcc3leo" path="res://features/genetics-gd/nodes/subentities/spider_genotype.tres" id="2_7f30q"]
+[ext_resource type="Resource" uid="uid://mprb6wcc3leo" path="res://features/genetics-gd/nodes/subentities/spider_genotype_male.tres" id="2_7f30q"]
 [ext_resource type="PackedScene" uid="uid://buxfrkebyhrhf" path="res://features/enemies/spider/SpiderAnimation.tscn" id="2_m4jxw"]
 [ext_resource type="Shape2D" uid="uid://bxkfvpf4pxt45" path="res://features/genetics-gd/nodes/subentities/spider_shape.tres" id="3_sysmt"]
 

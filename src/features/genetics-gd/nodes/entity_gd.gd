@@ -32,8 +32,17 @@ signal traits_changed
 var area: Area2D:
 	get:
 		return get_node("Area")
+
+var packed_entity: PackedScene
  
 func _ready() -> void:
+	# Pack up the entity before we make any alterations for it
+	# This will be useful if we want to instantiate it later
+	# Without worrying about additional runtime considerations
+	self.packed_entity = PackedScene.new()
+	var result: Error = self.packed_entity.pack(self)
+	assert (result == OK)
+
 	self.genotype = self.genotype.clone()
 	self.genotype.dominance_changed.connect(self._dominance_changed)
 
@@ -43,6 +52,9 @@ func _ready() -> void:
 			var instance: TraitBase = allele.get_trait_instance()
 			_add_to_traits(instance)
 	traits_changed.emit()
+	
+func clone() -> EntityGD:
+	return self.packed_entity.instantiate()
 
 func add_trait(_new_trait: PackedScene, loci_index: int = 0) -> void:
 	if not _new_trait.can_instantiate():
@@ -97,7 +109,6 @@ func death() -> void:
 		self.queue_free()
 
 func _dominance_changed(locus: Locus, old_dominance: Array[Allele], new_dominance: Array[Allele]) -> void:
-	print("dominance changed")
 	var old_alleles: Array[Allele] = []
 	var new_alleles: Array[Allele] = []
 

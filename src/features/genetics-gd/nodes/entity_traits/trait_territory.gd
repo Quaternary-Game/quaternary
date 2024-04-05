@@ -25,6 +25,7 @@ func _exit_tree() -> void:
 
 
 func patrol(delta: float) -> void:
+	assert(territory.is_node_ready())
 	if round(global_position) == round(territory.global_position + next_point):
 		if next_point == territory.center:
 			next_point = territory.points[rng.randi_range(0, len(territory.points)-1)]
