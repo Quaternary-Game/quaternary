@@ -10,12 +10,13 @@ decay_rate_sec = 10.0
 unique_trait_name = "calories"
 display_name = "calories"
 icon = ExtResource("2_rqo3x")
-loci = "calorie"
+locus_type = 2
 
 [node name="DecayTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="DebugLabel" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

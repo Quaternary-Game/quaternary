@@ -13,7 +13,9 @@ class_name PlayerEntity extends EntityGD
 @export var body_radius : float:
 	set(value):
 		body_radius = value
-		var collision_shape : Node= get_node("CollisionShape2D")
+		var collision_shape : Node
+		if has_node("CollisionShape2D"):
+			collision_shape= get_node("CollisionShape2D")
 		if collision_shape:
 			collision_shape.shape.radius = value
 		queue_redraw()
