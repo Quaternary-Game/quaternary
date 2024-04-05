@@ -175,7 +175,9 @@ _loci = {
 3: SubResource("Resource_vclho")
 }
 
+
 [sub_resource type="Resource" id="Resource_7vtak"]
+
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
@@ -217,7 +219,9 @@ genotype = SubResource("Resource_vgux0")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
+
 genotype = SubResource("Resource_7vtak")
+
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1
