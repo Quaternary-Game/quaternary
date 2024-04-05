@@ -35,7 +35,6 @@ func _on_start_button_pressed() -> void:
 	get_parent().get_node("TutorialButton").hide()
 	get_parent().get_node("MouseClickButton").hide()
 	start_game.emit()
-	print($StartButton.get_path())
 
 func _on_message_timer_timeout() -> void:
 	$Message.hide()
