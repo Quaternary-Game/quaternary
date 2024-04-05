@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/guis/MainMenu.gd" id="1_o748a"]
 [ext_resource type="PackedScene" uid="uid://bi0kmdrtrp78l" path="res://features/background/background.tscn" id="2_2h5t7"]
-[ext_resource type="PackedScene" uid="uid://11kelrsxmpor" path="res://scenes/guis/settings_menu.tscn" id="3_6uvri"]
+[ext_resource type="PackedScene" uid="uid://11kelrsxmpor" path="res://scenes/guis/settings_menu/settings_menu.tscn" id="3_6uvri"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_enicp"]
 font_size = 48
@@ -72,6 +72,7 @@ text = "main-menu.exit"
 [node name="SettingsMenu" parent="." instance=ExtResource("3_6uvri")]
 visible = false
 layout_mode = 2
+anchors_preset = 0
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MiniGameButton" to="." method="_on_mini_game_button_pressed"]

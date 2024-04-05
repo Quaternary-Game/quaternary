@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://11kelrsxmpor"]
+[gd_scene load_steps=8 format=3 uid="uid://11kelrsxmpor"]
 
-[ext_resource type="Script" path="res://scenes/guis/settings_menu.gd" id="1_1k3ea"]
+[ext_resource type="Script" path="res://scenes/guis/settings_menu/settings_menu.gd" id="1_1k3ea"]
 [ext_resource type="Shader" path="res://scenes/guis/blur.gdshader" id="1_05by3"]
+[ext_resource type="Script" path="res://scenes/guis/settings_menu/MasterVolSlider.gd" id="3_h0yp1"]
+[ext_resource type="Script" path="res://scenes/guis/settings_menu/MusicVolSlider.gd" id="3_nq28o"]
+[ext_resource type="Script" path="res://scenes/guis/settings_menu/VSyncBtn.gd" id="4_yi35f"]
+[ext_resource type="Script" path="res://scenes/guis/settings_menu/FxVolSlider.gd" id="5_m15g6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8j4jg"]
 shader = ExtResource("1_05by3")
@@ -72,6 +76,7 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 1.0
+script = ExtResource("3_h0yp1")
 
 [node name="MusicVolLabel" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -85,6 +90,7 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 1.0
+script = ExtResource("3_nq28o")
 
 [node name="FxVolLabel" type="Label" parent="TabContainer/Audio/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -97,6 +103,7 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 1.0
+script = ExtResource("5_m15g6")
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
@@ -146,6 +153,7 @@ text = "VSync"
 
 [node name="VSyncBtn" type="CheckButton" parent="TabContainer/Video/MarginContainer/GridContainer"]
 layout_mode = 2
+script = ExtResource("4_yi35f")
 
 [node name="Exit" type="Button" parent="."]
 custom_minimum_size = Vector2(380, 0)

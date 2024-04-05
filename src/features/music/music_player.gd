@@ -15,6 +15,7 @@ func _ready() -> void:
 	add_child(player)
 	paused_player = AudioStreamPlayer.new()
 	paused_player.stream = track2
+	paused_player.bus = "Music"
 	add_child(paused_player)
 
 func play_track2() -> void:
