@@ -74,7 +74,12 @@ func check_mutation(sequence: Array) -> void:
 	elif self.number_of_mutations - $DynamicMenu.hidden_children == 0:
 		on_lose()
 
+@onready var tutorial : TutorialBase = $TutorialButton
+
+
+var mutations_array: Array[Mutation] = []
 func _ready() -> void:
+	tutorial.pressed.connect(tutorial_pressed)
 	MusicPlayer.play_new_beginnings()
 	$DNABOX/DNA.random_dna(DNA_length)
 	dna_mutated = $DNABOX/DNA.duplicate()
@@ -91,6 +96,8 @@ func _ready() -> void:
 		mutation.type = i["Type"]
 		mutation.base = i["Base"]
 		$DynamicMenu.add_child(mutation)
+		mutation.end_drag.connect(end_drag_handler)
+		mutations_array.append(mutation)
 
 	make_bonds(dna_mutated, $DNABOX/DNA)
 
@@ -99,3 +106,17 @@ func _on_play_again_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	SceneSwitching.goto_mainmenu()
+
+signal end_first_slide
+
+func end_drag_handler(success: bool) -> void:
+	if success:
+		end_first_slide.emit()
+
+func tutorial_pressed() -> void:
+	tutorial.play_first("Welcome to the mutation minigame!!! Click and drag the mutations at the top of the screen to the top strand of DNA. Try to make all of the nucleotides bond to each other!",
+	end_first_slide,
+	[$DynamicMenu] + mutations_array,
+	[],
+	Vector2(0, 25)
+	)

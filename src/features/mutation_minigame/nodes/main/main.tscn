@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctvnoc1hklgns"]
+[gd_scene load_steps=7 format=3 uid="uid://ctvnoc1hklgns"]
 
 [ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/UI.gd" id="1_j1rui"]
 [ext_resource type="PackedScene" uid="uid://cqh02rjae8qi6" path="res://features/dynamicmenu/DynamicMenu.tscn" id="2_s1ja6"]
+[ext_resource type="PackedScene" uid="uid://lo2b1wr3x5vp" path="res://scenes/guis/tutorial_button.tscn" id="2_s058y"]
 [ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/DNABOX.gd" id="3_2rtd3"]
 [ext_resource type="PackedScene" uid="uid://drxre10a5wiml" path="res://features/mutation_minigame/nodes/dna/DNA.tscn" id="3_det5c"]
 [ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="5_8wv44"]
@@ -16,6 +17,16 @@ grow_vertical = 2
 script = ExtResource("1_j1rui")
 DNA_length = 6
 number_of_mutations = 5
+
+[node name="TutorialButton" parent="." instance=ExtResource("2_s058y")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1757.0
+offset_right = 1807.0
+offset_bottom = 50.0
+grow_horizontal = 1
 
 [node name="DynamicMenu" parent="." instance=ExtResource("2_s1ja6")]
 layout_mode = 1
@@ -79,6 +90,7 @@ offset_right = 175.0
 offset_bottom = 75.0
 
 [node name="PauseButton" parent="Container" instance=ExtResource("5_8wv44")]
+process_mode = 3
 custom_minimum_size = Vector2(155, 55)
 layout_mode = 2
 

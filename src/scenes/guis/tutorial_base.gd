@@ -73,9 +73,9 @@ func new_slide(text: String, start_signal: Signal, end_signal: Signal, primary_t
 func play_first(text: String, end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], label_location: Vector2 = Vector2(-200,-200), pause_callable: Callable  = pause_callable, play_callable: Callable = play_callable) -> void:
 	var label: Label = label_creator(text)
 	if primary_targets.size() > 0:
-		primary_targets[0].add_child(label)
+		self.add_child(label)
 		target_formatter(primary_targets)
-		label.position = label.position + label_location
+		label.global_position = primary_targets[0].global_position + label_location
 	else:
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
@@ -84,9 +84,9 @@ func play_first(text: String, end_signal: Signal, primary_targets: Array = [], s
 func play_slide(start_signal: Signal,end_signal: Signal, text: String, primary_targets: Array, secondary_targets: Array, label_location: Vector2, pause_callable: Callable) -> void:
 	var label: Label = label_creator(text)
 	if primary_targets.size() > 0:
-		primary_targets[0].add_child(label)
+		self.add_child(label)
 		target_formatter(primary_targets)
-		label.position = label.position + label_location
+		label.global_position = primary_targets[0].global_position + label_location
 	else:
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
