@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=76 format=3 uid="uid://b1ecefqwp20pv"]
+
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
@@ -330,12 +332,14 @@ _loci = {
 }
 
 [sub_resource type="Resource" id="Resource_fl0s3"]
+
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
 ploidy = 2
 _loci = {
 2: SubResource("Resource_6xdu8"),
+
 3: SubResource("Resource_vclho"),
 4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
@@ -356,6 +360,7 @@ b = Vector2(1905, 1058)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q2c3m"]
 a = Vector2(1908, 1066)
 b = Vector2(-4, 1064)
+
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -392,6 +397,7 @@ genotype = SubResource("Resource_hrfhy")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
+
 genotype = SubResource("Resource_fl0s3")
 
 [node name="Boundary" type="StaticBody2D" parent="Entitymanager"]
@@ -407,6 +413,7 @@ shape = SubResource("SegmentShape2D_5lqqx")
 
 [node name="Down" type="CollisionShape2D" parent="Entitymanager/Boundary"]
 shape = SubResource("SegmentShape2D_q2c3m")
+
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1

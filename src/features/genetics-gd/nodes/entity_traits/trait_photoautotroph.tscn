@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnfnj6h4jk3tm"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.gd" id="1_ejnac"]
-[ext_resource type="Texture2D" uid="uid://c8i37urr6ctb2" path="res://features/genetics-gd/assets/herbivore_food/herbivore_food1.png" id="2_jk7k5"]
+[ext_resource type="Texture2D" uid="uid://c5dm7oxixug0c" path="res://features/genetics-gd/assets/leaf.png" id="2_0m4e5"]
 
 [node name="TraitPhotoautotroph" type="Node2D"]
 script = ExtResource("1_ejnac")
 increment_rate_sec = 1.0
 unique_trait_name = "photoautotroph"
 display_name = "Photoautotroph"
-icon = ExtResource("2_jk7k5")
+icon = ExtResource("2_0m4e5")
 locus_type = 6
 
 [node name="IncrementTimer" type="Timer" parent="."]
