@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.gd" id="1_anpxt"]
 [ext_resource type="PackedScene" uid="uid://d2g5rbkenk4ib" path="res://features/genetics-gd/nodes/environment_modifiers/spider_territory.tscn" id="2_w1fy8"]
-[ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="3_utyax"]
+[ext_resource type="Texture2D" uid="uid://yq2fnafwok2f" path="res://features/genetics-gd/assets/territory.png" id="3_p17pd"]
 
 [node name="TraitTerritory" type="Node2D"]
 z_index = -2
@@ -10,6 +10,6 @@ script = ExtResource("1_anpxt")
 territory_scene = ExtResource("2_w1fy8")
 unique_trait_name = "territory"
 display_name = "Territory"
-icon = ExtResource("3_utyax")
+icon = ExtResource("3_p17pd")
 locus_type = 3
 dominance = 1
