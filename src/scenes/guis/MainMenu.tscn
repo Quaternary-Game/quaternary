@@ -16,10 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o748a")
 
-[node name="SettingsMenu" parent="." instance=ExtResource("3_6uvri")]
-visible = false
-layout_mode = 1
-
 [node name="Background" parent="." instance=ExtResource("2_2h5t7")]
 layout_mode = 1
 
@@ -72,6 +68,10 @@ text = "main-menu.settings"
 layout_mode = 2
 size_flags_vertical = 3
 text = "main-menu.exit"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_6uvri")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MiniGameButton" to="." method="_on_mini_game_button_pressed"]

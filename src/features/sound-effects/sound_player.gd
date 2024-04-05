@@ -25,6 +25,7 @@ func _ready() -> void:
 		players[sound] = AudioStreamPlayer.new()
 		add_child(players[sound])
 		players[sound].stream = streams[sound]
+		players[sound].bus = "SFX"
 	
 	players.select.volume_db = -12
 	players.hover.volume_db = -12

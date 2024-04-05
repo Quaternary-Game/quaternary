@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://wmlthonc6smw"]
+[gd_scene load_steps=5 format=3 uid="uid://wmlthonc6smw"]
 
 [ext_resource type="Script" path="res://scenes/guis/pause_menu.gd" id="1_ytf5f"]
 [ext_resource type="Shader" path="res://scenes/guis/blur.gdshader" id="2_dktgy"]
+[ext_resource type="PackedScene" uid="uid://11kelrsxmpor" path="res://scenes/guis/settings_menu.tscn" id="3_r1m8t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4nvc3"]
 shader = ExtResource("2_dktgy")
@@ -57,6 +58,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
 text = "pause-menu.restart"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_r1m8t")]
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]

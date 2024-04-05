@@ -20,8 +20,7 @@ func _on_exit_pressed() -> void:
 	MusicPlayer.play_track2()
 
 func _on_settings_pressed() -> void:
-	# add logic to bring up settings screen
-	$SettingsMenu 
+	$SettingsMenu.visible = true
 
 ## go to the current scene, essentially restarting scene
 func _on_restart_pressed() -> void:
