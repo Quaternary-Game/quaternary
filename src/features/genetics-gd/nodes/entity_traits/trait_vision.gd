@@ -17,7 +17,8 @@ var seen_entities: Array[EntityGD] = []
 signal seen_entity 
 
 func see_entity(body: Node2D) -> void:
-	if body is EntityGD and body != self.entity:
+	if body is EntityGD and body != self.entity and body not in seen_entities:
+		
 		seen_entities.append(body)
 		if not body.tree_exiting.is_connected(lost_entity.bind(body)):
 			body.tree_exiting.connect(lost_entity.bind(body))
@@ -29,6 +30,7 @@ func lost_entity(body: Node2D) -> void:
 		body.tree_exiting.disconnect(lost_entity.bind(body))
 	if body is EntityGD:
 		seen_entities.erase(body)
+		
 		
 func _process(delta: float) -> void:
 	rotation = rotate_toward(rotation, self.entity.velocity.angle() + PI/2, delta*2)

@@ -43,11 +43,11 @@ func _ready() -> void:
 func _on_body_entered(area: Area2D) -> void:
 	if not (area is LightDirected):
 		return
-	
 	self._light_bodies[area.get_instance_id()] = area
 	increment_timer.paused = false
 	if increment_timer.is_stopped():
-		increment_timer.autostart = true
+		if increment_timer.is_inside_tree():
+			increment_timer.start()
 
 func _on_body_exited(area: Area2D) -> void:
 	if not (area is LightDirected):
@@ -60,6 +60,7 @@ func _on_body_exited(area: Area2D) -> void:
 
 
 func _on_increment_timer_timeout() -> void:
+	
 	var trait_calories: TraitCalories = self.entity.traits.get("calories")
 	if trait_calories == null:
 		return

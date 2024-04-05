@@ -20,7 +20,8 @@ func reproduce(other_entity: EntityGD) -> void:
 	var screen_center: Vector2 = get_viewport().get_visible_rect().size / 2
 
 	child.position = self.entity.position + ((get_canvas_transform().affine_inverse() * screen_center).normalized() * 10)
-
+	if self.entity.has_trait("calories"):
+		self.entity.traits["calories"].calories /=2
 	self.is_mating = false
 
 	# Re-enable the traits that were disabled during finding a mate
@@ -107,7 +108,14 @@ func _update_is_mating() -> void:
 	var mating_percent: int = randi() % 100
 
 	if mating_percent < self.is_mating_update_percent:
-		self.is_mating = true
+		if self.entity.has_trait("calories") and self.entity.traits["calories"].full and self.sex == ReproductiveSex.NEITHER:
+			self.is_mating = true
+		elif not self.entity.has_trait("calories") or self.sex != ReproductiveSex.NEITHER:
+			# I love condition hell
+			if self.entity.has_trait("age") and not self.entity.traits["age"].juvenile:
+				self.is_mating = true
+			elif not self.entity.has_trait("age"):
+				self.is_mating = true
 
 func is_valid_mate(other_entity: EntityGD) -> bool:
 	# The entities must be the same class

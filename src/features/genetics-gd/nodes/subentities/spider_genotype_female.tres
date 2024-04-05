@@ -1,31 +1,13 @@
-[gd_resource type="Resource" script_class="Genotype" load_steps=29 format=3 uid="uid://ckg6bwj04pibn"]
+[gd_resource type="Resource" script_class="Genotype" load_steps=24 format=3 uid="uid://ckg6bwj04pibn"]
 
-[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="1_4qsy1"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_au3ox"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/locus.gd" id="3_6wn8r"]
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_d3iaq"]
-[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="5_3h3pp"]
 [ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="6_qrdlt"]
 [ext_resource type="PackedScene" uid="uid://beik3q8lbs8k6" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_female.tscn" id="7_mp68l"]
 [ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_58r5p"]
 [ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="9_4jgou"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="10_0jted"]
-
-[sub_resource type="Resource" id="Resource_bqf7w"]
-script = ExtResource("2_au3ox")
-scene = ExtResource("1_4qsy1")
-_type = 1
-
-[sub_resource type="Resource" id="Resource_n5scf"]
-script = ExtResource("2_au3ox")
-scene = ExtResource("1_4qsy1")
-_type = 1
-
-[sub_resource type="Resource" id="Resource_aqsoa"]
-script = ExtResource("3_6wn8r")
-hidden = true
-_type = 1
-_alleles = Array[ExtResource("2_au3ox")]([SubResource("Resource_bqf7w"), SubResource("Resource_n5scf")])
 
 [sub_resource type="Resource" id="Resource_aaecd"]
 script = ExtResource("2_au3ox")
@@ -43,9 +25,9 @@ hidden = true
 _type = 2
 _alleles = Array[ExtResource("2_au3ox")]([SubResource("Resource_aaecd"), SubResource("Resource_bop78")])
 
-[sub_resource type="Resource" id="Resource_6mcel"]
+[sub_resource type="Resource" id="Resource_dyloq"]
 script = ExtResource("2_au3ox")
-scene = ExtResource("5_3h3pp")
+scene = ExtResource("6_qrdlt")
 _type = 3
 
 [sub_resource type="Resource" id="Resource_n0bot"]
@@ -57,7 +39,7 @@ _type = 3
 script = ExtResource("3_6wn8r")
 hidden = false
 _type = 3
-_alleles = Array[ExtResource("2_au3ox")]([SubResource("Resource_6mcel"), SubResource("Resource_n0bot")])
+_alleles = Array[ExtResource("2_au3ox")]([SubResource("Resource_dyloq"), SubResource("Resource_n0bot")])
 
 [sub_resource type="Resource" id="Resource_jggjk"]
 script = ExtResource("2_au3ox")
@@ -113,7 +95,6 @@ resource_name = "SpiderGenotypeFemale"
 script = ExtResource("10_0jted")
 ploidy = 2
 _loci = {
-1: SubResource("Resource_aqsoa"),
 2: SubResource("Resource_o8ddg"),
 3: SubResource("Resource_lu2dh"),
 4: SubResource("Resource_dvxih"),

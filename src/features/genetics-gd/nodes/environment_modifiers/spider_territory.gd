@@ -14,7 +14,7 @@ func _ready() -> void:
 		var step : float = i * 2 * PI / spokes
 		var point : Vector2 = Vector2(sin(step )*radius, cos(step)*radius)
 		points.append(point)
-
+	print_debug(points)
 func _draw() -> void:
 	
 	

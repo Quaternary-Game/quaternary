@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=76 format=3 uid="uid://b1ecefqwp20pv"]
-
+[gd_scene load_steps=79 format=3 uid="uid://b1ecefqwp20pv"]
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
@@ -287,22 +285,6 @@ hidden = false
 _type = 3
 _alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_d0tjv"), SubResource("Resource_3a8ki")])
 
-[sub_resource type="Resource" id="Resource_4nvwj"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("14_cpl4k")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_bj8ll"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("14_cpl4k")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_cb8ha"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 6
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_4nvwj"), SubResource("Resource_bj8ll")])
-
 [sub_resource type="Resource" id="Resource_sfpyv"]
 script = ExtResource("4_2tp1x")
 scene = ExtResource("17_3ctjv")
@@ -319,27 +301,59 @@ hidden = false
 _type = 4
 _alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_sfpyv"), SubResource("Resource_0jtj6")])
 
-[sub_resource type="Resource" id="Resource_hrfhy"]
+[sub_resource type="Resource" id="Resource_4nvwj"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("14_cpl4k")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_bj8ll"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("14_cpl4k")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_cb8ha"]
+script = ExtResource("5_4vf1b")
+hidden = false
+_type = 6
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_4nvwj"), SubResource("Resource_bj8ll")])
+
+[sub_resource type="Resource" id="Resource_e272m"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("3_o5nu1")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_duak7"]
+script = ExtResource("4_2tp1x")
+scene = ExtResource("3_o5nu1")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_5jvno"]
+script = ExtResource("5_4vf1b")
+hidden = true
+_type = 1
+_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_e272m"), SubResource("Resource_duak7")])
+
+[sub_resource type="Resource" id="Resource_jjcpg"]
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
 ploidy = 2
 _loci = {
+1: SubResource("Resource_5jvno"),
 2: SubResource("Resource_6xdu8"),
 3: SubResource("Resource_vclho"),
 4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
 }
 
-[sub_resource type="Resource" id="Resource_fl0s3"]
-
+[sub_resource type="Resource" id="Resource_bs5ds"]
 resource_local_to_scene = true
 resource_name = "BacteriaGenotype"
 script = ExtResource("11_a4163")
 ploidy = 2
 _loci = {
+1: SubResource("Resource_5jvno"),
 2: SubResource("Resource_6xdu8"),
-
 3: SubResource("Resource_vclho"),
 4: SubResource("Resource_hm7e3"),
 6: SubResource("Resource_cb8ha")
@@ -361,7 +375,6 @@ b = Vector2(1905, 1058)
 a = Vector2(1908, 1066)
 b = Vector2(-4, 1064)
 
-
 [node name="Level1" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -377,10 +390,18 @@ mouse_filter = 2
 position = Vector2(864, 465)
 
 [node name="Marker2D" type="Marker2D" parent="Entitymanager"]
-position = Vector2(572, 290)
+position = Vector2(1277, 865)
 
 [node name="Spider" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(593, 436)
+genotype = SubResource("Resource_gmjkq")
+
+[node name="Spider4" parent="Entitymanager" instance=ExtResource("2_crnex")]
+position = Vector2(593, 436)
+genotype = SubResource("Resource_gmjkq")
+
+[node name="Spider5" parent="Entitymanager" instance=ExtResource("2_crnex")]
+position = Vector2(927, 508)
 genotype = SubResource("Resource_gmjkq")
 
 [node name="Spider2" parent="Entitymanager" instance=ExtResource("2_crnex")]
@@ -393,12 +414,11 @@ genotype = SubResource("Resource_fhyxy")
 
 [node name="Bacteria" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(80, 287)
-genotype = SubResource("Resource_hrfhy")
+genotype = SubResource("Resource_jjcpg")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
-
-genotype = SubResource("Resource_fl0s3")
+genotype = SubResource("Resource_bs5ds")
 
 [node name="Boundary" type="StaticBody2D" parent="Entitymanager"]
 
@@ -413,7 +433,6 @@ shape = SubResource("SegmentShape2D_5lqqx")
 
 [node name="Down" type="CollisionShape2D" parent="Entitymanager/Boundary"]
 shape = SubResource("SegmentShape2D_q2c3m")
-
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1
