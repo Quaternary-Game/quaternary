@@ -61,17 +61,17 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_nsp7u")
 
-[node name="TestButton" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.278
-anchor_top = 0.59
-anchor_right = 0.326
-anchor_bottom = 0.694
-offset_left = -0.760071
-offset_top = -0.200012
-offset_right = -0.919983
-offset_bottom = -0.52002
-text = "Test"
+[node name="MouseClickButton" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1621.0
+offset_top = 955.0
+offset_right = -62.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
 
 [connection signal="hit" from="Player" to="." method="node_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
@@ -79,3 +79,4 @@ text = "Test"
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="next_level" from="HUD" to="." method="next_level"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="pressed" from="TutorialButton" to="TutorialButton" method="_on_pressed"]

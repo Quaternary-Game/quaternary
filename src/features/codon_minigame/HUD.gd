@@ -32,6 +32,8 @@ func update_score(score: int) -> void:
 
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
+	get_parent().get_node("TutorialButton").hide()
+	get_parent().get_node("MouseClickButton").hide()
 	start_game.emit()
 	print($StartButton.get_path())
 
