@@ -67,8 +67,8 @@ func target_reverter(primary_targets: Array) -> void:
 	
 ### Used on all slides except first
 func new_slide(text: String, start_signal: Signal, end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], label_location: Vector2 = Vector2(-200,-200), pause_callable: Callable  = pause_callable, play_callable: Callable = play_callable) -> void:
-	start_signal.connect(play_slide.bind(start_signal, text, primary_targets, secondary_targets, label_location, pause_callable))
-	end_signal.connect(close_slide.bind(end_signal, primary_targets, secondary_targets, play_callable))
+	start_signal.connect(play_slide.bind(start_signal, end_signal, text, primary_targets, secondary_targets, label_location, pause_callable))
+	
 
 ###Used on only first tutorial scene
 func play_first(text: String, end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], label_location: Vector2 = Vector2(-200,-200), pause_callable: Callable  = pause_callable, play_callable: Callable = play_callable) -> void:
@@ -80,11 +80,12 @@ func play_first(text: String, end_signal: Signal, primary_targets: Array = [], s
 	else:
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
+	print_debug("opening first slides")
+	end_signal.connect(close_slide.bind(label, end_signal, primary_targets, secondary_targets, play_callable))
 	
-	end_signal.connect(close_slide.bind(end_signal, primary_targets, secondary_targets, play_callable))
-	
-func play_slide(start_signal: Signal, text: String, primary_targets: Array, secondary_targets: Array, label_location: Vector2, pause_callable: Callable) -> void:
+func play_slide(start_signal: Signal,end_signal: Signal, text: String, primary_targets: Array, secondary_targets: Array, label_location: Vector2, pause_callable: Callable) -> void:
 	var label: Label = label_creator(text)
+	print_debug(label)
 	if primary_targets.size() > 0:
 		primary_targets[0].add_child(label)
 		target_formatter(primary_targets)
@@ -93,12 +94,10 @@ func play_slide(start_signal: Signal, text: String, primary_targets: Array, seco
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
 	start_signal.disconnect(play_slide)
+	print_debug("opening slides")
+	end_signal.connect(close_slide.bind(label, end_signal, primary_targets, secondary_targets, play_callable))
 
-func close_slide(end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], play_callable: Callable = play_callable) -> void:
-	var path: String = primary_targets[0].get_path()
-	print(path)
-	print(get_node(path + "/TutorialPanel"))
-	var label: Label = get_node(path + "/TutorialPanel")
+func close_slide(label: Label, end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], play_callable: Callable = play_callable) -> void:
 	if label:
 		label.queue_free()
 	print("CLosing Slides")

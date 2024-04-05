@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b1ecefqwp20pv"]
+[gd_scene load_steps=40 format=3 uid="uid://b1ecefqwp20pv"]
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
@@ -175,6 +175,16 @@ _loci = {
 3: SubResource("Resource_vclho")
 }
 
+[sub_resource type="Resource" id="Resource_6olec"]
+resource_local_to_scene = true
+resource_name = "BacteriaGenotype"
+script = ExtResource("11_a4163")
+ploidy = 2
+_loci = {
+2: SubResource("Resource_6xdu8"),
+3: SubResource("Resource_vclho")
+}
+
 [node name="Level1" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -207,7 +217,7 @@ genotype = SubResource("Resource_vgux0")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
-genotype = SubResource("Resource_vgux0")
+genotype = SubResource("Resource_6olec")
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1
