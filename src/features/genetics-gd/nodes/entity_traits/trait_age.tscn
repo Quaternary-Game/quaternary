@@ -8,4 +8,4 @@ script = ExtResource("1_wv4mf")
 unique_trait_name = "age"
 display_name = "Age"
 icon = ExtResource("2_ccfdf")
-loci = "age"
+locus_type = 1

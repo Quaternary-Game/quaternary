@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	var mouse_position: Vector2  = get_global_mouse_position()
 	
 	var direction: Vector2 = (mouse_position - position)
-	if direction.length() > 4:
+	if direction.length() > 6:
 		velocity = (direction * speed).normalized()
 		velocity = velocity * speed
 		position += velocity * delta

@@ -16,20 +16,14 @@ func _on_mouse_entered() -> void:
 	#if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 	show_traits.emit(entity)
 	check_for_trait_changes = true
-	if "age" in entity.traits:
-		entity.traits["age"].visible = true
-	else:
-		animate_circle()
+	animate_circle()
 
 
 
 func _on_mouse_exited() -> void:
 	end_traits.emit()
 	check_for_trait_changes = false
-	if "age" in entity.traits:
-		entity.traits["age"].visible = false
-	else:
-		clear_circle()
+	clear_circle()
 	
 
 func on_traits_change() -> void:

@@ -23,8 +23,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_s2pld")
+progress = 1.515
 
 [node name="Spider" parent="ProgressBar" instance=ExtResource("3_xkjcf")]
-position = Vector2(-200, 0)
+position = Vector2(-387.88, 0)
 rotation = 1.5708
-scale = Vector2(0.2, 0.2)
+speed_scale = 2.0

@@ -8,4 +8,4 @@ script = ExtResource("1_oq4t1")
 unique_trait_name = "herbivore"
 display_name = "Herbivore"
 icon = ExtResource("2_06q67")
-loci = "vore"
+locus_type = 6

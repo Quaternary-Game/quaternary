@@ -33,10 +33,12 @@ func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_DRAG_END:
 			if _dragging and !is_drag_successful() and not done:
+				SoundPlayer.play_incompatible()
 				get_parent().reveal_slide_child(self)
 				_dragging = false
 				end_drag.emit(false)
 			if is_drag_successful() and not self.visible:
+				SoundPlayer.play_confirm()
 				done = true
 				end_drag.emit(true)
 

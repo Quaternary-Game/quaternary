@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvmw4mfaurtd5"
-path="res://.godot/imported/arrow.png-19588a712664ae33e93f47d0a330c276.ctex"
+uid="uid://phgw0rk4nbqg"
+path="res://.godot/imported/age.png-2b4f566a70c3a076d4fc513789c5ff03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://features/codon_minigame/art/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-19588a712664ae33e93f47d0a330c276.ctex"]
+source_file="res://features/main_game/UI/radialprogress/age.png"
+dest_files=["res://.godot/imported/age.png-2b4f566a70c3a076d4fc513789c5ff03.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

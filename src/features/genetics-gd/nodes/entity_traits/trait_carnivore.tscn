@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://cig8rkqvmvbyn"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.gd" id="1_meqn4"]
-[ext_resource type="Texture2D" uid="uid://b8usivnk5bcy" path="res://features/genetics-gd/assets/herbivore.svg" id="2_13ekt"]
+[ext_resource type="Texture2D" uid="uid://c2yg0g64lpdrh" path="res://features/genetics-gd/assets/teeth.png" id="2_2j5fk"]
 
 [node name="TraitCarnivore" type="Node2D"]
 script = ExtResource("1_meqn4")
 unique_trait_name = "carnivore"
 display_name = "Carnivore"
-icon = ExtResource("2_13ekt")
-loci = "vore"
+icon = ExtResource("2_2j5fk")
+locus_type = 6
+
+[node name="BiteDelay" type="Timer" parent="."]

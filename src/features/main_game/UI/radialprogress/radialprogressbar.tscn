@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://ykad2xskgg8x"]
+
+[ext_resource type="Texture2D" uid="uid://dgfqhxgsd62u" path="res://features/main_game/UI/radialprogress/progress.png" id="1_xcr13"]
+[ext_resource type="Texture2D" uid="uid://2f3p75uhciiu" path="res://features/main_game/UI/radialprogress/calories.png" id="1_ybeco"]
+[ext_resource type="Script" path="res://features/main_game/UI/radialprogress/radialprogressbar.gd" id="2_i4yxn"]
+
+[node name="Radialprogressbar" type="TextureProgressBar"]
+process_mode = 3
+custom_minimum_size = Vector2(55, 55)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1865.0
+offset_bottom = -1025.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_over = ExtResource("1_ybeco")
+texture_progress = ExtResource("1_xcr13")
+texture_progress_offset = Vector2(0, -2)
+script = ExtResource("2_i4yxn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = 17.5
+offset_right = 20.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 13
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

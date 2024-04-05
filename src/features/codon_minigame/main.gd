@@ -12,21 +12,20 @@ var acids :Dictionary= {"Phenylalanine": ["UUU", "UUC"], "Leucine": ["UUA", "UUG
 var goalAcid: String
 var codons :String = ""
 
-var arrow : Resource = preload("res://features/codon_minigame/art/arrow.png")
-
 func _ready() -> void:
+	MusicPlayer.play_new_beginnings()
 	load_game()
-	Input.set_custom_mouse_cursor(arrow,Input.CURSOR_ARROW, Vector2(12, 12))
 
 func win() -> void:
 	$MobTimer.stop()
 	$Player/CollisionShape2D.set_deferred("disabled", true)
 	get_tree().call_group("mobs", "queue_free")
 	score += 1
+	SoundPlayer.play_complete()
 	$HUD.show_next_level(score)
 
 func lose() -> void:
-	$DeathSound.play()
+	SoundPlayer.play_game_over()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$Player/CollisionShape2D.set_deferred("disabled", true)
@@ -36,11 +35,9 @@ func lose() -> void:
 	score = 0
 	$Player.set_deferred("started", false)
 	$HUD.show_game_over(str(highScore))
-	$Music.stop()
 
 
 func new_game() -> void:
-	$Music.play()
 	$Player.start($StartPosition.position)
 	next_level()
 
@@ -107,7 +104,11 @@ func _on_start_timer_timeout() -> void:
 
 
 func node_hit(body: Node2D) -> void:
+
+	SoundPlayer.play_grab()
+
 	var _temp :Node = body.get_node("AnimatedSprite2D")
+
 	codons += body.get_node("AnimatedSprite2D/Letter").text
 	print(codons)
 	if codons.length() >= 3:

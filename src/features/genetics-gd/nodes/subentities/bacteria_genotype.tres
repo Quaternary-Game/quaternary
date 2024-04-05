@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Genotype" load_steps=12 format=3 uid="uid://bkwfxsyhqfwyr"]
+
+[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="1_jbgoo"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_yt2i6"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/locus.gd" id="3_n1jj0"]
+[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="4_ivs4w"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="5_kefj6"]
+
+[sub_resource type="Resource" id="Resource_lxh8w"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("4_ivs4w")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_14o8g"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("4_ivs4w")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_6xdu8"]
+script = ExtResource("3_n1jj0")
+hidden = true
+_type = 2
+_alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_lxh8w"), SubResource("Resource_14o8g")])
+
+[sub_resource type="Resource" id="Resource_d0tjv"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("1_jbgoo")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_3a8ki"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("1_jbgoo")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_vclho"]
+script = ExtResource("3_n1jj0")
+hidden = false
+_type = 3
+_alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_d0tjv"), SubResource("Resource_3a8ki")])
+
+[resource]
+resource_local_to_scene = true
+resource_name = "BacteriaGenotype"
+script = ExtResource("5_kefj6")
+ploidy = 2
+_loci = {
+2: SubResource("Resource_6xdu8"),
+3: SubResource("Resource_vclho")
+}

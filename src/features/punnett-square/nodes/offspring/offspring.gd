@@ -37,6 +37,7 @@ func check_genotype() -> bool:
 ## updates color based on input
 func _on_genotype_text_changed(_new_text: String) -> void:
 	if check_genotype():
+		SoundPlayer.play_confirm()
 		self.modulate = correct_color
 		if !correct:
 			correct = true

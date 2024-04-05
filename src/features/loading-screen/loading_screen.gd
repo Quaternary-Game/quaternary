@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 		load_status = ResourceLoader.load_threaded_get_status(_scene_path, progress)
 		$ProgressBar.value = progress[0] * 100
 	elif load_status == ResourceLoader.THREAD_LOAD_LOADED and loading:
-		print(progress[0])
 		$ProgressBar.value = 101
 	elif loading:
 		push_error("Could not load scene: %s" % load_status)

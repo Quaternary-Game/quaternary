@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="Genotype" load_steps=25 format=3 uid="uid://mprb6wcc3leo"]
+
+[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="1_sl6h5"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_2sjr5"]
+[ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="3_gxojh"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/locus.gd" id="4_qfsg7"]
+[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="5_7p5ky"]
+[ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="6_njtp1"]
+[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="7_onukw"]
+[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="8_qri45"]
+[ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="9_wfsbf"]
+
+[sub_resource type="Resource" id="Resource_bqf7w"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("7_onukw")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_n5scf"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("7_onukw")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_aqsoa"]
+script = ExtResource("4_qfsg7")
+hidden = true
+_type = 1
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_bqf7w"), SubResource("Resource_n5scf")])
+
+[sub_resource type="Resource" id="Resource_aaecd"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("8_qri45")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_bop78"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("8_qri45")
+_type = 2
+
+[sub_resource type="Resource" id="Resource_o8ddg"]
+script = ExtResource("4_qfsg7")
+hidden = true
+_type = 2
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_aaecd"), SubResource("Resource_bop78")])
+
+[sub_resource type="Resource" id="Resource_6mcel"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("1_sl6h5")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_n0bot"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("3_gxojh")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_lu2dh"]
+script = ExtResource("4_qfsg7")
+hidden = false
+_type = 3
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_6mcel"), SubResource("Resource_n0bot")])
+
+[sub_resource type="Resource" id="Resource_pqaus"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("5_7p5ky")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_37htv"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("5_7p5ky")
+_type = 5
+
+[sub_resource type="Resource" id="Resource_7gce5"]
+script = ExtResource("4_qfsg7")
+hidden = false
+_type = 5
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_pqaus"), SubResource("Resource_37htv")])
+
+[sub_resource type="Resource" id="Resource_0yari"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("6_njtp1")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_wd7xo"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("6_njtp1")
+_type = 6
+
+[sub_resource type="Resource" id="Resource_cjdtg"]
+script = ExtResource("4_qfsg7")
+hidden = false
+_type = 6
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_0yari"), SubResource("Resource_wd7xo")])
+
+[resource]
+resource_local_to_scene = true
+resource_name = "SpiderGenotype"
+script = ExtResource("9_wfsbf")
+ploidy = 2
+_loci = {
+1: SubResource("Resource_aqsoa"),
+2: SubResource("Resource_o8ddg"),
+3: SubResource("Resource_lu2dh"),
+5: SubResource("Resource_7gce5"),
+6: SubResource("Resource_cjdtg")
+}
