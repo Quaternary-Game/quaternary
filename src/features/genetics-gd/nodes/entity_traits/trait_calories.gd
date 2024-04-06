@@ -11,21 +11,26 @@ class_name TraitCalories extends TraitBase
 
 var progress_bar : TextureProgressBar = preload("res://features/main_game/UI/radialprogress/radialprogressbar.tscn").instantiate()
 var hungry: Resource = preload("res://features/main_game/UI/radialprogress/calories.png")
+var gain_calories_particles : GPUParticles2D= preload("res://features/genetics-gd/nodes/VisualEffects/calories_gained.tscn").instantiate()
 # ################### #
 #  Entity Properties  #
 # ################### #
 
 ## An integer count that represents the number of calories the entity has
-@export var calories : int = 2000:
+@export var calories : int = 4000:
 	set(value):
-		if value <= max_calories:
-			calories = value
-			progress_bar.value = value
-		else:
-			calories = max_calories
-			progress_bar.value = value
+		value = clamp(value, -1,max_calories )
+		if calories < value:
+			if gain_calories_particles in self.get_children():
+				self.remove_child(gain_calories_particles)
+			gain_calories_particles.emitting = true
+			gain_calories_particles.one_shot = true
+			self.add_child(gain_calories_particles)
+		
+		calories = value
+		progress_bar.value = value
 		percent = (calories/float(max_calories)) * 100
-		if calories <= 0:
+		if value <= 0:
 			self.entity.death()
 			
 var max_calories: int:
@@ -35,41 +40,43 @@ var max_calories: int:
 
 
 var percent : float:
-	set(value):
-		percent = value
-		full = percent >= 90
-		starving = percent <= 10
+	get:
+		return 100 * calories/float(max_calories)
 
-var full : bool
-var starving : bool
+
+
+var full : bool:
+	get:
+		return percent >= 90
+var starving : bool:
+	get:
+		return percent <= 10
 
 # ##################### #
 #  Trait Customization  #
 # ##################### #
-
+@onready var decaytimer : Timer = $DecayTimer
 ## Boolean value to indicate if decay should occur
-@export var decay_enabled : bool
 
-var _decay_enabled : bool:
+@export var decay_enabled : bool:
 	get:
-		return not $DecayTimer.paused
+		return not decaytimer.paused
 	set(value):
 		var new_value : bool = not value
 		
-		if $DecayTimer:
-			$DecayTimer.paused = new_value
+		if decaytimer:
+			decaytimer.paused = new_value
 		else:
 			self._deferred_enabled = new_value
 
 ## Float number of seconds that defines the rate at which calories decay
-@export var decay_rate_sec : float
 
-var _decay_rate_sec : float:
+@export var decay_rate_sec : float:
 	get:
-		return $DecayTimer.wait_time
+		return decaytimer.wait_time
 	set(value):
-		if $DecayTimer:
-			$DecayTimer.wait_time = value
+		if decaytimer:
+			decaytimer.wait_time = value
 		else:
 			self._deferred_decay_rate_sec = value
 
@@ -87,8 +94,6 @@ var _deferred_decay_rate_sec: float
 
 func _ready() -> void:
 	self.initialize()
-	self._decay_enabled = self.decay_enabled
-	self._decay_rate_sec = self.decay_rate_sec
 	max_calories = calories
 	calories = calories
 	progress_bar.texture_over = hungry

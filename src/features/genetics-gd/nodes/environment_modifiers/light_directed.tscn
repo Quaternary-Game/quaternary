@@ -4,28 +4,32 @@
 [ext_resource type="Texture2D" uid="uid://hrqw6dr0rem8" path="res://features/genetics-gd/assets/light_overlay.png" id="2_ixj2a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl7yg"]
+radius = 2000.0
 
-[node name="LightDirected" type="StaticBody2D"]
+[node name="LightDirected" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_hvggr")
+color = Color(0.921569, 0.796078, 0.545098, 1)
 intensity = 1.0
-radius = 48.0
+radius = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_cl7yg")
 
 [node name="Overlay" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -37.605
+offset_top = -37.605
+offset_right = 37.605
+offset_bottom = 37.605
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ixj2a")
