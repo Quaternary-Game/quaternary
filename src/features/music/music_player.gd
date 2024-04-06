@@ -11,9 +11,11 @@ var new_beginnings:AudioStream = preload("res://features/music/assets/New_Beginn
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	player = AudioStreamPlayer.new()
+	player.bus = "Music"
 	add_child(player)
 	paused_player = AudioStreamPlayer.new()
 	paused_player.stream = track2
+	paused_player.bus = "Music"
 	add_child(paused_player)
 
 func play_track2() -> void:

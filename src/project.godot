@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2")
 MusicPlayer="*res://features/music/music_player.gd"
 SoundPlayer="*res://features/sound-effects/sound_player.gd"
 SceneSwitching="*res://features/scene-switching/scene_switching.gd"
+GlobalSettings="*res://scenes/guis/global_settings.gd"
 AntialiasedLine2DTexture="*res://addons/antialiased_line2d/texture.gd"
 
 [debug]
