@@ -8,6 +8,9 @@ var entity: EntityGD
 
 func _ready() -> void:
 	color = Control.new().get_theme_color("entity_selector", "entity_manager" )
+	if not entity:
+		queue_free()
+		return
 	self.entity.traits_changed.connect(on_traits_change)
 
 var check_for_trait_changes : bool = false

@@ -11,6 +11,9 @@ const ALL: Array[PackedScene] = [
 	preload("res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn"),
 	preload("res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn"),
 	preload("res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn"),
+	preload("res://features/genetics-gd/nodes/entity_traits/trait_reproduction_asexual.tscn"),
+	preload("res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_male.tscn"),
+	preload("res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_female.tscn"),
 ]
 
 var loaded_alleles: Dictionary = {}

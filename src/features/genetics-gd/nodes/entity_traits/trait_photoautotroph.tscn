@@ -10,6 +10,7 @@ unique_trait_name = "photoautotroph"
 display_name = "Photoautotroph"
 icon = ExtResource("2_0m4e5")
 locus_type = 6
+dominance = 1
 
 [node name="IncrementTimer" type="Timer" parent="."]
 

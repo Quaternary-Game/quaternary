@@ -1,1 +1,1 @@
-class_name BacteriaEntity extends EntityGD
+class_name BacteriaEntity extends EntityEnemy

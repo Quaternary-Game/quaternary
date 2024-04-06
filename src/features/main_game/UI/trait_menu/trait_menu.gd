@@ -24,6 +24,9 @@ var preview_value: int = 0:
 @export var traitpoints: Array[int] = []
 
 func _ready() ->void:
+	$Points.text = str(points)
+	for i: Node in $TraitGrid.get_children():
+		$TraitGrid.remove_child(i)
 	for t: int in range(len(traitlist)):
 		var _trait :UiTrait = UiTraitScene.instantiate()
 		_trait.entitytrait = traitlist[t]

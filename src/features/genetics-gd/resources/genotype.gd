@@ -35,6 +35,7 @@ func ready() -> void:
 				self.dominance_changed.emit(locus, old_dominance, new_dominance)
 		)
 
+## Returns a deep copy of the genotype.
 func clone() -> Genotype:
 	var cloned: Genotype = Genotype.new()
 	cloned.ploidy = self.ploidy
@@ -52,9 +53,51 @@ func clone() -> Genotype:
 			)
 	return cloned
 
+## Mixes this genotype with another genotype.
+## If this genotype and the other genotype have different ploidy,
+## the combination cannot continue and an assertion will fail.
+func mix(other: Genotype) -> Genotype:
+	assert(self.ploidy == other.ploidy, "Cannot mix genotypes with different ploidy.")
+
+	## Get all the locus types from both genotypes.
+	## NOTE: GDScript doesn't have the concept of a set...
+	var all_loci_types: Dictionary = {}
+	for locus_type: GeneticConstants.LocusType in self.get_loci_types():
+		all_loci_types[locus_type] = true
+	for locus_type: GeneticConstants.LocusType in other.get_loci_types():
+		all_loci_types[locus_type] = true
+
+	var combined: Genotype = Genotype.new()
+	for locus_type: GeneticConstants.LocusType in all_loci_types.keys():
+		var self_locus: Locus = self.get_locus(locus_type)
+		var other_locus: Locus = other.get_locus(locus_type)
+
+		var self_alleles: Array[Allele] = self_locus.get_alleles().duplicate() if self_locus else []
+		var other_alleles: Array[Allele] = other_locus.get_alleles().duplicate() if other_locus else []
+
+		var combined_locus: Locus = combined.add_or_get_locus(locus_type)
+		
+		# Carry over the hidden flag
+		if self_locus and other_locus:
+			combined_locus.hidden = self_locus.hidden and other_locus.hidden
+		else:
+			combined_locus.hidden = self_locus.hidden if self_locus else other_locus.hidden
+		
+		for allele_index: int in range(self.ploidy):
+			# This is a *very* naive implementation.
+			# Effectively, every other allele_index, we switch
+			# which entity is being used and then we randomly pick
+			# an allele from that entity (one that has not been chosen yet).
+			var chosen_alleles: Array[Allele] = self_alleles if allele_index % 2 == 0 else other_alleles
+			var chosen_allele: Allele = chosen_alleles.pop_at(randi() % chosen_alleles.size()) if chosen_alleles.size() > 0 else Allele.new(Traits.EMPTY_ALLELE, combined_locus._type)
+
+			combined_locus.set_allele(Allele.new(chosen_allele.scene, combined_locus._type), allele_index)
+
+	return combined
+
 ## Gets the locus with the given name.
 func get_locus(locus_type: GeneticConstants.LocusType) -> Locus:
-	return self._loci[locus_type]
+	return self._loci.get(locus_type)
 
 ## Gets all the loci in the genotype.
 ## Returns an array of loci.
@@ -63,6 +106,13 @@ func get_loci() -> Array[Locus]:
 	for locus: Locus in self._loci.values():
 		loci.append(locus)
 	return loci
+
+## Gets all the locus types in the genotype.
+func get_loci_types() -> Array[GeneticConstants.LocusType]:
+	var loci_types: Array[GeneticConstants.LocusType] = []
+	for locus: GeneticConstants.LocusType in self._loci.keys():
+		loci_types.append(locus)
+	return loci_types
 
 ## Checks if the genotype has a locus with the given type.
 func has_locus(locus_type: GeneticConstants.LocusType) -> bool:

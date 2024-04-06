@@ -11,20 +11,28 @@ signal play(value: bool)
 signal trait_drag_start(t: TraitDragButton)
 signal trait_drag_end
 
+# should work out something similar to genotype here
+@export var TraitList: Array[PackedScene]
+@export var TraitListPoints: Array[int]
+@export var TotalPoints : int
 
 func _ready() -> void:
+
 	MusicPlayer.play_sketching()
 	
 	toggle = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/ToggleTraitMenu")
 	trait_menu_panel = get_node("VBoxContainer/HBoxContainer/MarginContainer/PanelContainer")
 	trait_menu = get_node("VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/TraitMenu")
+	trait_menu.traitlist = TraitList
+	trait_menu.traitpoints = TraitListPoints
+	trait_menu.points = TotalPoints
+	trait_menu._ready()
 	entity_trait_list = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Traitlist")
 	toggle.toggle_mode = true
 	for i : Control in trait_menu.traits():
 		i.begin_drag.connect(start_drag_button_handler)
 		i.end_drag.connect(end_drag_button_handler)
-		
-	
+
 func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
 	var tween : Tween = create_tween()
 
@@ -46,9 +54,12 @@ func end_drag_button_handler(_data: Variant, _success: bool) -> void:
 
 func _on_start_pause_toggled(toggled_on:bool) -> void:
 	play.emit(toggled_on)
+	$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Timer.paused = not toggled_on
+
 
 
 func _on_entitymanager_show_traits(entity: EntityGD) -> void:
+	
 	for locus: Locus in entity.genotype.get_loci():
 		if locus.hidden:
 			continue
@@ -80,3 +91,7 @@ func _on_entitymanager_end_show_traits() -> void:
 			i.queue_free()
 		elif i is TextureProgressBar:
 			entity_trait_list.remove_child(i)
+
+
+func _on_timer_game_over() -> void:
+	print_debug("game_over")
