@@ -22,6 +22,7 @@ class_name PlayerEntity extends EntityGD
 
 func _ready() -> void:
 	super._ready()
+	is_vision()
 	self.traits_changed.connect(is_vision)
 
 func is_vision() -> void:
