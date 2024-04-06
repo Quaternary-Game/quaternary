@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dofhrrwq80tfb"
-path="res://.godot/imported/agender.png-e34a1cfdb65db7c4ac452ffbffa197ac.ctex"
+uid="uid://ca5ukorusmjey"
+path="res://.godot/imported/arrow.png-7b4022d41d82cafb35b6642852e27f4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://features/genetics-gd/assets/agender.png"
-dest_files=["res://.godot/imported/agender.png-e34a1cfdb65db7c4ac452ffbffa197ac.ctex"]
+source_file="res://scenes/guis/tutorial/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-7b4022d41d82cafb35b6642852e27f4b.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

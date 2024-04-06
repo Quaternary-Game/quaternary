@@ -73,9 +73,9 @@ func new_slide(text: String, start_signal: Signal, end_signal: Signal, primary_t
 func play_first(text: String, end_signal: Signal, primary_targets: Array = [], secondary_targets: Array = [], label_location: Vector2 = Vector2(-200,-200), pause_callable: Callable  = pause_callable, play_callable: Callable = play_callable) -> void:
 	var label: Label = label_creator(text)
 	if primary_targets.size() > 0:
-		primary_targets[0].add_child(label)
+		self.add_child(label)
 		target_formatter(primary_targets)
-		label.position = label.position + label_location
+		label.global_position = primary_targets[0].global_position + label_location
 	else:
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
@@ -84,9 +84,9 @@ func play_first(text: String, end_signal: Signal, primary_targets: Array = [], s
 func play_slide(start_signal: Signal,end_signal: Signal, text: String, primary_targets: Array, secondary_targets: Array, label_location: Vector2, pause_callable: Callable) -> void:
 	var label: Label = label_creator(text)
 	if primary_targets.size() > 0:
-		primary_targets[0].add_child(label)
+		self.add_child(label)
 		target_formatter(primary_targets)
-		label.position = label.position + label_location
+		label.global_position = primary_targets[0].global_position + label_location
 	else:
 		label.position = Vector2(500, 500)
 	pause_callable(primary_targets, secondary_targets)
@@ -99,3 +99,31 @@ func close_slide(label: Label, end_signal: Signal, primary_targets: Array = [], 
 	target_reverter(primary_targets)
 	play_callable(primary_targets, secondary_targets)
 	end_signal.disconnect(close_slide)
+
+var Arrow_Scene: Resource = preload("res://scenes/guis/tutorial/arrow.tscn")
+
+func new_arrow(start_signal: Signal, end_signal: Signal, arrow_position_offset: Vector2, arrow_target: Node) -> void:
+	start_signal.connect(play_arrow.bind(start_signal, end_signal, arrow_position_offset, arrow_target))
+	
+
+func play_first_arrow(end_signal: Signal, arrow_position_offset: Vector2, arrow_target: Node) -> void:
+	var arrow: Node2D = Arrow_Scene.instantiate()
+	self.add_child(arrow)
+	arrow.global_position = arrow_target.global_position + arrow_position_offset
+	arrow.rotation = arrow.global_position.direction_to(arrow_target.global_position).angle() + PI/2
+	var c : Callable = func(c: Callable) -> void:
+		self.close_arrow(arrow, end_signal, c)
+	end_signal.connect(
+		c.bind(c)
+	)
+	
+func play_arrow(start_signal: Signal, end_signal: Signal, arrow_position_offset: Vector2, arrow_target: Node) -> void:
+	play_first_arrow(end_signal, arrow_position_offset, arrow_target)
+	start_signal.disconnect(play_slide)
+
+func close_arrow(arrow_obj: Node2D, end_signal: Signal, c: Callable) -> void:
+	arrow_obj.queue_free()
+	end_signal.disconnect(c)
+	
+	
+	
