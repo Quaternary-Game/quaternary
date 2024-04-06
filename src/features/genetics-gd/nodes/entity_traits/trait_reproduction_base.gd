@@ -30,11 +30,17 @@ func reproduce(other_entity: EntityGD) -> void:
 	self.entity.enable_trait("territory")
 	self.entity.enable_trait("movement")
 
+var love_particles : GPUParticles2D = preload("res://features/genetics-gd/nodes/VisualEffects/love.tscn").instantiate()
+
 var is_mating: bool = false :
 	set(value):
 		is_mating = value
 		if not value and desired_mate:
 			desired_mate = null
+		if value:
+			self.entity.add_child(love_particles)
+		else:
+			self.entity.remove_child(love_particles)
 
 var desired_mate: EntityGD = null :
 	set(value):
