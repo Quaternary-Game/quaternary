@@ -9,6 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://dr6wcg107fcfa" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_asexual.tscn" id="6_a65jr"]
 [ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="7_ph5fv"]
 
+[sub_resource type="Resource" id="Resource_e272m"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("7_ph5fv")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_duak7"]
+script = ExtResource("2_yt2i6")
+scene = ExtResource("7_ph5fv")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_5jvno"]
+script = ExtResource("3_n1jj0")
+hidden = true
+_type = 1
+_alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_e272m"), SubResource("Resource_duak7")])
+
 [sub_resource type="Resource" id="Resource_lxh8w"]
 script = ExtResource("2_yt2i6")
 scene = ExtResource("4_ivs4w")
@@ -72,22 +88,6 @@ script = ExtResource("3_n1jj0")
 hidden = false
 _type = 6
 _alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_4nvwj"), SubResource("Resource_bj8ll")])
-
-[sub_resource type="Resource" id="Resource_e272m"]
-script = ExtResource("2_yt2i6")
-scene = ExtResource("7_ph5fv")
-_type = 1
-
-[sub_resource type="Resource" id="Resource_duak7"]
-script = ExtResource("2_yt2i6")
-scene = ExtResource("7_ph5fv")
-_type = 1
-
-[sub_resource type="Resource" id="Resource_5jvno"]
-script = ExtResource("3_n1jj0")
-hidden = true
-_type = 1
-_alleles = Array[ExtResource("2_yt2i6")]([SubResource("Resource_e272m"), SubResource("Resource_duak7")])
 
 [resource]
 resource_local_to_scene = true

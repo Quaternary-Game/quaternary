@@ -13,6 +13,8 @@ func reproduce(other_entity: EntityGD) -> void:
 
 	if self.sex != ReproductiveSex.NEITHER and other_entity:
 		child.genotype = self.entity.genotype.mix(other_entity.genotype)
+	else:
+		child.genotype = self.entity.genotype.clone()
 
 	self.entity.manager.new_entity(child)
 	self.entity.manager.add_child(child)
