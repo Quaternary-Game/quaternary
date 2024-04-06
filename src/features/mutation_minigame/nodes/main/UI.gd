@@ -118,5 +118,7 @@ func tutorial_pressed() -> void:
 	end_first_slide,
 	[$DynamicMenu] + mutations_array,
 	[],
-	Vector2(0, 25)
+	Vector2(-50, 25)
 	)
+	tutorial.play_first_arrow(end_first_slide, Vector2(100, 150), mutations_array[0])
+	tutorial.play_first_arrow(end_first_slide, Vector2(100, -50), $DNABOX/DNA.sequence_nodes()[-1])
