@@ -10,10 +10,10 @@ func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_settings_button_pressed() -> void:
-	pass # Replace with function body.
-
+	$SettingsMenu.visible = true
 
 func _on_play_button_pressed() -> void:
 	# placeholder, ideally should have level select menu
 	# or some more complicated behavior
 	SceneSwitching.goto_scene("res://features/main_game/levels/level_1/level_1.tscn")
+
