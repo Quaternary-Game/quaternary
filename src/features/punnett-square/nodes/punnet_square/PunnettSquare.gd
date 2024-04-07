@@ -16,6 +16,12 @@ var n_correct:int ## Current number of correct offspring cells
 var n_needed:int ## Number of offspring cells 
 var offspring_set:Dictionary ## set of all possible offspring
 
+## Variables for tutorial use
+var highlight_nodes:Array = []
+var genotype_length:int
+var tutorial:TutorialBase
+signal end_tutorial
+
 signal game_won ## triggered when all cells are correct
 
 ## function for building the square in instantialing all cells
@@ -23,7 +29,7 @@ func build_square(parent1:String, parent2:String) -> void:
 	parent1_genotype = parent1
 	parent2_genotype = parent2
 	
-	var genotype_length:int = 2**(len(parent1_genotype)/2)
+	genotype_length = 2**(len(parent1_genotype)/2)
 	self.columns = genotype_length + 1
 	
 	n_correct = 0
@@ -114,3 +120,28 @@ func sub_correct() -> void:
 ## getter for the set of possible offspring
 func get_offspring_set() -> Dictionary:
 	return self.offspring_set
+
+func create_tutorial(tutorial_button:TutorialBase) -> void:
+	tutorial = tutorial_button
+	tutorial_button.pressed.connect(tutorial_pressed)
+	highlight_nodes.append(get_child(1))
+	highlight_nodes.append(get_child(1+genotype_length))
+	highlight_nodes.append(get_child(2+genotype_length))
+	highlight_nodes[2]
+
+func emit_end_tutorial()->void:
+	end_tutorial.emit()
+	
+func tutorial_pressed() -> void:
+	tutorial.play_first(
+		"Welcome to the Punnett Square Minigame! Type in the correct genotype based on the alleles in the row and column.",
+		end_tutorial,
+		highlight_nodes,
+		[],
+		Vector2(-525, -50)
+	)
+	
+	## arrows
+	tutorial.play_first_arrow(end_tutorial, Vector2(0,-50), highlight_nodes[0])
+	tutorial.play_first_arrow(end_tutorial, Vector2(-50,0), highlight_nodes[1])
+	tutorial.play_first_arrow(end_tutorial, Vector2(500,250), highlight_nodes[2])

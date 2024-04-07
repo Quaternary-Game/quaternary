@@ -18,7 +18,7 @@ var streams:Dictionary = {
 ## All AudioStreamPlayers, one for each stream
 var players:Dictionary
 
-func _ready() -> void:	
+func _ready() -> void:
 	# add all AudioStreamPlayers to the scene tree
 	# and set the correct stream
 	for sound:String in streams:
@@ -35,7 +35,7 @@ func _ready() -> void:
 	#players.grab.volume_db = -12
 	#players.incompatible.volume_db = -12
 	#players.bite.volume_db = -12
-	#players.complete.volume_db = -12
+	players.complete.volume_db = -6
 	players.game_over.volume_db = -6
 	
 	# this makes sure we connect buttons that 

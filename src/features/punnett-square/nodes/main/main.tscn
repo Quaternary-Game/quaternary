@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2ece3j57fr7"]
+[gd_scene load_steps=4 format=3 uid="uid://2ece3j57fr7"]
 
 [ext_resource type="Script" path="res://features/punnett-square/nodes/main/main.gd" id="1_n5my5"]
+[ext_resource type="PackedScene" uid="uid://lo2b1wr3x5vp" path="res://scenes/guis/tutorial_button.tscn" id="2_ihaqi"]
 [ext_resource type="FontFile" uid="uid://na1wmldontft" path="res://features/theme/fonts/FiraCode-Bold.ttf" id="3_t15rp"]
 
 [node name="Main" type="Control"]
@@ -14,6 +15,16 @@ script = ExtResource("1_n5my5")
 time = 10
 parent1_genotype = "Aa"
 parent2_genotype = "aa"
+
+[node name="TutorialButton" parent="." instance=ExtResource("2_ihaqi")]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
 
 [node name="Timer" type="Timer" parent="."]
 
