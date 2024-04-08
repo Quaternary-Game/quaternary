@@ -1,8 +1,6 @@
 extends Control
 
 func _ready() -> void:
-	var screen_size: Vector2 = DisplayServer.screen_get_size()
-	get_window().size = screen_size
 	MusicPlayer.play_track2()
 
 func _on_mini_game_button_pressed() -> void:
