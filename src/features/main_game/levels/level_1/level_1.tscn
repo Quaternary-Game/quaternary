@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://b1ecefqwp20pv"]
+[gd_scene load_steps=41 format=3 uid="uid://b1ecefqwp20pv"]
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
+[ext_resource type="Script" path="res://features/main_game/levels/level_1/level_1.gd" id="1_nf3yj"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
 [ext_resource type="PackedScene" uid="uid://ccnrwji4dp8rl" path="res://features/main_game/UI/UI.tscn" id="2_vkeid"]
 [ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="3_o5nu1"]
@@ -193,6 +194,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_nf3yj")
 
 [node name="Entitymanager" parent="." instance=ExtResource("1_eccss")]
 

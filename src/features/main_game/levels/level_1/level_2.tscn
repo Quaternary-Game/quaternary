@@ -123,6 +123,38 @@ hidden = true
 _type = 2
 _alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_gcbqn"), SubResource("Resource_m52p2")])
 
+[sub_resource type="Resource" id="Resource_5sl71"]
+script = ExtResource("5_f78mg")
+scene = ExtResource("7_oblwb")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_r6b6b"]
+script = ExtResource("5_f78mg")
+scene = ExtResource("7_oblwb")
+_type = 3
+
+[sub_resource type="Resource" id="Resource_kwvwx"]
+script = ExtResource("6_ol6of")
+hidden = false
+_type = 3
+_alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_5sl71"), SubResource("Resource_r6b6b")])
+
+[sub_resource type="Resource" id="Resource_0w3wh"]
+script = ExtResource("5_f78mg")
+scene = ExtResource("8_o6jma")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_c6kk1"]
+script = ExtResource("5_f78mg")
+scene = ExtResource("12_65rja")
+_type = 4
+
+[sub_resource type="Resource" id="Resource_rhaou"]
+script = ExtResource("6_ol6of")
+hidden = false
+_type = 4
+_alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_0w3wh"), SubResource("Resource_c6kk1")])
+
 [sub_resource type="Resource" id="Resource_gg4e8"]
 script = ExtResource("5_f78mg")
 scene = ExtResource("8_td3o6")
@@ -154,38 +186,6 @@ script = ExtResource("6_ol6of")
 hidden = false
 _type = 6
 _alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_fvglv"), SubResource("Resource_hucl7")])
-
-[sub_resource type="Resource" id="Resource_0w3wh"]
-script = ExtResource("5_f78mg")
-scene = ExtResource("8_o6jma")
-_type = 4
-
-[sub_resource type="Resource" id="Resource_c6kk1"]
-script = ExtResource("5_f78mg")
-scene = ExtResource("12_65rja")
-_type = 4
-
-[sub_resource type="Resource" id="Resource_rhaou"]
-script = ExtResource("6_ol6of")
-hidden = false
-_type = 4
-_alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_0w3wh"), SubResource("Resource_c6kk1")])
-
-[sub_resource type="Resource" id="Resource_5sl71"]
-script = ExtResource("5_f78mg")
-scene = ExtResource("7_oblwb")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_r6b6b"]
-script = ExtResource("5_f78mg")
-scene = ExtResource("7_oblwb")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_kwvwx"]
-script = ExtResource("6_ol6of")
-hidden = false
-_type = 3
-_alleles = Array[ExtResource("5_f78mg")]([SubResource("Resource_5sl71"), SubResource("Resource_r6b6b")])
 
 [sub_resource type="Resource" id="Resource_ehsd8"]
 resource_local_to_scene = true

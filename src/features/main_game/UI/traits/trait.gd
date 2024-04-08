@@ -4,6 +4,8 @@ var trait_instance : Node2D
 var preview_node_scene: PackedScene = preload("res://features/main_game/UI/traits/trait_drag_item.tscn")
 var preview_node : Node2D
 
+var display_name: String
+
 var points : int:
 	set(value):
 		self.text = str(value)
@@ -16,6 +18,7 @@ signal end_drag(data: Variant, success: bool)
 func _ready() -> void:
 	trait_instance = entitytrait.instantiate()
 	icon = trait_instance.icon
+	display_name = trait_instance.display_name
 	tooltip_text = "%s\nDominance Level: %s\nLoci: %s" % [trait_instance.display_name, trait_instance.dominance, trait_instance.locus_type]
 	self.button_down.connect(button_down_handler)
 var _dragging: bool = false

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dge5itc6ir83n"]
+
+[ext_resource type="Texture2D" uid="uid://ca5ukorusmjey" path="res://scenes/guis/tutorial/arrow.png" id="1_lu3ir"]
+[ext_resource type="Script" path="res://features/tutorial/game_tutorial_arrow.gd" id="1_sm1we"]
+
+[sub_resource type="Animation" id="Animation_4vqvv"]
+resource_name = "UpAndDown"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowImage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5we2"]
+_data = {
+"UpAndDown": SubResource("Animation_4vqvv")
+}
+
+[node name="Arrow" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_sm1we")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j5we2")
+}
+autoplay = "UpAndDown"
+
+[node name="ArrowImage" type="Sprite2D" parent="."]
+self_modulate = Color(0.67451, 0.843137, 0.890196, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_lu3ir")
