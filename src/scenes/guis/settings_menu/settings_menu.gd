@@ -27,12 +27,13 @@ extends Control
 	#else:
 		#vsync.toggle_mode = false
 
+### video updates
 
 func _on_hc_btn_toggled(toggled_on:bool) -> void:
 	pass # Replace with function body.
 
-func _on_cb_btn_toggled(toggled_on:bool) -> void:
-	pass # Replace with function body.
+func _on_cb_button_item_selected(index:int) -> void:
+	GlobalSettings.set_colorblind_mode(index)
 
 func _on_v_sync_btn_toggled(toggled_on:bool) -> void:
 	if toggled_on:
