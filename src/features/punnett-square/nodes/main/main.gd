@@ -56,6 +56,7 @@ func _on_timer_timeout() -> void:
 ## Show game over screen
 func game_over() -> void:
 	get_node("PunnettSquare").queue_free()
+	$TutorialButton.visible = false
 	SoundPlayer.play_game_over()
 	show_lose_screen()
 
@@ -64,10 +65,12 @@ func start_game() -> void:
 	# initiate and build punnett square
 	var punnett_square:GridContainer = punnett_square_scene.instantiate()
 	punnett_square.build_square(self.parent1_genotype, self.parent2_genotype)
+	punnett_square.create_tutorial($TutorialButton)
 	self.add_child(punnett_square)
 	punnett_square.game_won.connect(_on_punnett_square_game_won)
 	$Timer.start(1)
 	$StartScreen.queue_free()
+	$TutorialButton.visible = true
 
 ## Set up post game screen for selecting offspring
 func show_select_screen(offspring_set:Dictionary) -> void:
@@ -93,6 +96,7 @@ func _on_punnett_square_game_won() -> void:
 	$PunnettSquare.queue_free()
 	$Timer.stop()
 	$EndGame.text = "You Won!"
+	$TutorialButton.visible = false
 	# play winning sound
 	SoundPlayer.play_complete()
 	# wait a few seconds before switching to select screen

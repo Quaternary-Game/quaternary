@@ -41,6 +41,7 @@ func _on_genotype_text_changed(_new_text: String) -> void:
 		self.modulate = correct_color
 		if !correct:
 			correct = true
+			get_parent().emit_end_tutorial()
 			get_parent().add_correct()
 	else:
 		self.modulate = incorrect_color
