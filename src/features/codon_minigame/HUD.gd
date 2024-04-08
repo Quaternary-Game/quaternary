@@ -2,6 +2,9 @@ extends CanvasLayer
 signal start_game
 signal next_level
 
+func _ready() -> void:
+	pass
+
 func show_message(text: String) -> void:
 	$Message.text = text
 	$Message.show()
@@ -16,7 +19,7 @@ func show_game_over(highScore: String) -> void:
 	show_message("Incorrect! Game Over!\nHigh Score: %s" %highScore)
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
-	
+	get_parent().get_node("TutorialButton").show()
 	$Message.show()
 	$StartButton.show()
 
@@ -33,7 +36,7 @@ func update_score(score: int) -> void:
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
 	get_parent().get_node("TutorialButton").hide()
-	get_parent().get_node("MouseClickButton").hide()
+	get_parent().get_node("ContinueButton").hide()
 	start_game.emit()
 
 func _on_message_timer_timeout() -> void:
