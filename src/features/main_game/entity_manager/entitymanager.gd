@@ -10,6 +10,8 @@ const UiTrait : Resource = preload("res://features/main_game/UI/traits/trait.gd"
 
 var marker_count: int = 0
 
+var disable_entity_hover: bool = false
+
 var paused : bool = false:
 	get:
 		return paused
@@ -73,9 +75,12 @@ func new_entity(entity: EntityGD) -> void:
 	create_entity_selector(entity)
 
 func show_entity_traits(_entity: EntityGD) -> void:
-	show_traits.emit(_entity)
+	if not disable_entity_hover:
+		show_traits.emit(_entity)
+
 func end_show_entity_traits() -> void:
-	end_show_traits.emit()
+	if not disable_entity_hover:
+		end_show_traits.emit()
 
 func _ready() -> void:
 	instance_entities()

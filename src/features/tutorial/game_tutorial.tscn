@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfj7lgtytu2xf"]
+
+[ext_resource type="Script" path="res://features/tutorial/game_tutorial.gd" id="1_7qtsd"]
+
+[node name="GameTutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7qtsd")

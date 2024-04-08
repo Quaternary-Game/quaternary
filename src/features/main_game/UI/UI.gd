@@ -3,6 +3,7 @@ var toggle: Button
 var trait_menu: Control
 var trait_menu_panel: Control
 var entity_trait_list: Control
+var start_pause_button: Control
 var entity_trait_list_item_scene : Resource = preload("res://features/main_game/UI/trait_list/trait_list_item.tscn")
 
 var ogmodulate: Color = self.modulate
@@ -16,10 +17,13 @@ signal trait_drag_end
 @export var TraitListPoints: Array[int]
 @export var TotalPoints : int
 
+var tutorial_button: Button
+
 func _ready() -> void:
 
 	MusicPlayer.play_sketching()
 	
+	start_pause_button = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause")
 	toggle = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/ToggleTraitMenu")
 	trait_menu_panel = get_node("VBoxContainer/HBoxContainer/MarginContainer/PanelContainer")
 	trait_menu = get_node("VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/TraitMenu")
@@ -32,6 +36,8 @@ func _ready() -> void:
 	for i : Control in trait_menu.traits():
 		i.begin_drag.connect(start_drag_button_handler)
 		i.end_drag.connect(end_drag_button_handler)
+	
+	self.tutorial_button = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/TutorialButton")
 
 func _on_toggle_trait_menu_toggled(toggled_on: bool) -> void:
 	var tween : Tween = create_tween()
