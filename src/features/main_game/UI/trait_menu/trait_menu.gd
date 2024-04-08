@@ -3,6 +3,8 @@ const UiTrait : Resource = preload("res://features/main_game/UI/traits/trait.gd"
 var UiTraitScene : Resource = preload("res://features/main_game/UI/traits/trait.tscn")
 var disabled_color :Color = get_theme_color("11", "pallete")
 
+var points_preview_label: Control
+
 var preview_value: int = 0:
 	set(value):
 		if value <= 0:
@@ -24,6 +26,7 @@ var preview_value: int = 0:
 @export var traitpoints: Array[int] = []
 
 func _ready() ->void:
+	points_preview_label = $Points
 	$Points.text = str(points)
 	for i: Node in $TraitGrid.get_children():
 		$TraitGrid.remove_child(i)

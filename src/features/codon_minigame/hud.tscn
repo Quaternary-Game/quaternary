@@ -58,6 +58,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_88p64")
+shortcut_in_tooltip = false
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]

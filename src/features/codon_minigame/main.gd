@@ -14,6 +14,7 @@ var codons :String = ""
 
 func _ready() -> void:
 	MusicPlayer.play_new_beginnings()
+	#self.get_parent().get_node("ContinueButton").hide()
 	load_game()
 
 func win() -> void:
@@ -48,7 +49,7 @@ func next_level() -> void:
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_acid(goalAcid + '\n' + "mRNA: " + str(to_anti_codon(acids[goalAcid])).substr(1, str(acids[goalAcid]).length() - 2))
-	$HUD.show_message("Create the amino acid by matching the mRNA to codons!")
+	$HUD.show_message("Good Luck!")
 	get_tree().call_group("mobs", "queue_free")
 	$Player/CollisionShape2D.set_deferred("disabled", false)
 

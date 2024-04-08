@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://dreymsfurvm82"]
+
+[ext_resource type="Script" path="res://features/tutorial/game_tutorial_slide.gd" id="1_l2dqv"]
+[ext_resource type="Texture2D" uid="uid://xe4yfoibd8t6" path="res://features/tutorial/assets/circle-x.svg" id="2_drewd"]
+[ext_resource type="Texture2D" uid="uid://d3oox7d76hyu5" path="res://features/tutorial/assets/circle-chevron-left.svg" id="3_d1nee"]
+[ext_resource type="Texture2D" uid="uid://bmytnnhn8eia6" path="res://features/tutorial/assets/circle-chevron-right.svg" id="4_jup6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o24km"]
+bg_color = Color(0.231373, 0.258824, 0.321569, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.203922, 0.25098, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knkk0"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.180392, 0.203922, 0.25098, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+
+[sub_resource type="LabelSettings" id="LabelSettings_3n2g2"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft1qq"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iddxi"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.262745, 0.298039, 0.368627, 1)
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+
+[node name="GameTutorialSlide" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l2dqv")
+
+[node name="InformationWindow" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o24km")
+
+[node name="Content" type="VBoxContainer" parent="InformationWindow"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="InformationWindow/Content"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knkk0")
+
+[node name="HeaderContent" type="HBoxContainer" parent="InformationWindow/Content/Header"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="InformationWindow/Content/Header/HeaderContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92549, 0.937255, 0.956863, 1)
+text = "Title"
+label_settings = SubResource("LabelSettings_3n2g2")
+
+[node name="CloseButton" type="Button" parent="InformationWindow/Content/Header/HeaderContent"]
+layout_mode = 2
+icon = ExtResource("2_drewd")
+flat = true
+icon_alignment = 1
+
+[node name="Body" type="PanelContainer" parent="InformationWindow/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ft1qq")
+
+[node name="BodyContent" type="VBoxContainer" parent="InformationWindow/Content/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DescriptionLabel" type="Label" parent="InformationWindow/Content/Body/BodyContent"]
+layout_mode = 2
+text = "Description"
+
+[node name="Footer" type="PanelContainer" parent="InformationWindow/Content"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iddxi")
+
+[node name="FooterContent" type="HBoxContainer" parent="InformationWindow/Content/Footer"]
+layout_mode = 2
+
+[node name="PreviousSlideButton" type="Button" parent="InformationWindow/Content/Footer/FooterContent"]
+layout_mode = 2
+icon = ExtResource("3_d1nee")
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InformationWindow/Content/Footer/FooterContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextSlideButton" type="Button" parent="InformationWindow/Content/Footer/FooterContent"]
+layout_mode = 2
+icon = ExtResource("4_jup6k")
+flat = true
+icon_alignment = 2
+
+[node name="Arrows" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="gui_input" from="InformationWindow/Content/Header/HeaderContent" to="." method="_on_header_gui_input"]
+[connection signal="pressed" from="InformationWindow/Content/Header/HeaderContent/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="InformationWindow/Content/Footer/FooterContent/PreviousSlideButton" to="." method="_on_previous_slide_button_pressed"]
+[connection signal="pressed" from="InformationWindow/Content/Footer/FooterContent/NextSlideButton" to="." method="_on_next_slide_button_pressed"]

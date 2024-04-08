@@ -1,5 +1,6 @@
 extends Theme
-## A script to define and set up the global theme
+## A script to define and set up the global theme.
+## Colors are based on https://www.nordtheme.com/
 ##
 ## Theme related global constants are defined here, such as colors
 ## or 
