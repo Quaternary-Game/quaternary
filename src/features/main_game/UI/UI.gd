@@ -101,3 +101,10 @@ func _on_entitymanager_end_show_traits() -> void:
 
 func _on_timer_game_over() -> void:
 	print_debug("game_over")
+	$EndGame.visible = true
+
+func _on_main_menu_button_pressed() -> void:
+	SceneSwitching.goto_mainmenu()
+
+func _on_restart_button_pressed() -> void:
+	SceneSwitching.goto_scene(SceneSwitching.current_scene.scene_file_path)
