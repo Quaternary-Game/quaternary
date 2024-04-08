@@ -3,7 +3,7 @@ extends Control
 # audio settings
 @onready var master_vol:HSlider = $TabContainer/Audio/MarginContainer/GridContainer/MasterVolSlider
 @onready var music_vol:HSlider = $TabContainer/Audio/MarginContainer/GridContainer/MusicVolSlider
-@onready var sfx_vol:HSlider = $TabContainer/Audio/MarginContainer/GridContainer/SFXVolSlider
+@onready var sfx_vol:HSlider = $TabContainer/Audio/MarginContainer/GridContainer/FxVolSlider
 
 # video settings
 @onready var vsync:CheckButton = $TabContainer/Video/MarginContainer/GridContainer/VSyncBtn
