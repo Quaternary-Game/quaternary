@@ -17,6 +17,7 @@ var minigame:bool = true ## flag indicated whether launched as standalone miniga
 
 var genotypes:Array = [
 	['Aa', 'aa'],
+	['bb', 'BB'],
 	['AAbb', 'AaBB'],
 	['aaBB','AaBb']
 	#['AaBbCc', 'aabbcc']
