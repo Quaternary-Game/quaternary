@@ -1,190 +1,28 @@
-[gd_scene load_steps=41 format=3 uid="uid://b1ecefqwp20pv"]
+[gd_scene load_steps=12 format=3 uid="uid://b1ecefqwp20pv"]
 
 [ext_resource type="PackedScene" uid="uid://d3vrg2i6frq1h" path="res://features/main_game/entity_manager/entitymanager.tscn" id="1_eccss"]
 [ext_resource type="Script" path="res://features/main_game/levels/level_1/level_1.gd" id="1_nf3yj"]
 [ext_resource type="PackedScene" uid="uid://b2m7xdu3md033" path="res://features/genetics-gd/nodes/subentities/spider_entity.tscn" id="2_crnex"]
 [ext_resource type="PackedScene" uid="uid://ccnrwji4dp8rl" path="res://features/main_game/UI/UI.tscn" id="2_vkeid"]
-[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="3_o5nu1"]
 [ext_resource type="PackedScene" uid="uid://ip7hgoqckpc" path="res://features/genetics-gd/nodes/subentities/bacteria_entity.tscn" id="3_yv25b"]
-[ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="4_2tp1x"]
-[ext_resource type="Script" path="res://features/genetics-gd/resources/locus.gd" id="5_4vf1b"]
-[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="6_qohmc"]
-[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="7_jh075"]
-[ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="8_6s3pd"]
-[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="9_3bt72"]
-[ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="10_y84dd"]
-[ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="11_a4163"]
+[ext_resource type="Resource" uid="uid://ckg6bwj04pibn" path="res://features/genetics-gd/nodes/subentities/spider_genotype_female.tres" id="4_rvnia"]
+[ext_resource type="PackedScene" uid="uid://7cweutxyn54j" path="res://features/genetics-gd/nodes/environment_modifiers/light_directed.tscn" id="7_vaeoj"]
 
-[sub_resource type="Resource" id="Resource_bqf7w"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("3_o5nu1")
-_type = 1
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4hdql"]
+a = Vector2(12, 68)
+b = Vector2(12, 1080)
 
-[sub_resource type="Resource" id="Resource_n5scf"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("3_o5nu1")
-_type = 1
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_728rh"]
+a = Vector2(1905, 76)
+b = Vector2(9, 76)
 
-[sub_resource type="Resource" id="Resource_aqsoa"]
-script = ExtResource("5_4vf1b")
-hidden = true
-_type = 1
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_bqf7w"), SubResource("Resource_n5scf")])
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yfy3e"]
+a = Vector2(1905, 78)
+b = Vector2(1905, 1058)
 
-[sub_resource type="Resource" id="Resource_aaecd"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("6_qohmc")
-_type = 2
-
-[sub_resource type="Resource" id="Resource_bop78"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("6_qohmc")
-_type = 2
-
-[sub_resource type="Resource" id="Resource_o8ddg"]
-script = ExtResource("5_4vf1b")
-hidden = true
-_type = 2
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_aaecd"), SubResource("Resource_bop78")])
-
-[sub_resource type="Resource" id="Resource_6mcel"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("7_jh075")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_n0bot"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("8_6s3pd")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_lu2dh"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 3
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_6mcel"), SubResource("Resource_n0bot")])
-
-[sub_resource type="Resource" id="Resource_pqaus"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("9_3bt72")
-_type = 5
-
-[sub_resource type="Resource" id="Resource_37htv"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("9_3bt72")
-_type = 5
-
-[sub_resource type="Resource" id="Resource_7gce5"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 5
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_pqaus"), SubResource("Resource_37htv")])
-
-[sub_resource type="Resource" id="Resource_0yari"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_y84dd")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_wd7xo"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("10_y84dd")
-_type = 6
-
-[sub_resource type="Resource" id="Resource_cjdtg"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 6
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_0yari"), SubResource("Resource_wd7xo")])
-
-[sub_resource type="Resource" id="Resource_edsdr"]
-resource_local_to_scene = true
-resource_name = "SpiderGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-1: SubResource("Resource_aqsoa"),
-2: SubResource("Resource_o8ddg"),
-3: SubResource("Resource_lu2dh"),
-5: SubResource("Resource_7gce5"),
-6: SubResource("Resource_cjdtg")
-}
-
-[sub_resource type="Resource" id="Resource_2ae2c"]
-resource_local_to_scene = true
-resource_name = "SpiderGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-1: SubResource("Resource_aqsoa"),
-2: SubResource("Resource_o8ddg"),
-3: SubResource("Resource_lu2dh"),
-5: SubResource("Resource_7gce5"),
-6: SubResource("Resource_cjdtg")
-}
-
-[sub_resource type="Resource" id="Resource_inv4r"]
-resource_local_to_scene = true
-resource_name = "SpiderGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-1: SubResource("Resource_aqsoa"),
-2: SubResource("Resource_o8ddg"),
-3: SubResource("Resource_lu2dh"),
-5: SubResource("Resource_7gce5"),
-6: SubResource("Resource_cjdtg")
-}
-
-[sub_resource type="Resource" id="Resource_lxh8w"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("6_qohmc")
-_type = 2
-
-[sub_resource type="Resource" id="Resource_14o8g"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("6_qohmc")
-_type = 2
-
-[sub_resource type="Resource" id="Resource_6xdu8"]
-script = ExtResource("5_4vf1b")
-hidden = true
-_type = 2
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_lxh8w"), SubResource("Resource_14o8g")])
-
-[sub_resource type="Resource" id="Resource_d0tjv"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("7_jh075")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_3a8ki"]
-script = ExtResource("4_2tp1x")
-scene = ExtResource("7_jh075")
-_type = 3
-
-[sub_resource type="Resource" id="Resource_vclho"]
-script = ExtResource("5_4vf1b")
-hidden = false
-_type = 3
-_alleles = Array[ExtResource("4_2tp1x")]([SubResource("Resource_d0tjv"), SubResource("Resource_3a8ki")])
-
-[sub_resource type="Resource" id="Resource_vgux0"]
-resource_local_to_scene = true
-resource_name = "BacteriaGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-2: SubResource("Resource_6xdu8"),
-3: SubResource("Resource_vclho")
-}
-
-[sub_resource type="Resource" id="Resource_7vtak"]
-resource_local_to_scene = true
-resource_name = "BacteriaGenotype"
-script = ExtResource("11_a4163")
-ploidy = 2
-_loci = {
-2: SubResource("Resource_6xdu8"),
-3: SubResource("Resource_vclho")
-}
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_eiohp"]
+a = Vector2(1908, 1066)
+b = Vector2(-4, 1064)
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -203,23 +41,20 @@ position = Vector2(1053, 695)
 
 [node name="Spider" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(593, 436)
-genotype = SubResource("Resource_edsdr")
+genotype = ExtResource("4_rvnia")
 
 [node name="Spider2" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(992, 425)
-genotype = SubResource("Resource_2ae2c")
 
 [node name="Spider3" parent="Entitymanager" instance=ExtResource("2_crnex")]
 position = Vector2(1484, 402)
-genotype = SubResource("Resource_inv4r")
+genotype = ExtResource("4_rvnia")
 
 [node name="Bacteria" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(581, 304)
-genotype = SubResource("Resource_vgux0")
 
 [node name="Bacteria2" parent="Entitymanager" instance=ExtResource("3_yv25b")]
 position = Vector2(1200, 304)
-genotype = SubResource("Resource_7vtak")
 
 [node name="UI" parent="." instance=ExtResource("2_vkeid")]
 layout_mode = 1
@@ -227,6 +62,23 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="LightDirected" parent="." instance=ExtResource("7_vaeoj")]
+position = Vector2(880, 628)
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="Left" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("SegmentShape2D_4hdql")
+
+[node name="Up" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("SegmentShape2D_728rh")
+
+[node name="Right" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("SegmentShape2D_yfy3e")
+
+[node name="Down" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("SegmentShape2D_eiohp")
 
 [connection signal="end_show_traits" from="Entitymanager" to="UI" method="_on_entitymanager_end_show_traits"]
 [connection signal="show_traits" from="Entitymanager" to="UI" method="_on_entitymanager_show_traits"]

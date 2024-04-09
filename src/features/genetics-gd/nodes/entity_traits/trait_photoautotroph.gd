@@ -60,7 +60,6 @@ func _on_body_exited(area: Area2D) -> void:
 
 
 func _on_increment_timer_timeout() -> void:
-	
 	var trait_calories: TraitCalories = self.entity.traits.get("calories")
 	if trait_calories == null:
 		return
