@@ -62,9 +62,10 @@ offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="NextButton"]
+[node name="Next" type="Button" parent="NextButton"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Next"
 
 [connection signal="pressed" from="MainMenuButton/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NextButton/Next" to="." method="_on_next_pressed"]

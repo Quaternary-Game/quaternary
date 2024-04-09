@@ -1,10 +1,10 @@
 extends Control
 ## Main script running Punnett square game
 
-@export var time:int = 6 ## total time for the level
+var time:int = 10 ## total time for the level
 ## genotypes of the parents
-@export var parent1_genotype:String
-@export var parent2_genotype:String
+var parent1_genotype:String
+var parent2_genotype:String
 
 var countdown:int ## current time left
 ## scenes
@@ -13,9 +13,28 @@ var select_scene:PackedScene = preload("res://features/punnett-square/nodes/sele
 var lose_scene:PackedScene = preload("res://features/punnett-square/nodes/lose_screen/lose_screen.tscn")
 
 var flashes:int ## number of times to flash timer
+var minigame:bool = true ## flag indicated whether launched as standalone minigame
+
+var genotypes:Array = [
+	['Aa', 'aa'],
+	['bb', 'BB'],
+	['AAbb', 'AaBB'],
+	['aaBB','AaBb']
+	#['AaBbCc', 'aabbcc']
+]
+var rng:RandomNumberGenerator
 
 ## set up start screen
 func _ready() -> void:
+	# choose random genotypes if standalone minigame
+	if minigame:
+		rng=RandomNumberGenerator.new()
+		var choice:int = rng.randf_range(0, genotypes.size())
+		parent1_genotype = genotypes[choice][0]
+		parent2_genotype = genotypes[choice][1]
+	
+	time = 10 * 4**(parent1_genotype.length()/2 - 1)
+	
 	MusicPlayer.play_new_beginnings()
 	
 	countdown = time
@@ -62,6 +81,7 @@ func game_over() -> void:
 
 ## set up main game screen and punnett square and start game
 func start_game() -> void:
+	$PauseButton.visible = true
 	# initiate and build punnett square
 	var punnett_square:GridContainer = punnett_square_scene.instantiate()
 	punnett_square.build_square(self.parent1_genotype, self.parent2_genotype)
@@ -74,19 +94,23 @@ func start_game() -> void:
 
 ## Set up post game screen for selecting offspring
 func show_select_screen(offspring_set:Dictionary) -> void:
+	$PauseButton.visible = false
 	$EndGame.visible = false
 	$Countdown.visible = false
 	
 	var select_screen:Control = select_scene.instantiate()
 	select_screen.set_choices(offspring_set)
+	select_screen.minigame = self.minigame
 	self.add_child(select_screen)
 
 ## Set up post game screen when player loses
 func show_lose_screen() -> void:
+	$PauseButton.visible = false
 	$EndGame.visible = false
 	$Countdown.visible = false
 	
 	var lose_screen:Control = lose_scene.instantiate()
+	lose_screen.minigame = self.minigame
 	self.add_child(lose_screen)
 
 ## Show win screen and transition to select screen
