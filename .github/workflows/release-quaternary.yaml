@@ -2,6 +2,7 @@ name: Build and Release Quaternary
 on:
   push:
     branches: [ develop ]
+    tags: [ v* ]
   workflow_dispatch:
 jobs:
   calculate-version:
