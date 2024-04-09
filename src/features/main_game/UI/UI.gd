@@ -5,6 +5,7 @@ var trait_menu_panel: Control
 var entity_trait_list: Control
 var start_pause_button: Control
 var entity_trait_list_item_scene : Resource = preload("res://features/main_game/UI/trait_list/trait_list_item.tscn")
+var game_over_scene:PackedScene = preload("res://scenes/guis/end_game.tscn")
 
 var ogmodulate: Color = self.modulate
 const TraitDragButton : Resource = preload("res://features/main_game/UI/traits/trait.gd")
@@ -101,10 +102,6 @@ func _on_entitymanager_end_show_traits() -> void:
 
 func _on_timer_game_over() -> void:
 	print_debug("game_over")
-	$EndGame.visible = true
-
-func _on_main_menu_button_pressed() -> void:
-	SceneSwitching.goto_mainmenu()
-
-func _on_restart_button_pressed() -> void:
-	SceneSwitching.goto_scene(SceneSwitching.current_scene.scene_file_path)
+	#$EndGame.visible = true
+	var game_over_node:Control = game_over_scene.instantiate()
+	add_child(game_over_node)
