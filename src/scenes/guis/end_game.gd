@@ -1,7 +1,5 @@
 extends Control
 
-var parent:Node
-
 func _on_main_menu_button_pressed() -> void:
 	SceneSwitching.goto_mainmenu()
 

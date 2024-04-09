@@ -104,5 +104,4 @@ func _on_timer_game_over() -> void:
 	print_debug("game_over")
 	#$EndGame.visible = true
 	var game_over_node:Control = game_over_scene.instantiate()
-	game_over_node.parent = self
 	add_child(game_over_node)
