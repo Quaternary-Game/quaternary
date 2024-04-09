@@ -6,6 +6,7 @@ var _drag_position: Variant
 
 var _builder: GameTutorialSlideBuilder
 var _tutorial: GameTutorial
+var _on_open_cleanup: Callable
 
 var title_label: Label
 var description_label: Label
@@ -51,10 +52,14 @@ func _exit_tree() -> void:
 	# Perform "on close" behavior
 	if self._builder and self._builder._on_close:
 		self._builder._on_close.call()
+	if self._on_open_cleanup:
+		self._on_open_cleanup.call()
 
 func _on_open() -> void:
 	if self._builder and self._builder._on_open:
-		self._builder._on_open.call(self)
+		var result: Variant = self._builder._on_open.call(self)
+		if result is Callable:
+			self._on_open_cleanup = result
 		
 func _process(_delta: float) -> void:
 	if self._builder and self._builder._on_process:
