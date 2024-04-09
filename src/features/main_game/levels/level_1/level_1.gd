@@ -91,12 +91,17 @@ func _tutorial_setup() -> void:
 		.add_arrow_relative_to(first_player, GameTutorialSlideBuilder.Direction.ABOVE) \
 		.add_arrow_relative_to(trait_shop, GameTutorialSlideBuilder.Direction.LEFT_OF) \
 		.position_relative_to(trait_shop, GameTutorialSlideBuilder.Direction.LEFT_OF) \
-		.on_process(func (slide: GameTutorialSlide) -> void:
-			if first_player.traits.size() > 2:
+		.on_open(func (slide: GameTutorialSlide) -> Callable:
+			slide.next_slide_button.visible = false
+			
+			var temporary_handler: Callable = func () -> void:
 				slide.description_label.text = "Great job!"
 				slide.next_slide_button.visible = true
-			else:
-				slide.next_slide_button.visible = false
+			
+			first_player.traits_changed.connect(temporary_handler)
+			
+			return func() -> void:
+				first_player.traits_changed.disconnect(temporary_handler)
 			)
 	
 	var _seventh_slide: GameTutorialSlideBuilder = sixth_slide.next_slide() \
