@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbsqkpp4y8c87"]
+
+[ext_resource type="Script" path="res://features/punnett-square/nodes/header/header.gd" id="1_qfr3i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j8oof"]
+font_size = 30
+
+[node name="Header" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qfr3i")
+
+[node name="HeaderLabel" type="Label" parent="."]
+layout_mode = 2
+text = "A B C D"
+label_settings = SubResource("LabelSettings_j8oof")
+horizontal_alignment = 1
+vertical_alignment = 1

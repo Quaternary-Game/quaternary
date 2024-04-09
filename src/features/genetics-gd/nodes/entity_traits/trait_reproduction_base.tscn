@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8g5ih483bf46"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_base.gd" id="1_sh8e7"]
+[ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="2_8wufl"]
+
+[node name="TraitReproductionBase" type="Node2D"]
+script = ExtResource("1_sh8e7")
+unique_trait_name = "reproduction"
+display_name = "ReproductionBase"
+icon = ExtResource("2_8wufl")
+locus_type = 4

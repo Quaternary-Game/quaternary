@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccnrwji4dp8rl"]
+
+[ext_resource type="Script" path="res://features/main_game/UI/UI.gd" id="1_qcesi"]
+[ext_resource type="Texture2D" uid="uid://b1iaeeaty2grx" path="res://features/main_game/UI/assets/toggle-sidebar.svg" id="2_1wlll"]
+[ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="2_c50ox"]
+[ext_resource type="PackedScene" uid="uid://dv4k83q2oyppm" path="res://features/main_game/UI/trait_menu/trait_menu.tscn" id="2_cmehw"]
+[ext_resource type="PackedScene" uid="uid://cig8rkqvmvbyn" path="res://features/genetics-gd/nodes/entity_traits/trait_carnivore.tscn" id="2_pmttt"]
+[ext_resource type="Script" path="res://features/main_game/UI/Timer.gd" id="3_jjep7"]
+[ext_resource type="PackedScene" uid="uid://dnfnj6h4jk3tm" path="res://features/genetics-gd/nodes/entity_traits/trait_photoautotroph.tscn" id="6_obrlx"]
+[ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="7_1j2c8"]
+[ext_resource type="PackedScene" uid="uid://bvm4f8qv4puj3" path="res://features/genetics-gd/nodes/entity_traits/trait_herbivore.tscn" id="7_5tyfb"]
+[ext_resource type="PackedScene" uid="uid://cmbrha4kuol5a" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_male.tscn" id="7_h7kqx"]
+[ext_resource type="PackedScene" uid="uid://bbmqektmfbebj" path="res://features/genetics-gd/nodes/entity_traits/trait_vision.tscn" id="8_0ujpn"]
+[ext_resource type="PackedScene" uid="uid://beik3q8lbs8k6" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_female.tscn" id="8_28fwh"]
+[ext_resource type="PackedScene" uid="uid://hqdokn722ml6" path="res://features/genetics-gd/nodes/entity_traits/trait_movement.tscn" id="9_5v7my"]
+[ext_resource type="PackedScene" uid="uid://dr6wcg107fcfa" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_asexual.tscn" id="9_ocvuj"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qcesi")
+TraitList = Array[PackedScene]([ExtResource("2_pmttt"), ExtResource("8_0ujpn"), ExtResource("6_obrlx"), ExtResource("7_1j2c8"), ExtResource("9_5v7my"), ExtResource("7_h7kqx"), ExtResource("8_28fwh"), ExtResource("9_ocvuj")])
+TraitListPoints = Array[int]([3, 2, 3, 4, 6, 3, 2, 4])
+TotalPoints = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PauseButton" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" instance=ExtResource("2_c50ox")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "?"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Traitlist" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Timer" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "120"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_jjep7")
+
+[node name="Start_Pause" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+text = "Play"
+
+[node name="ToggleTraitMenu" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("2_1wlll")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TraitMenu" parent="VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" instance=ExtResource("2_cmehw")]
+layout_mode = 2
+traitlist = Array[PackedScene]([ExtResource("6_obrlx"), ExtResource("7_5tyfb"), ExtResource("7_1j2c8"), ExtResource("8_0ujpn"), ExtResource("9_5v7my")])
+traitpoints = Array[int]([5, 10, 1, 2, 1])
+
+[connection signal="game_over" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Timer" to="." method="_on_timer_game_over"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_level_pressed"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause" to="." method="_on_start_pause_toggled"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/ToggleTraitMenu" to="." method="_on_toggle_trait_menu_toggled"]

@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjuccvijj1xkd"]
+
+[ext_resource type="Script" path="res://features/codon_minigame/HUD.gd" id="1_oyk3a"]
+[ext_resource type="FontFile" uid="uid://b2a38n4txikrg" path="res://features/codon_minigame/fonts/Xolonium-Regular.ttf" id="2_m68q8"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_05hk8"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_88p64"]
+events = [SubResource("InputEventAction_05hk8")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oyk3a")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -901.0
+offset_top = 38.0
+offset_right = -621.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -356.0
+offset_right = 480.0
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Construct the Codons!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_88p64")
+shortcut_in_tooltip = false
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="GoalAcid" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -492.0
+offset_right = 512.0
+offset_bottom = -419.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_m68q8")
+theme_override_font_sizes/font_size = 50
+text = "Acid"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

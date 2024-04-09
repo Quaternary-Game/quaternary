@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmd08soab4116"]
+
+[ext_resource type="Script" path="res://features/punnett-square/nodes/offspring/offspring.gd" id="2_g2mnn"]
+
+[node name="Offspring" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_g2mnn")
+
+[node name="Genotype" type="LineEdit" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Type Offspring Genotype"
+alignment = 1
+
+[connection signal="text_changed" from="Genotype" to="." method="_on_genotype_text_changed"]

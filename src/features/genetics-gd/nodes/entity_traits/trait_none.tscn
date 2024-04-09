@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drvq181sc1hca"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/entity_traits/trait_none.gd" id="1_mdide"]
+[ext_resource type="Texture2D" uid="uid://dmdxsx2sbfid7" path="res://features/genetics-gd/assets/none.svg" id="2_n3bt1"]
+
+[node name="TraitNone" type="Node2D"]
+script = ExtResource("1_mdide")
+unique_trait_name = "None"
+display_name = "None"
+icon = ExtResource("2_n3bt1")
+dominance = -1

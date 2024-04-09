@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cywpj0ki4ld5j"]
+
+[ext_resource type="Script" path="res://scenes/guis/pause_button.gd" id="1_teons"]
+
+[node name="PauseButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_teons")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "pause-menu.pause"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

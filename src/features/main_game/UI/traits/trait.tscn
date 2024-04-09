@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://x512garedn3u"]
+
+[ext_resource type="Script" path="res://features/main_game/UI/traits/trait.gd" id="1_ro8fh"]
+[ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="2_arx60"]
+
+[node name="Trait" type="Button"]
+custom_minimum_size = Vector2(60, 120)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("1_ro8fh")
+entitytrait = ExtResource("2_arx60")

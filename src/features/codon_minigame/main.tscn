@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3brcerwdxjja"]
+
+[ext_resource type="PackedScene" uid="uid://cor4gnepy3mty" path="res://features/codon_minigame/player.tscn" id="1_b7bhc"]
+[ext_resource type="PackedScene" uid="uid://chpmmji3lmgrs" path="res://features/codon_minigame/codon.tscn" id="2_4q4l2"]
+[ext_resource type="Script" path="res://features/codon_minigame/main.gd" id="2_excm5"]
+[ext_resource type="PackedScene" uid="uid://cjuccvijj1xkd" path="res://features/codon_minigame/hud.tscn" id="5_a6vda"]
+[ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="6_unpdm"]
+[ext_resource type="Texture2D" uid="uid://bah1655k8wl7i" path="res://scenes/guis/question-mark.png" id="6_v3un5"]
+[ext_resource type="Script" path="res://features/codon_minigame/codon_tutorial.gd" id="7_nsp7u"]
+
+[sub_resource type="Curve2D" id="Curve2D_cd6f2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1920, 0, 0, 0, 0, 0, 1920, 1080, 0, 0, 0, 0, 0, 1080, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("2_excm5")
+mob_scene = ExtResource("2_4q4l2")
+
+[node name="Player" parent="." instance=ExtResource("1_b7bhc")]
+position = Vector2(938, 450)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(938, 450)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_cd6f2")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+script = ExtResource("2_excm5")
+
+[node name="HUD" parent="." instance=ExtResource("5_a6vda")]
+
+[node name="PauseButton" parent="." instance=ExtResource("6_unpdm")]
+offset_left = 38.0
+offset_top = 136.0
+offset_right = -1605.0
+offset_bottom = -883.0
+
+[node name="TutorialButton" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 390.0
+offset_top = 29.0
+offset_right = -1432.0
+offset_bottom = -963.0
+grow_horizontal = 2
+icon = ExtResource("6_v3un5")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_nsp7u")
+
+[node name="ContinueButton" type="Button" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1621.0
+offset_top = 955.0
+offset_right = -62.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[connection signal="hit" from="Player" to="." method="node_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="next_level" from="HUD" to="." method="next_level"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="pressed" from="TutorialButton" to="TutorialButton" method="_on_pressed"]

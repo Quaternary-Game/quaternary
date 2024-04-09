@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctvnoc1hklgns"]
+
+[ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/UI.gd" id="1_j1rui"]
+[ext_resource type="PackedScene" uid="uid://cqh02rjae8qi6" path="res://features/dynamicmenu/DynamicMenu.tscn" id="2_s1ja6"]
+[ext_resource type="PackedScene" uid="uid://lo2b1wr3x5vp" path="res://scenes/guis/tutorial_button.tscn" id="2_s058y"]
+[ext_resource type="Script" path="res://features/mutation_minigame/nodes/main/DNABOX.gd" id="3_2rtd3"]
+[ext_resource type="PackedScene" uid="uid://drxre10a5wiml" path="res://features/mutation_minigame/nodes/dna/DNA.tscn" id="3_det5c"]
+[ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="5_8wv44"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j1rui")
+DNA_length = 6
+number_of_mutations = 5
+
+[node name="TutorialButton" parent="." instance=ExtResource("2_s058y")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1757.0
+offset_right = 1807.0
+offset_bottom = 50.0
+grow_horizontal = 1
+
+[node name="DynamicMenu" parent="." instance=ExtResource("2_s1ja6")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+offset_right = 50.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DNABOX" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+script = ExtResource("3_2rtd3")
+
+[node name="DNA" parent="DNABOX" instance=ExtResource("3_det5c")]
+layout_mode = 2
+
+[node name="EndButtons" type="HBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -280.0
+offset_right = 400.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="EndButtons"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "mini.play_again"
+
+[node name="Exit" type="Button" parent="EndButtons"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "main-menu.exit"
+
+[node name="Container" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 75.0
+
+[node name="PauseButton" parent="Container" instance=ExtResource("5_8wv44")]
+process_mode = 3
+custom_minimum_size = Vector2(155, 55)
+layout_mode = 2
+
+[connection signal="pressed" from="EndButtons/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="EndButtons/Exit" to="." method="_on_exit_pressed"]

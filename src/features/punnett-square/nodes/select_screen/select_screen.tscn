@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmugrq61pvfby"]
+
+[ext_resource type="Script" path="res://features/punnett-square/nodes/select_screen/select_screen.gd" id="1_u87cn"]
+
+[node name="SelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u87cn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -670.0
+offset_top = 100.0
+offset_right = 670.0
+offset_bottom = 358.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "Select desired offspring:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectMenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.5
+offset_top = -138.0
+offset_right = 332.5
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionButton" type="OptionButton" parent="SelectMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+alignment = 1
+
+[node name="NextButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 260.0
+offset_right = 200.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next" type="Button" parent="NextButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Next"
+
+[node name="MainMenuButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -860.0
+offset_top = 260.0
+offset_right = -460.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="MainMenuButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[connection signal="pressed" from="NextButton/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="MainMenuButton/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd8im4k8io3c0"]
+
+[ext_resource type="Script" path="res://scenes/guis/mini_game_menu.gd" id="1_fc1n3"]
+[ext_resource type="ButtonGroup" uid="uid://d020q3kxxtr1b" path="res://scenes/guis/minigame_select.tres" id="2_cwahb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3mw15"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyagj"]
+font_size = 48
+
+[node name="mini_game_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fc1n3")
+
+[node name="MenuBackground" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("PlaceholderTexture2D_3mw15")
+
+[node name="mini_game_menu_title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_top = 65.0
+offset_right = 226.0
+offset_bottom = 143.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 21
+text = "mini-menu.title"
+label_settings = SubResource("LabelSettings_pyagj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="main_menu_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -184.0
+offset_right = 448.0
+offset_bottom = -56.0
+grow_vertical = 0
+text = "mini.back"
+
+[node name="play_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -184.0
+offset_right = -64.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "mini.play"
+
+[node name="mini_game_scroller" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.185
+anchor_right = 0.967
+anchor_bottom = 0.8
+offset_left = 0.959999
+offset_top = 0.199997
+offset_right = -0.640137
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="mini_game_box" type="VBoxContainer" parent="mini_game_scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="build_the_codons" type="Button" parent="mini_game_scroller/mini_game_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_cwahb")
+text = "mini.ctc"
+
+[node name="punnet_square" type="Button" parent="mini_game_scroller/mini_game_box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_cwahb")
+text = "mini.ps"
+
+[node name="mutation_minigame" type="Button" parent="mini_game_scroller/mini_game_box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_cwahb")
+text = "mini.mmg"
+
+[connection signal="pressed" from="main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="mini_game_scroller/mini_game_box/build_the_codons" to="." method="_on_pressed"]
+[connection signal="pressed" from="mini_game_scroller/mini_game_box/punnet_square" to="." method="_on_pressed"]
+[connection signal="pressed" from="mini_game_scroller/mini_game_box/mutation_minigame" to="." method="_on_pressed"]

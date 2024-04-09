@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kx635p3d2pgo"]
+
+[ext_resource type="Texture2D" uid="uid://ckjrfyxnoymga" path="res://features/genetics-gd/assets/heart.png" id="1_fkgb8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aerwd"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+
+[node name="Love" type="GPUParticles2D"]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_aerwd")
+texture = ExtResource("1_fkgb8")
+local_coords = true

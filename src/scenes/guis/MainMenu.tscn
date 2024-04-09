@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddcggpivv7v68"]
+
+[ext_resource type="Script" path="res://scenes/guis/MainMenu.gd" id="1_o748a"]
+[ext_resource type="PackedScene" uid="uid://bi0kmdrtrp78l" path="res://features/background/background.tscn" id="2_2h5t7"]
+[ext_resource type="PackedScene" uid="uid://11kelrsxmpor" path="res://scenes/guis/settings_menu/settings_menu.tscn" id="3_6uvri"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_enicp"]
+font_size = 48
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o748a")
+
+[node name="Background" parent="." instance=ExtResource("2_2h5t7")]
+layout_mode = 1
+
+[node name="MainMenuTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 100.0
+offset_right = 227.0
+offset_bottom = 170.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 21
+text = "main-menu.title"
+label_settings = SubResource("LabelSettings_enicp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.5
+offset_top = -236.0
+offset_right = 263.5
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main-menu.play"
+
+[node name="MiniGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main-menu.minigame"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main-menu.settings"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "main-menu.exit"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_6uvri")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MiniGameButton" to="." method="_on_mini_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

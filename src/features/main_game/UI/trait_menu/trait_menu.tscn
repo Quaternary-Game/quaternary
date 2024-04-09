@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv4k83q2oyppm"]
+
+[ext_resource type="Script" path="res://features/main_game/UI/trait_menu/trait_menu.gd" id="1_sp3pd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_we2po"]
+font_size = 30
+
+[node name="TraitMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_sp3pd")
+
+[node name="TraitGrid" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Points" type="Label" parent="."]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_we2po")
+horizontal_alignment = 1

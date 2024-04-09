@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5uwywif4fey"]
+
+[ext_resource type="Script" path="res://features/genetics-gd/nodes/environment_modifiers/food_herbivore.gd" id="1_ry2aa"]
+[ext_resource type="Texture2D" uid="uid://c8i37urr6ctb2" path="res://features/genetics-gd/assets/herbivore_food/herbivore_food1.png" id="2_o1v0o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8urgw"]
+radius = 22.0
+height = 64.0
+
+[node name="FoodHerbivore" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ry2aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_8urgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o1v0o")

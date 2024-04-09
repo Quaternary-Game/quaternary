@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcbs818j6fnbu"]
+
+[ext_resource type="Script" path="res://features/punnett-square/nodes/lose_screen/lose_screen.gd" id="1_kebrb"]
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kebrb")
+
+[node name="EndGame" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.0
+offset_top = -206.5
+offset_right = 387.0
+offset_bottom = 206.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Time's Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -860.0
+offset_top = 260.0
+offset_right = -460.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="MainMenuButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[node name="NextButton" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 260.0
+offset_right = 200.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next" type="Button" parent="NextButton"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Next"
+
+[connection signal="pressed" from="MainMenuButton/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NextButton/Next" to="." method="_on_next_pressed"]

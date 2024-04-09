@@ -1,0 +1,183 @@
+[gd_scene load_steps=42 format=3 uid="uid://bcaofeos47ch5"]
+
+[ext_resource type="Texture2D" uid="uid://cn5xbflhllesc" path="res://features/enemies/bacteria/0001.png" id="1_ubnot"]
+[ext_resource type="Texture2D" uid="uid://r5lx5yvwtna8" path="res://features/enemies/bacteria/0002.png" id="2_dkvmt"]
+[ext_resource type="Texture2D" uid="uid://b73tqbugs0uwm" path="res://features/enemies/bacteria/0003.png" id="3_okfw0"]
+[ext_resource type="Texture2D" uid="uid://dq6wf3wgvmmh" path="res://features/enemies/bacteria/0004.png" id="4_7xtk6"]
+[ext_resource type="Texture2D" uid="uid://bymue0ktgboc0" path="res://features/enemies/bacteria/0005.png" id="5_md6o5"]
+[ext_resource type="Texture2D" uid="uid://djew850f0vj37" path="res://features/enemies/bacteria/0006.png" id="6_407o1"]
+[ext_resource type="Texture2D" uid="uid://dk5r8eftk0gif" path="res://features/enemies/bacteria/0007.png" id="7_5w3vi"]
+[ext_resource type="Texture2D" uid="uid://bckcm7apycih2" path="res://features/enemies/bacteria/0008.png" id="8_jchlc"]
+[ext_resource type="Texture2D" uid="uid://dwwn76vhb4ylm" path="res://features/enemies/bacteria/0009.png" id="9_ia32j"]
+[ext_resource type="Texture2D" uid="uid://dxsxxd3a14ykk" path="res://features/enemies/bacteria/0010.png" id="10_3qmis"]
+[ext_resource type="Texture2D" uid="uid://bkngsxko7fc0i" path="res://features/enemies/bacteria/0011.png" id="11_70rmt"]
+[ext_resource type="Texture2D" uid="uid://3xkfboogu5sl" path="res://features/enemies/bacteria/0012.png" id="12_85wl0"]
+[ext_resource type="Texture2D" uid="uid://c16b1gjrnrb4j" path="res://features/enemies/bacteria/0013.png" id="13_3ewba"]
+[ext_resource type="Texture2D" uid="uid://dp5ny7um61yd8" path="res://features/enemies/bacteria/0014.png" id="14_35g3a"]
+[ext_resource type="Texture2D" uid="uid://bb3iigwsut74b" path="res://features/enemies/bacteria/0015.png" id="15_nt2uw"]
+[ext_resource type="Texture2D" uid="uid://ctp5pyt5kmj7x" path="res://features/enemies/bacteria/0016.png" id="16_ibyw5"]
+[ext_resource type="Texture2D" uid="uid://bv4uvxy2sxdlr" path="res://features/enemies/bacteria/0017.png" id="17_phnsw"]
+[ext_resource type="Texture2D" uid="uid://db8yqmrtuq64y" path="res://features/enemies/bacteria/0018.png" id="18_npsf2"]
+[ext_resource type="Texture2D" uid="uid://bpp2vakcgqc5l" path="res://features/enemies/bacteria/0019.png" id="19_yfe74"]
+[ext_resource type="Texture2D" uid="uid://ctgecafnlcibf" path="res://features/enemies/bacteria/0020.png" id="20_fabg7"]
+[ext_resource type="Texture2D" uid="uid://bq6dchg1y7tvf" path="res://features/enemies/bacteria/0021.png" id="21_xmfnk"]
+[ext_resource type="Texture2D" uid="uid://ci73nanea07of" path="res://features/enemies/bacteria/0022.png" id="22_2st7h"]
+[ext_resource type="Texture2D" uid="uid://cgqot6x3mp5eu" path="res://features/enemies/bacteria/0023.png" id="23_u4u66"]
+[ext_resource type="Texture2D" uid="uid://1553ij5wql4i" path="res://features/enemies/bacteria/0024.png" id="24_gxg44"]
+[ext_resource type="Texture2D" uid="uid://ma1614xuf0e" path="res://features/enemies/bacteria/0025.png" id="25_koycf"]
+[ext_resource type="Texture2D" uid="uid://dbqx0781cf2ds" path="res://features/enemies/bacteria/0026.png" id="26_5ea3l"]
+[ext_resource type="Texture2D" uid="uid://d2a6x8knhsr1v" path="res://features/enemies/bacteria/0027.png" id="27_m1i16"]
+[ext_resource type="Texture2D" uid="uid://yfcyixmketbm" path="res://features/enemies/bacteria/0028.png" id="28_53e7w"]
+[ext_resource type="Texture2D" uid="uid://bbl006qmuko0l" path="res://features/enemies/bacteria/0029.png" id="29_3a2ay"]
+[ext_resource type="Texture2D" uid="uid://ujkwgy1350tu" path="res://features/enemies/bacteria/0030.png" id="30_gq4vp"]
+[ext_resource type="Texture2D" uid="uid://cnsdt0p5kvsxt" path="res://features/enemies/bacteria/0031.png" id="31_0wyt1"]
+[ext_resource type="Texture2D" uid="uid://c0tm8p7xgprev" path="res://features/enemies/bacteria/0032.png" id="32_5us07"]
+[ext_resource type="Texture2D" uid="uid://bxklqtif0trr5" path="res://features/enemies/bacteria/0033.png" id="33_80qyo"]
+[ext_resource type="Texture2D" uid="uid://i2ieyg2okxsk" path="res://features/enemies/bacteria/0034.png" id="34_5sjmr"]
+[ext_resource type="Texture2D" uid="uid://c0arrwwgncnc2" path="res://features/enemies/bacteria/0035.png" id="35_w4wri"]
+[ext_resource type="Texture2D" uid="uid://c4giqsip4g5jc" path="res://features/enemies/bacteria/0036.png" id="36_jwyuh"]
+[ext_resource type="Texture2D" uid="uid://bl5ykw6u1yl1i" path="res://features/enemies/bacteria/0037.png" id="37_nvoh1"]
+[ext_resource type="Texture2D" uid="uid://bdc7qdrxphqou" path="res://features/enemies/bacteria/0038.png" id="38_djrwd"]
+[ext_resource type="Texture2D" uid="uid://bcj057p00nbw2" path="res://features/enemies/bacteria/0039.png" id="39_6uqgi"]
+[ext_resource type="Texture2D" uid="uid://2gj152cog7su" path="res://features/enemies/bacteria/0040.png" id="40_ggek5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k8xs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ubnot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dkvmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_okfw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7xtk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_md6o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_407o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5w3vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jchlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ia32j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3qmis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_70rmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_85wl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3ewba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_35g3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_nt2uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ibyw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_phnsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_npsf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yfe74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fabg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xmfnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2st7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_u4u66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_gxg44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_koycf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_5ea3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m1i16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_53e7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3a2ay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_gq4vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_0wyt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_5us07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_80qyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_5sjmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_w4wri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_jwyuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_nvoh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_djrwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_6uqgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ggek5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Bacteria" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8k8xs")
+frame = 25
+frame_progress = 0.980197
+speed_scale = 0.5
