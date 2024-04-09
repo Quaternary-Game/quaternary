@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Genotype" load_steps=25 format=3 uid="uid://mprb6wcc3leo"]
+[gd_resource type="Resource" script_class="Genotype" load_steps=29 format=3 uid="uid://mprb6wcc3leo"]
 
 [ext_resource type="Script" path="res://features/genetics-gd/resources/allele.gd" id="2_2sjr5"]
 [ext_resource type="PackedScene" uid="uid://1l0l657ckwcv" path="res://features/genetics-gd/nodes/entity_traits/trait_territory.tscn" id="3_gxojh"]
@@ -8,7 +8,24 @@
 [ext_resource type="PackedScene" uid="uid://cmbrha4kuol5a" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_male.tscn" id="7_bwuul"]
 [ext_resource type="PackedScene" uid="uid://cdssiddyejuw5" path="res://features/genetics-gd/nodes/entity_traits/trait_calories.tscn" id="8_qri45"]
 [ext_resource type="PackedScene" uid="uid://beik3q8lbs8k6" path="res://features/genetics-gd/nodes/entity_traits/trait_reproduction_sexual_female.tscn" id="8_usr0t"]
+[ext_resource type="PackedScene" uid="uid://bjwiwvitrng7x" path="res://features/genetics-gd/nodes/entity_traits/trait_age.tscn" id="9_lc5gc"]
 [ext_resource type="Script" path="res://features/genetics-gd/resources/genotype.gd" id="9_wfsbf"]
+
+[sub_resource type="Resource" id="Resource_2jh1u"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("9_lc5gc")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_8o7d0"]
+script = ExtResource("2_2sjr5")
+scene = ExtResource("9_lc5gc")
+_type = 1
+
+[sub_resource type="Resource" id="Resource_gw6vd"]
+script = ExtResource("4_qfsg7")
+hidden = true
+_type = 1
+_alleles = Array[ExtResource("2_2sjr5")]([SubResource("Resource_2jh1u"), SubResource("Resource_8o7d0")])
 
 [sub_resource type="Resource" id="Resource_gcbqn"]
 script = ExtResource("2_2sjr5")
@@ -96,6 +113,7 @@ resource_name = "SpiderGenotypeMale"
 script = ExtResource("9_wfsbf")
 ploidy = 2
 _loci = {
+1: SubResource("Resource_gw6vd"),
 2: SubResource("Resource_lw1a3"),
 3: SubResource("Resource_kwvwx"),
 4: SubResource("Resource_rhaou"),
