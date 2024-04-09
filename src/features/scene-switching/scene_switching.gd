@@ -33,3 +33,6 @@ func loaded(scene: Resource) -> void:
 	get_tree().root.remove_child(loading_screen)
 	current_scene = scene.instantiate()
 	get_tree().root.add_child(current_scene)
+
+func restart_scene() -> void:
+	goto_scene(current_scene.scene_file_path)
