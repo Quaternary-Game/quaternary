@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ece3j57fr7"]
+[gd_scene load_steps=5 format=3 uid="uid://2ece3j57fr7"]
 
 [ext_resource type="Script" path="res://features/punnett-square/nodes/main/main.gd" id="1_n5my5"]
 [ext_resource type="PackedScene" uid="uid://lo2b1wr3x5vp" path="res://scenes/guis/tutorial_button.tscn" id="2_ihaqi"]
 [ext_resource type="FontFile" uid="uid://na1wmldontft" path="res://features/theme/fonts/FiraCode-Bold.ttf" id="3_t15rp"]
+[ext_resource type="PackedScene" uid="uid://cywpj0ki4ld5j" path="res://scenes/guis/pause_button.tscn" id="4_mc0ig"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -12,9 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n5my5")
-time = 10
-parent1_genotype = "Aa"
-parent2_genotype = "aa"
 
 [node name="TutorialButton" parent="." instance=ExtResource("2_ihaqi")]
 visible = false
@@ -98,6 +96,19 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Ready"
+
+[node name="PauseButton" parent="." instance=ExtResource("4_mc0ig")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 180.0
+offset_top = 40.0
+offset_right = 380.0
+offset_bottom = 134.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="StartScreen/PanelContainer/Button" to="." method="_on_button_pressed"]
