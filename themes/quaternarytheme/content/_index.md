@@ -18,7 +18,7 @@ title: Home
             </div>
         </section>
         <section class="download">
-            <button> Download Now! </button>
+            <button onclick="location.href='downloads/index.html'"> Download Now! </button>
         </section>
 
     </section>

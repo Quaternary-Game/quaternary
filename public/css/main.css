@@ -130,3 +130,10 @@ button:hover {
 .rainbow-title span:nth-child(4n+4) {
   color: #D08770;
 }
+
+.circular-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}

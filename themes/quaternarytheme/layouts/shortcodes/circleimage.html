@@ -1,0 +1,5 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "Circular Image" }}
+{{ $base := .Site.BaseURL }}
+
+<img src="{{ $base }}{{ $src }}" alt="{{ $alt }}" class="circular-image">
