@@ -1,0 +1,4 @@
+baseURL = 'https://quaternary-game.github.io/quaternary/'
+languageCode = 'en-us'
+title = 'Quaternary'
+theme = "quaternarytheme"
