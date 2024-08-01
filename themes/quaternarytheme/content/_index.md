@@ -1,7 +1,7 @@
-{{ partial "head.html" }}
-<header>
-    {{ partial "header.html" }}
-</header>
+---
+title: Home
+---
+{{< rawhtml >}}
 <main>
     <section class="home">
         <section class="split-section">
@@ -23,6 +23,4 @@
 
     </section>
 </main>
-<footer>
-    {{ partial "footer.html" }}
-</footer>
+{{< /rawhtml >}}
