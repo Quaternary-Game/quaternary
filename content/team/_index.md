@@ -6,22 +6,22 @@ customcss: css/team.css
 
 {{< circleimage src="leendert.jpg" alt="Leendert's Headshot" >}}
 
-Leendert made some sweet tunes for this game. 
+Leendert Van't Riet created Quaternary's sound landscape. 
 
 
 {{< circleimage src="Alex.jpg" alt="Alex's Headshot" >}}
 
-Alex put the sound in the game.
+Alex Dedieu was responsible for the sound and menu implementation within Quaternary. 
 
 {{< circleimage src="john.jpg" alt="John's Headshot" >}}
 
-John made trait system.
+John Whiting was responsible for the genetic system and much of the "main game".
 
 {{< circleimage src="connor.jpg" alt="Connor's Headshot"  >}}
 
-Connor Mckinney is a really fancy guy who loves to own sports teams and play sports ball.
+Connor Mckinney was responsible for the codon minigame.
 
 
 {{< circleimage src="david.jpg" alt="David's Headshot"  >}}
 
-David Lewis hates web development, but here he is making websites. Go him.
+David Lewis is the director and designer of Quaternary. He worked on almost all parts of the game, not including the music.
