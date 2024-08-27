@@ -80,7 +80,7 @@ func check_mutation(sequence: Array) -> void:
 var mutations_array: Array[Mutation] = []
 func _ready() -> void:
 	tutorial.pressed.connect(tutorial_pressed)
-	MusicPlayer.play_new_beginnings()
+	MusicPlayer.play_track1()
 	$DNABOX/DNA.random_dna(DNA_length)
 	dna_mutated = $DNABOX/DNA.duplicate()
 	dna_mutated.droppable = false

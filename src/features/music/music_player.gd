@@ -2,9 +2,21 @@ extends Node
 
 var player:AudioStreamPlayer
 var paused_player:AudioStreamPlayer
+
+var track1: AudioStream = preload("res://features/music/assets/Gameplay Track 1.wav")
+var track2: AudioStream = preload("res://features/music/assets/Gameplay Track 2.wav")
+var track3: AudioStream = preload("res://features/music/assets/Gameplay Track 3.wav")
+var track4: AudioStream = preload("res://features/music/assets/Gameplay Track 4.wav")
+
+var pause1: AudioStream = preload("res://features/music/assets/Pause Track 1.wav")
+var pause2: AudioStream = preload("res://features/music/assets/Pause Track 2.wav")
+var pause3: AudioStream = preload("res://features/music/assets/Pause Track 3.wav")
+var pause4: AudioStream = preload("res://features/music/assets/Pause Track 4.wav")
+
+var menu: AudioStream = preload("res://features/music/assets/Menu Track.wav")
+
 var MPT1: AudioStream = preload("res://features/music/assets/MPT1.mp3")
 var MPT2: AudioStream = preload("res://features/music/assets/MPT2.mp3")
-var track2:AudioStream = preload("res://features/music/assets/Track_2.mp3")
 var sketching:AudioStream = preload("res://features/music/assets/Sketching.mp3")
 var new_beginnings:AudioStream = preload("res://features/music/assets/New_Beginnings.mp3")
 
@@ -18,9 +30,21 @@ func _ready() -> void:
 	paused_player.stream = track2
 	paused_player.bus = "Music"
 	add_child(paused_player)
-	
+
+func play_track1() -> void:
+	play_track(track1, pause1)
+
 func play_track2() -> void:
-	play_track(track2)
+	play_track(track2, pause2)
+	
+func play_track3() -> void:
+	play_track(track3, pause3)
+
+func play_track4() -> void:
+	play_track(track3, pause3)
+	
+func play_menu() -> void:
+	play_track(menu)
 
 func play_sketching() -> void:
 	play_track(sketching)

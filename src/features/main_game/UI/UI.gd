@@ -22,7 +22,7 @@ var tutorial_button: Button
 
 func _ready() -> void:
 
-	MusicPlayer.play_sketching()
+	MusicPlayer.play_track2()
 	
 	start_pause_button = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Start_Pause")
 	toggle = get_node("VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/ToggleTraitMenu")

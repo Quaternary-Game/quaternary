@@ -13,7 +13,7 @@ var goalAcid: String
 var codons :String = ""
 
 func _ready() -> void:
-	MusicPlayer.play_MPT()
+	MusicPlayer.play_track4()
 	#self.get_parent().get_node("ContinueButton").hide()
 	load_game()
 

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfi4l4p6iliq6"
+path="res://.godot/imported/Pause Track 4.wav-3e0807770c9795b831b7624795186321.sample"
+
+[deps]
+
+source_file="res://features/music/assets/Pause Track 4.wav"
+dest_files=["res://.godot/imported/Pause Track 4.wav-3e0807770c9795b831b7624795186321.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

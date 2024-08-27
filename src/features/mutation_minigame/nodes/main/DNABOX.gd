@@ -64,6 +64,3 @@ func _process(_delta: float) -> void:
 	draw_helix(resolution, resolution*2,1, top, helix_func_right, int(self.size.x) + 10, -linewidth, 1)
 	draw_helix(resolution, resolution*2,1, bottom, helix_func_right, int(self.size.x) + 10, linewidth, -1)
 	draw_bonds(top, bottom)
-
-
-
