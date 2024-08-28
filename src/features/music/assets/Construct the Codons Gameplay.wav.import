@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0tatvjnlhkr1"
+path="res://.godot/imported/Construct the Codons Gameplay.wav-827b685df01a545b787caa2ea76916b5.sample"
+
+[deps]
+
+source_file="res://features/music/assets/Construct the Codons Gameplay.wav"
+dest_files=["res://.godot/imported/Construct the Codons Gameplay.wav-827b685df01a545b787caa2ea76916b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
