@@ -61,4 +61,3 @@ var MutationDetails: Dictionary = {
 		"name": "Substitution"
 	}
 }
-

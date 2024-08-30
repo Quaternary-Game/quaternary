@@ -17,7 +17,7 @@ func _on_exit_pressed() -> void:
 	get_tree().paused = false
 	SceneSwitching.goto_mainmenu()
 	MusicPlayer.resume()
-	MusicPlayer.play_track2()
+	#MusicPlayer.play_track2()
 
 func _on_settings_pressed() -> void:
 	$SettingsMenu.visible = true

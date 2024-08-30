@@ -41,6 +41,3 @@ func _notification(what: int) -> void:
 				SoundPlayer.play_confirm()
 				done = true
 				end_drag.emit(true)
-
-
-

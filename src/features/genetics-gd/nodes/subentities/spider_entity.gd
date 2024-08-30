@@ -19,4 +19,3 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	super._ready()
 	velocity = starting_velocity
-

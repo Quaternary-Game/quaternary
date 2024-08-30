@@ -35,7 +35,7 @@ func _ready() -> void:
 	
 	time = 10 * 4**(parent1_genotype.length()/2 - 1)
 	
-	MusicPlayer.play_new_beginnings()
+	MusicPlayer.play_track3()
 	
 	countdown = time
 	$StartScreen/Label.text = "You have %s seconds to fill\nthe Punnett Square" % str(self.time)
