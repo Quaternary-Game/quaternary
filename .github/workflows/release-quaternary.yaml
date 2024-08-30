@@ -1,7 +1,9 @@
 name: Build and Release Quaternary
 on:
   push:
-    branches: [ develop ]
+    branches:
+      - develop
+      - main
     tags:
       - 'v*'
       - '!v*-alpha*'
